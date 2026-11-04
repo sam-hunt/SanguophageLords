@@ -204,8 +204,11 @@ placeholder can begin the sentence, `CapitalizeFirst()` the composed string inst
 capitalizing the argument. `LabelCap`/`LabelShortCap` is for standalone display (list rows, name
 fields) and proper nouns.
 
-**No em dashes in player-facing text** (def labels/descriptions, `Keyed/`, `About.xml`) — reflow
-the sentence instead. This file, code comments and def comments are unaffected.
+**Player-facing text follows `l10n/languages/English.md`** (def labels and descriptions,
+`Keyed/`, `About.xml`, `.steamworkshop/`): read it before writing or changing any. Its
+mechanical rules (no dashes, semicolons, "Whether" openers or parenthetical asides) are checked
+by `Scripts/check-translations.py` as `[player text]` warnings, which `--strict` turns into
+release errors. This file, code comments and def comments are unaffected.
 
 **Prefix discipline:** Prefer Postfix. A Prefix should only set flags or pre-align state,
 returning void/true. Skipping the original (`return false`) is a mod-compat hazard — other mods'
