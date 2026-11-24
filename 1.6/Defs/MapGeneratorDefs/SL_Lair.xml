@@ -40,6 +40,7 @@
       <li>SL_LairStructure</li>
       <li>SL_PlaceStairwellExit</li>
       <li>SL_LairContents</li>
+      <li>SL_LairUtilities</li>
       <li>Fog</li>
       <li>MutatorFinal</li>
     </genSteps>

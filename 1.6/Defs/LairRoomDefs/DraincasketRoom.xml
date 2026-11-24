@@ -2,13 +2,28 @@
 <Defs>
 
   <!--
-    SL_LairRoom_DraincasketRoom. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_DraincasketRoom: a small grim room of Vanilla Races Expanded - Sanguophage
+    draincaskets around the hemogen vat that feeds the lair's pipe network. Layout and
+    rationale in Source/1.6/MapGen/Rooms/LairRoomWorker_DraincasketRoom.cs; the network in
+    Source/1.6/MapGen/Utilities/LairHemogenNet.cs.
+
+    The def itself needs no gate: it references nothing from VRE (the worker reaches VRE's
+    defs through SL_HemogenNetDefOf, null without the mod), and the program line that asks
+    for it in 1.6/Defs/LairLayoutDefs/SL_Lair.xml carries the MayRequire.
+
+    Rect only, 7 to 9 each way: two caskets a side plus the vat and tap need 7 by 7, and the
+    room is meant to feel cramped. Flagstone, as a working room. A dead end (no children, no
+    loop doors), so no door opens into the far wall the vat stands against or into a side
+    wall's row of caskets.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_DraincasketRoom</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_DraincasketRoom</workerClass>
+    <floor>Flagstone</floor>
     <corridorChance>0.3</corridorChance>
-    <maxChildren>1</maxChildren>
+    <maxChildren>0</maxChildren>
+    <allowLoops>false</allowLoops>
     <shapes>
       <li>
         <kind>Rect</kind>

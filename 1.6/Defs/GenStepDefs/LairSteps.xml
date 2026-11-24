@@ -11,8 +11,10 @@
      1000  SL_LairStructure      plan the lair and stamp rooms, walls, doors, floors, cavern, river
      1010  SL_PlaceStairwellExit the stairwell exit in the planned entrance hall
      1020  SL_LairContents       furnish every room
+     1025  SL_LairUtilities      lay the power conduits (and hemogen pipes with VRE) between
+                                 the furnished rooms
 
-    The last three sit after vanilla's Plants (900) and RockChunks (970), so neither scatters
+    The last four sit after vanilla's Plants (900) and RockChunks (970), so neither scatters
     into the finished rooms, and before Fog (1500), so the fog flood from the stairwell stops
     at the lair's doors. Each step's algorithm and rationale is in its C# header under
     Source/1.6/MapGen/.
@@ -42,6 +44,12 @@
     <defName>SL_LairContents</defName>
     <order>1020</order>
     <genStep Class="SanguophageLair.GenStep_LairContents" />
+  </GenStepDef>
+
+  <GenStepDef>
+    <defName>SL_LairUtilities</defName>
+    <order>1025</order>
+    <genStep Class="SanguophageLair.GenStep_LairUtilities" />
   </GenStepDef>
 
 </Defs>

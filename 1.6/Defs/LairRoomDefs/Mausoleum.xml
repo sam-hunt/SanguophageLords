@@ -2,11 +2,22 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Mausoleum. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Mausoleum: the tomb of the lair's founder, the grandest funerary room and the
+    end of the lair's axis. Worker: Source/1.6/MapGen/Rooms/LairRoomWorker_Mausoleum.cs.
+
+    - anchor AxisNorth: beyond the sanctum. A corridor of three to six cells 60 percent of the
+      time, so the approach is sometimes a short walk through the rock rather than a door in
+      the sanctum's wall.
+    - Round or octagonal, eleven to thirteen across, so the worker's rings of carpet, columns
+      and torches follow the room's outline (LairRoom.Inset). At thirteen the centre is as far
+      from the wall as thick rock roof reaches; the ring's columns hold it.
+    - maxChildren 1: a further room may hang off it, but nothing is meant to lie past the
+      founder's tomb.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Mausoleum</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Mausoleum</workerClass>
     <anchor>AxisNorth</anchor>
     <corridorChance>0.6</corridorChance>
     <corridorLength>3~6</corridorLength>

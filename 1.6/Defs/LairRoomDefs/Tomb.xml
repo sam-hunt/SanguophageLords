@@ -2,11 +2,22 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Tomb. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Tomb: a formal burial chamber for the lair's honoured dead. Worker:
+    Source/1.6/MapGen/Rooms/LairRoomWorker_Tomb.cs (layout and design notes there).
+
+    - anchor ProcessionalSide with paired: one tomb on each long side of the processional, true
+      mirror images facing each other across the main hall. The layout def asks for two.
+    - Seven to nine across leaves a three-cell aisle between two rows of sarcophagi (two cells
+      deep each, plus a one-cell edging in the nine-wide room); seven to eleven deep gives two
+      to ten sarcophagi a side and room for the stele at the far wall. Both are small enough
+      that no column is needed.
+    - maxChildren 1: a tomb may lead on to one further room, so filler crypts can hang off it,
+      but its aisle is not meant to be a thoroughfare.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Tomb</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Tomb</workerClass>
     <anchor>ProcessionalSide</anchor>
     <paired>true</paired>
     <maxChildren>1</maxChildren>

@@ -15,6 +15,8 @@
     - First the rooms with a fixed place in the composition (the axis beyond the sanctum, the
       sanctum's flanks, the processional's sides), which claim their sites before anything
       can crowd them.
+    - Then the power chamber, the lair's infrastructure: everything powered in the rooms
+      above and below works only if it fits (a lair without it generates unpowered).
     - Then the rooms that make it a lair rather than a tomb: where its masters keep their
       prey, their books and their servants.
     - Last the fillers (crypts, storerooms), which soak up whatever wall is left and give the
@@ -27,6 +29,10 @@
     is about and later entries for what stands around it. Walls are painted so the lair is as
     dark in marble as in slate; floors keep the stone's own colour, which is what tells one
     lair from another.
+
+    hiddenConduits is left at its default (false): the power conduits, and the hemogen pipes
+    with Vanilla Races Expanded - Sanguophage, run visibly along the halls as in the marketing
+    art, and only go hidden under carpet.
   -->
   <SanguophageLair.LairLayoutDef>
     <defName>SL_Lair</defName>
@@ -54,6 +60,9 @@
       <li>
         <room>SL_LairRoom_Guardroom</room>
         <count>2</count>
+      </li>
+      <li>
+        <room>SL_LairRoom_PowerChamber</room>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology">
         <room>SL_LairRoom_Temple</room>

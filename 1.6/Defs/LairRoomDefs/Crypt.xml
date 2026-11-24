@@ -2,11 +2,21 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Crypt. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Crypt: a humble burial niche, a filler room on the lair's outskirts. Worker:
+    Source/1.6/MapGen/Rooms/LairRoomWorker_Crypt.cs (one of three arrangements rolled per room).
+
+    - walls Hewn and floor Natural: cut from the rock rather than built, so the outskirts have
+      a ragged outline and the room reads as older and poorer than the halls it opens off. The
+      worker lays no carpet.
+    - Rect five to nine across and deep, or round seven to nine: small enough for a few
+      sarcophagi or graves, a handful of urns and one or two torches.
+    - corridorChance 0.5: some crypts stand off their host at the end of a passage.
+    - maxChildren 1: crypts may chain.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Crypt</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Crypt</workerClass>
     <walls>Hewn</walls>
     <floor>Natural</floor>
     <corridorChance>0.5</corridorChance>

@@ -49,6 +49,11 @@ public class LairLayoutDef : Def
     // carpet defs are generated at load from colour defs and cannot be cross-referenced.
     public List<string> carpets = new List<string>();
 
+    // Lays every utility line (power conduits, and hemogen pipes when Vanilla Races Expanded -
+    // Sanguophage is active) hidden. False shows them, as Biotech's own sanguophage base does
+    // along its halls, except under carpet, where they are always hidden.
+    public bool hiddenConduits;
+
     public LairPlanParams ToPlanParams(int width, int height, bool undergroundApproach)
     {
         var parms = new LairPlanParams
