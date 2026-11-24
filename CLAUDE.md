@@ -256,15 +256,14 @@ one central `VerifyAll()` triggers them from `SL_Startup` so API drift surfaces 
 
 ### Headline feature: the lair quest site
 
-Partially built. The planned shape: a rare opportunity-site quest (`QuestScriptDef` +
+The lair itself is built; the quest that leads to it is not. The planned shape: a rare opportunity-site quest (`QuestScriptDef` +
 `SitePartDef` + `WorldObjectDef`) places the lair on the world map; the surface map holds a
 custom portal building (a `MapPortal` subclass) that generates and links a pocket map; a
 dedicated `MapGeneratorDef` subtree (custom `GenStepDef`s, layout defs) builds the lair itself.
 
 **Shipped so far:** the portal pair (`SL_AncientStairwell`/`SL_AncientStairwellExit`, stony-
 stuffable — `1.6/Defs/ThingDefs/AncientStairwell.xml` + `Source/1.6/MapPortals/`); the
-scaffold pocket-map generator (`SL_Lair`, a bare Core-only cave whose exit step
-`SL_PlaceStairwellExit` already spawns the real two-layer exit in the entrance's stuff); and
+lair pocket map itself (`SL_Lair`, see "Lair map generation" below); and
 the **Odyssey landmark entrance**: the `SL_SanguophageLair` tile mutator (compat root
 `1.6/Mods/Odyssey/`, offered on Odyssey landmarks by `Patches/Landmarks_Odyssey.xml`) whose
 worker (`Source/1.6/TileMutators/`) spawns the `SL_StairwellSurface` prefab, re-stuffed in the
@@ -272,8 +271,47 @@ map's dominant rock (`Source/1.6/MapGen/LairRock.cs`), on every map generated fr
 carrying it. This is the Odyssey analogue of the ancient-stockpile hatch and exists so the
 lair mapgen can be iterated before the quest shape is decided. Decompile-verified call paths
 live in those files' headers. Still pending: the quest/site defs (shape undecided; they also
-bring the non-Odyssey surface spawner), and the real lair `MapGeneratorDef` subtree behind
-`SL_PlaceStairwellExit`.
+bring the non-Odyssey surface spawner), and the surface variant of the lair (the same
+`LairPlan` set into a mountain, with static defences in place of the underground approach).
+
+### Lair map generation
+
+The lair is planned, then stamped, then furnished, and each stage only knows the one before it.
+Details live in the headers of the files named; the rules here are the ones that cross files.
+
+- **Plan (`Source/1.6/MapGen/Plan/`) is pure.** `LairPlanner` turns a `LairPlanParams` into a
+  `LairPlan` (an abstract cell grid plus a room graph) using only `Verse.Rand`, `IntVec3`,
+  `CellRect` and `Rot4`. Nothing under `Plan/` may reference `Map`, a def or a `Thing`: that
+  purity is what lets `Tests/1.6/LairPlannerTests.cs` check plans over many seeds, and what will
+  let the surface variant stamp the same plan into a mountain. Set `SL_PLAN_DUMP=<folder>` when
+  running the tests to get each seed's plan as ASCII.
+- **Stamp, then furnish, as gensteps** (`1.6/Defs/GenStepDefs/LairSteps.xml` is the pipeline
+  and its order table): `GenStep_LairStructure` plans and stamps and publishes a `LairSite`
+  (generation-time only, never saved); later steps read `LairSite.Current` and must do nothing
+  when it is null (a map too small for a lair still generates, as a bare cave).
+- **Room kinds and the lair's program are data.** A `LairRoomDef` (one file per room under
+  `1.6/Defs/LairRoomDefs/`) says how the planner may shape and site a room and names the
+  `LairRoomWorker` that furnishes it; `LairLayoutDef` (`SL_Lair`) lists the spine and the
+  priority-ordered program. Room and layout defs carry no player-facing strings, which is why
+  an optional room needs no compat root: its program line is gated with `MayRequire`, its def
+  loads everywhere, and its worker reaches DLC content through a `[MayRequire...]` DefOf field
+  and returns early when the DLC is inactive. Adding a room is a def file, a worker and a
+  program line (`Tests/1.6/LairDefXmlTests.cs` fails if any of the three is missing or
+  misnamed).
+- **Workers place only through `LairRoom`** (`Source/1.6/MapGen/Rooms/LairRoom.cs`): its local
+  frame (`At`, `Turn`), its `TrySpawn*` family, floors and torches. Those calls are what keep
+  doorways clear, footprints inside the room and every lair in one style (`LairStyle`), so a
+  worker never calls `GenSpawn` for furniture and never hardcodes a stone, colour or map
+  direction. A worker lays out its ideal room and lets `TrySpawn` drop what does not fit.
+- **Thick roof is a design constraint.** Every cell of the pocket map is `RoofRockThick`, which
+  falls where it is more than 6.9 cells from a wall or column once a nearby holder is lost. The
+  planner leaves rock pillars in the cavern, workers put columns in rooms 13 or more across,
+  and the contents step adds columns to any room that still has an unsupported cell.
+- **Seeing it:** a room's look can only be judged in the game. `Scripts/lair-harness/`
+  (README there) is a dev-only harness mod and launcher that boots the game on a pinned list,
+  generates `SL_Lair` for a seed and writes a full-map screenshot; it is not part of the
+  solution and never ships. Unit tests cover the plan, the conduit router and the def
+  cross-references, not appearance.
 
 **In-family precedent — read before designing:** BetterTradersGuild's smuggler's den quest →
 cargo vault pocket map is the full worked example

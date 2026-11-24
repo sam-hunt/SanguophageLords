@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>SL Map Harness (local test)</name>
+  <author>local</author>
+  <packageId>shunter.slharness</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <loadAfter>
+    <li>shunter.sanguophagelair</li>
+  </loadAfter>
+</ModMetaData>

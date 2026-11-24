@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Throwaway harness. Compiles against the INSTALLED 1.7 flat assemblies (net10, Waylith runtime),
+       exactly like the olwc precedent. Pass -p:RimWorldPath=<install dir>. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>SLHarness</AssemblyName>
+    <RootNamespace>SLHarness</RootNamespace>
+    <OutputPath>$(MSBuildThisFileDirectory)bin</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <DebugType>none</DebugType>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Harness.cs" />
+    <Reference Include="Assembly-CSharp"><HintPath>$(RimWorldPath)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="RimWorld"><HintPath>$(RimWorldPath)/RimWorld.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityStubs"><HintPath>$(RimWorldPath)/UnityStubs.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Waylith"><HintPath>$(RimWorldPath)/Waylith.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>
