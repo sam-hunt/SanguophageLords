@@ -1,4 +1,5 @@
-# Claude Code (skills are shared/tracked; hooks and local settings stay machine-local)
+# Claude Code (skills, the Stop hook and its settings.json wiring are tracked and shared;
+# everything else, such as settings.local.json, stays machine-local)
 .claude/*
 !.claude/skills/
 !.claude/hooks/
@@ -15,9 +16,6 @@
 # Build results
 **/bin/
 **/obj/
-Tests/*/Tools/*.dll
-Tests/*/Tools/*.exe
-Tests/*/Tools/*.pdb
 *.cache
 *.zip
 
@@ -29,14 +27,10 @@ _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
 
-# Build artifacts
-# Assemblies/ holds the compiled DLL that RimWorld loads; it is built locally
-# (post-build deploy) and by CI (StageMod), never tracked in git.
+# Build artifacts (the compiled DLL RimWorld loads is built, not committed;
+# releases ship it via the StageMod target / CI zip)
 */Assemblies/*.dll
 */Assemblies/*.pdb
-
-# Python bytecode (translation tooling)
-__pycache__/
 
 # RimWorld local testing
 *.rws
@@ -61,5 +55,6 @@ test_*.exe
 # Logs
 *.log
 
-# Research documentation (kept locally, not tracked)
-Docs/
+# Python bytecode (translation and smoke-test tooling)
+__pycache__/
+*.py[cod]
