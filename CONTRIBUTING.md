@@ -1,7 +1,8 @@
 # Contributing
 
 Thanks for your interest in improving Sanguophage Lair! Bug reports,
-suggestions and pull requests are welcome.
+suggestions and pull requests are welcome. Build and development setup live
+in CLAUDE.md.
 
 If you work in Claude Code, the repo ships a Stop hook (`.claude/hooks/sync-mod.sh`,
 wired by `.claude/settings.json`) that rebuilds and redeploys the mod into your

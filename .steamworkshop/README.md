@@ -2,7 +2,15 @@
 
 Publishing metadata for the mod's Steam Workshop page. Nothing in this folder
 ships with the mod (the StageMod manifest never matches it) or is loaded by
-RimWorld. A `Media/` folder for Workshop images can live here later.
+RimWorld.
+
+## Images/
+
+The page's gallery images, uploaded by hand through the page's images and
+videos UI. Steam takes still images and GIFs only, no video files such as
+MP4, and rejects any image of 2 MB or more, so a gameplay clip has to be a GIF
+cut down to fit (lower frame rate, scale and palette) from a screen recording
+kept outside the repo. The folder arrives with the first gallery image.
 
 ## Description/
 
@@ -27,7 +35,7 @@ CLAUDE.md localization note).
 
 Steam has no API for per-language Workshop text, so updated files are pasted
 manually into the Workshop page's edit UI (note Steam's own language names
-differ: schinese, koreana, brazilian, latam, ...).  The `release` skill diffs
+differ: schinese, koreana, brazilian, latam, ...). The `release` skill diffs
 `English.txt` against the last stable release tag and refreshes the translations
 whenever it changed.
 

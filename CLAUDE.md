@@ -28,6 +28,13 @@ file and every non-obvious def carries one. When adding or changing something, p
 there and only add a line here if it constrains work in other files. Do not restate def values
 or call paths here; they drift.
 
+**Comments describe the present, git describes the past.** A header or code comment explains the
+current state where the code does not make it obvious: engine facts it relies on, what a number is
+balanced against, cross-file coupling. It carries no dates, no previous values, no record of what
+was tried and dropped, and no "seen in game" notes; that history belongs in the commit message
+and diff. Comments never ship (see Deployment), so a def header can carry its full rationale at
+no download cost.
+
 ## Build Commands
 
 ```bash
