@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_Storeroom. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Storeroom</defName>
+    <walls>Hewn</walls>
+    <floor>Natural</floor>
+    <maxChildren>0</maxChildren>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>5~7</across>
+        <deep>5~7</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

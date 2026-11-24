@@ -8,12 +8,21 @@ namespace SanguophageLair;
 // generators need (blocks stuff for made-from-stuff things, the smooth floor terrain).
 //
 // One rule for both ends of the portal: the surface mutator picks the rock from the surface map
-// and spawns the stairwell in its blocks; the pocket-map exit genstep then copies the entrance's
-// stuff, so the staircase is one continuous piece of stonework however the lair's own rock is
-// generated. Nothing here is tile-seeded: the decision is made once, on the surface map, and
-// travels down through the spawned entrance.
+// and spawns the stairwell in its blocks; everything underground then reads the rock back from
+// that entrance (OfEntrance), so the staircase, the pocket map's rock and the lair's stonework
+// are all the hill the player walked into. Nothing here is tile-seeded: the decision is made
+// once, on the surface map, and travels down through the spawned entrance.
 public static class LairRock
 {
+    // The rock a lair under this entrance is cut from: the natural rock the entrance's blocks
+    // come from. With no entrance (the dev-menu pocket map) or one in a stuff that is not cut
+    // from a rock, slate, the darkest vanilla stone, with granite behind it.
+    public static ThingDef OfEntrance(MapPortal entrance)
+    {
+        ThingDef rock = entrance?.Stuff?.stuffProps?.SourceNaturalRock;
+        return rock ?? DefDatabase<ThingDef>.GetNamedSilentFail("Slate") ?? ThingDefOf.Granite;
+    }
+
     // The natural rock most common on the map, counted over its spawned rock walls, so the
     // stairwell reads as carved into the hill it sits against. Flat maps with no rock at all
     // fall back to the tile's first world-gen rock type (the list GenStep_RocksFromGrid draws

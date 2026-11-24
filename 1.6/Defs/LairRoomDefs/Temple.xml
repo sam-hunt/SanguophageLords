@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_Temple. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Temple</defName>
+    <corridorChance>0.5</corridorChance>
+    <maxChildren>1</maxChildren>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>11~13</across>
+        <deep>15~19</deep>
+      </li>
+      <li>
+        <kind>Octagon</kind>
+        <across>13~15</across>
+        <deep>15~17</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

@@ -11,20 +11,20 @@ namespace SanguophageLair;
 // (MapPortal.GetDestinationLocation returns exit.Position; the PocketMapExit parent def is
 // Standable, so the 7x7 foot of the stairs is itself the arrival area).
 //
-// Replaces vanilla GenStep_PlaceCaveExit in the SL_Lair genstep list, which hardcodes the
-// 3x3 rope CaveExit (decompile-verified, 1.6): same algorithm, resized for a 7x7 exit and
-// reading the exit def and stuff from the generating portal instead of a constant.
-// - Site: a random standable cell far enough from the map edge that the whole exit plus the
-//   clearing fits (PlaceCaveExit uses 5.5 for a 3x3 exit; 8.5 here). Standable at the center
-//   is enough because everything destroyable in the clearing radius is removed before the
-//   spawn, rock walls included, exactly as PlaceCaveExit does; the pocket map's rough rock
-//   floor already has the Heavy affordance the exit needs.
+// Stands in for vanilla GenStep_PlaceCaveExit, which hardcodes the 3x3 rope CaveExit
+// (decompile-verified, 1.6).
+// - Site: the centre of the entrance hall the structure step planned (LairSite.Current). The
+//   hall is already carved and paved, so the exit only needs its own footprint cleared.
+// - Without a lair (a map too small for one, see GenStep_LairStructure) it falls back to
+//   PlaceCaveExit's own algorithm resized for a 7x7 exit: a random standable cell far enough
+//   from the map edge, with everything destroyable in the clearing radius removed, rock
+//   included; the pocket map's rough rock floor already has the Heavy affordance needed.
 // - Linking is vanilla: PocketMapExit.SpawnSetup reads PocketMapUtility.currentlyGeneratingPortal
 //   and wires entrance.exit / exit.entrance, so this step only has to spawn the thing while
 //   that static is set, which is the case for the whole of MapPortal.GeneratePocketMap.
 // - No generating portal (the dev-menu "GeneratePocketMap" action on SL_Lair, or a future
-//   caller that forgets the portal) falls back to SL_AncientStairwellExit in the default stony
-//   stuff so the map is still generated and walkable; PocketMapExit.SpawnSetup logs its own
+//   caller that forgets the portal) falls back to SL_AncientStairwellExit in the lair's stone so
+//   the map is still generated and walkable; PocketMapExit.SpawnSetup logs its own
 //   "could not find map portal" error for that case.
 public class GenStep_PlaceStairwellExit : GenStep
 {
@@ -44,17 +44,29 @@ public class GenStep_PlaceStairwellExit : GenStep
         ThingDef exitDef = entrance?.def.portal?.exitDef ?? SL_DefOf.SL_AncientStairwellExit;
         ThingDef stuff = entrance?.def.MadeFromStuff == true
             ? entrance.Stuff
-            : GenStuff.DefaultStuffFor(exitDef);
+            : LairRock.BlocksFor(LairRock.OfEntrance(entrance));
 
-        if (!CellFinder.TryFindRandomCell(map, c => c.Standable(map) && c.DistanceToEdge(map) > MinDistToEdge, out IntVec3 site))
+        LairSite lair = LairSite.Current;
+        IntVec3 site;
+        float clearRadius;
+        if (lair != null && lair.Plan.StairwellCell.IsValid)
         {
-            // Every cell failed (a map made entirely of rock); take the center and let the
-            // clearing below carve the room. Same last resort as PlaceCaveExit's unchecked
-            // TryFindRandomCell result.
-            site = map.Center;
+            site = lair.Plan.StairwellCell;
+            clearRadius = 0f;
+        }
+        else
+        {
+            clearRadius = ClearRadius;
+            if (!CellFinder.TryFindRandomCell(map, c => c.Standable(map) && c.DistanceToEdge(map) > MinDistToEdge, out site))
+            {
+                // Every cell failed (a map made entirely of rock); take the center and let the
+                // clearing below carve the room. Same last resort as PlaceCaveExit's unchecked
+                // TryFindRandomCell result.
+                site = map.Center;
+            }
         }
 
-        foreach (IntVec3 c in GenRadial.RadialCellsAround(site, ClearRadius, useCenter: true))
+        foreach (IntVec3 c in GenRadial.RadialCellsAround(site, clearRadius, useCenter: true))
         {
             if (!c.InBounds(map))
             {

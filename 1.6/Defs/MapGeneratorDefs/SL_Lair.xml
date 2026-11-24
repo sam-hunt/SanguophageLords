@@ -4,15 +4,13 @@
   <!--
     SL_Lair: the pocket-map generator behind SL_AncientStairwell's portal.
 
-    SCAFFOLD. Today this is a bare underground cave: Odyssey InsectLair's genstep skeleton
-    minus its insect content and ruins scatter, so the portal is traversable end-to-end while
-    the real lair subtree (custom GenSteps, layout defs) is built. Every def referenced here
-    is Core-owned (verified against Data/ - no Odyssey/Anomaly dependency).
+    An all-rock underground map (Odyssey InsectLair's Core-only skeleton: every vanilla def
+    referenced here is Core-owned) with the lair cut into it by our own steps, which are
+    documented together in 1.6/Defs/GenStepDefs/LairSteps.xml. Steps run by their `order`, not
+    by their position in this list; the list is written in run order for the reader.
 
-    SL_PlaceStairwellExit (1.6/Defs/GenStepDefs/PlaceStairwellExit.xml) stands where vanilla
-    PlaceCaveExit would: it spawns the generating portal's exitDef (SL_AncientStairwellExit)
-    in the entrance's stuff and sets PlayerStartSpot, so the portal already round-trips with
-    the real two-layer stairwell at both ends while the rest of the lair is scaffold.
+    The UndergroundCave mutator gives the rock around the lair its natural tunnels and pools.
+    The lair's walls seal it off from them, so they are somewhere to mine into, not a way in.
 
     label is player-facing: MapPortal composes it into "View sanguophage lair" and
     "Exit sanguophage lair" gizmo/command strings.
@@ -21,7 +19,6 @@
     <defName>SL_Lair</defName>
     <label>sanguophage lair</label>
     <isUnderground>true</isUnderground>
-    <forceCaves>true</forceCaves>
     <ignoreAreaRevealedLetter>true</ignoreAreaRevealedLetter>
     <disableCallAid>true</disableCallAid>
     <pocketMapProperties>
@@ -34,14 +31,17 @@
     <genSteps>
       <li>ElevationFertility</li>
       <li>MutatorPostElevationFertility</li>
+      <li>SL_LairRock</li>
       <li>Underground_RocksFromGrid</li>
       <li>Terrain</li>
       <li>MutatorPostTerrain</li>
-      <li>RockChunks</li>
-      <li>SL_PlaceStairwellExit</li>
       <li>Plants</li>
-      <li>MutatorFinal</li>
+      <li>RockChunks</li>
+      <li>SL_LairStructure</li>
+      <li>SL_PlaceStairwellExit</li>
+      <li>SL_LairContents</li>
       <li>Fog</li>
+      <li>MutatorFinal</li>
     </genSteps>
   </MapGeneratorDef>
 

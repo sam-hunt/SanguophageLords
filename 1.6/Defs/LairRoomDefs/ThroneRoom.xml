@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_ThroneRoom. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_ThroneRoom</defName>
+    <anchor>AxisNorth</anchor>
+    <corridorChance>0.5</corridorChance>
+    <corridorLength>3~5</corridorLength>
+    <maxChildren>2</maxChildren>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>11~13</across>
+        <deep>13~17</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

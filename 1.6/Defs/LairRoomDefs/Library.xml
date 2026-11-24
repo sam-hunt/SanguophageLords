@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_Library. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Library</defName>
+    <corridorChance>0.4</corridorChance>
+    <shapes>
+      <li>
+        <kind>Octagon</kind>
+        <across>11~13</across>
+        <deep>11~13</deep>
+      </li>
+      <li>
+        <kind>Rect</kind>
+        <across>9~11</across>
+        <deep>11~13</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

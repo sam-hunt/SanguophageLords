@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_RitualChamber. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_RitualChamber</defName>
+    <corridorChance>0.7</corridorChance>
+    <corridorLength>4~7</corridorLength>
+    <minDepth>3</minDepth>
+    <depthBias>1.5</depthBias>
+    <maxChildren>0</maxChildren>
+    <allowLoops>false</allowLoops>
+    <shapes>
+      <li>
+        <kind>Round</kind>
+        <across>11~13</across>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

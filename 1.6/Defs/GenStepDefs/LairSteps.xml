@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    The lair's own steps in the SL_Lair pocket-map generator
+    (1.6/Defs/MapGeneratorDefs/SL_Lair.xml). MapGenerator runs steps by `order`, not by their
+    position in the generator's list, so the numbers below are the pipeline:
+
+      150  SL_LairRock           one rock type for the whole map, before vanilla's
+                                 Underground_RocksFromGrid (200) and Terrain (210) read it
+     1000  SL_LairStructure      plan the lair and stamp rooms, walls, doors, floors, cavern, river
+     1010  SL_PlaceStairwellExit the stairwell exit in the planned entrance hall
+     1020  SL_LairContents       furnish every room
+
+    The last three sit after vanilla's Plants (900) and RockChunks (970), so neither scatters
+    into the finished rooms, and before Fog (1500), so the fog flood from the stairwell stops
+    at the lair's doors. Each step's algorithm and rationale is in its C# header under
+    Source/1.6/MapGen/.
+  -->
+
+  <GenStepDef>
+    <defName>SL_LairRock</defName>
+    <order>150</order>
+    <genStep Class="SanguophageLair.GenStep_LairRock" />
+  </GenStepDef>
+
+  <GenStepDef>
+    <defName>SL_LairStructure</defName>
+    <order>1000</order>
+    <genStep Class="SanguophageLair.GenStep_LairStructure">
+      <layout>SL_Lair</layout>
+    </genStep>
+  </GenStepDef>
+
+  <GenStepDef>
+    <defName>SL_PlaceStairwellExit</defName>
+    <order>1010</order>
+    <genStep Class="SanguophageLair.GenStep_PlaceStairwellExit" />
+  </GenStepDef>
+
+  <GenStepDef>
+    <defName>SL_LairContents</defName>
+    <order>1020</order>
+    <genStep Class="SanguophageLair.GenStep_LairContents" />
+  </GenStepDef>
+
+</Defs>

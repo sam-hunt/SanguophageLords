@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_Tomb. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Tomb</defName>
+    <anchor>ProcessionalSide</anchor>
+    <paired>true</paired>
+    <maxChildren>1</maxChildren>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>7~9</across>
+        <deep>7~11</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

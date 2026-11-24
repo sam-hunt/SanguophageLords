@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    The rooms every lair has, in the order a visitor walks them. The planner places these
+    itself, on the lair's axis (LairPlanner.BuildSpine and BuildApproach); the rooms grown
+    around them are the other files in this folder, requested through the layout def
+    (1.6/Defs/LairLayoutDefs/SL_Lair.xml). Field meanings: Source/1.6/MapGen/Plan/RoomRequest.cs.
+
+    Sizes are interior and odd, so every room has a centre cell and a centred doorway.
+    - EntranceHall: wide enough for the 7x7 stairwell exit with a four-cell walk around it.
+    - Forecourt and Corridor have no shapes: the planner sizes the forecourt from the layout
+      def and each corridor from the room it leads to.
+    - Vestibule and Processional share one width so they read as one hall with a door across
+      it. Seven leaves a three-cell carpet between two rows of columns.
+    - Sanctum: at 21 to 25 across its centre is further from the walls than thick rock roof
+      can span (6.9 cells), so its worker must ring the casket with columns.
+    maxChildren is how many further rooms may hang off a room: the processional takes two
+    mirrored pairs along its sides, the sanctum one room on each free face.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_EntranceHall</defName>
+    <role>EntranceHall</role>
+    <shapes>
+      <li>
+        <kind>Octagon</kind>
+        <across>15~17</across>
+        <deep>15~17</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Forecourt</defName>
+    <role>Forecourt</role>
+    <walls>Open</walls>
+  </SanguophageLair.LairRoomDef>
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Vestibule</defName>
+    <role>Vestibule</role>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>7~7</across>
+        <deep>5~5</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Processional</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Processional</workerClass>
+    <role>Processional</role>
+    <maxChildren>4</maxChildren>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>7~7</across>
+        <deep>15~21</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Sanctum</defName>
+    <role>Sanctum</role>
+    <maxChildren>3</maxChildren>
+    <shapes>
+      <li>
+        <kind>Octagon</kind>
+        <across>21~25</across>
+        <deep>21~25</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Corridor</defName>
+    <role>Corridor</role>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_Guardroom. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Guardroom</defName>
+    <anchor>ProcessionalSide</anchor>
+    <paired>true</paired>
+    <maxChildren>1</maxChildren>
+    <depthBias>-1</depthBias>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>7~9</across>
+        <deep>5~7</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

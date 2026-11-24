@@ -20,8 +20,9 @@
     Decompile-verified call paths (1.6 Assembly-CSharp) this file relies on:
     - MapPortal is concrete: first entry runs GetOtherMap() -> PocketMapUtility.GeneratePocketMap
       (def.portal.pocketMapSize, def.portal.pocketMapGenerator); enter gizmo, load dialog and
-      "View <generator label>" gizmo are all base class. pocketMapSize stays at its default
-      (100) until lair map-gen tuning says otherwise.
+      "View <generator label>" gizmo are all base class. pocketMapSize is the side of the
+      square map the SL_Lair layout is planned into (LairPlanner needs about 130 for its spine
+      and approach alone; 150 leaves room for the wings).
     - PocketMapExit.SpawnSetup self-links: entrance = PocketMapUtility.currentlyGeneratingPortal,
       entrance.exit = this. The exit only needs to be spawned during pocket-map generation.
     - portal.exitDef has NO vanilla C# consumer (GenStep_PlaceCaveExit hardcodes CaveExit).
@@ -74,6 +75,7 @@
     </building>
     <portal>
       <pocketMapGenerator>SL_Lair</pocketMapGenerator>
+      <pocketMapSize>150</pocketMapSize>
       <exitDef>SL_AncientStairwellExit</exitDef>
     </portal>
     <statBases>

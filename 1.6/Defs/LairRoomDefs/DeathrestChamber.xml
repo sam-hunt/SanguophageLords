@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_DeathrestChamber. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_DeathrestChamber</defName>
+    <anchor>SanctumSide</anchor>
+    <paired>true</paired>
+    <corridorChance>0.5</corridorChance>
+    <corridorLength>3~5</corridorLength>
+    <maxChildren>2</maxChildren>
+    <shapes>
+      <li>
+        <kind>Round</kind>
+        <across>9~11</across>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

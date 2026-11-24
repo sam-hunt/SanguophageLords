@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_Laboratory. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_Laboratory</defName>
+    <corridorChance>0.4</corridorChance>
+    <minDepth>2</minDepth>
+    <maxChildren>1</maxChildren>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>9~11</across>
+        <deep>9~11</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>

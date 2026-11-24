@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_Lair: the sanguophage lair. Read by GenStep_LairStructure
+    (1.6/Defs/GenStepDefs/LairSteps.xml); field meanings in
+    Source/1.6/MapGen/Defs/LairLayoutDef.cs and Source/1.6/MapGen/Plan/RoomRequest.cs.
+
+    Aesthetic target: the sanguophage base of Biotech's own marketing art. Dark stonework with
+    stepped outlines, cut stone tile, rings of bright red carpet, blood torches, red doors and
+    furniture.
+
+    rooms is a priority list, not a recipe. The planner asks for each line in turn and drops
+    what no longer fits, so the order is the order of importance:
+    - First the rooms with a fixed place in the composition (the axis beyond the sanctum, the
+      sanctum's flanks, the processional's sides), which claim their sites before anything
+      can crowd them.
+    - Then the rooms that make it a lair rather than a tomb: where its masters keep their
+      prey, their books and their servants.
+    - Last the fillers (crypts, storerooms), which soak up whatever wall is left and give the
+      outskirts their irregular edge.
+    Rooms that need a DLC or mod are gated on their line with MayRequire. The room defs
+    themselves carry no gate: they hold no player-facing text and reference optional content
+    only from their workers.
+
+    Paints and carpets are listed strongest first; workers take index 0 for the piece a room
+    is about and later entries for what stands around it. Walls are painted so the lair is as
+    dark in marble as in slate; floors keep the stone's own colour, which is what tells one
+    lair from another.
+  -->
+  <SanguophageLair.LairLayoutDef>
+    <defName>SL_Lair</defName>
+    <entranceHall>SL_LairRoom_EntranceHall</entranceHall>
+    <forecourt>SL_LairRoom_Forecourt</forecourt>
+    <vestibule>SL_LairRoom_Vestibule</vestibule>
+    <processional>SL_LairRoom_Processional</processional>
+    <sanctum>SL_LairRoom_Sanctum</sanctum>
+    <corridor>SL_LairRoom_Corridor</corridor>
+    <rooms>
+      <li MayRequire="Ludeon.RimWorld.Royalty">
+        <room>SL_LairRoom_ThroneRoom</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Mausoleum</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_DeathrestChamber</room>
+        <count>2</count>
+      </li>
+      <li>
+        <room>SL_LairRoom_Tomb</room>
+        <count>2</count>
+      </li>
+      <li>
+        <room>SL_LairRoom_Guardroom</room>
+        <count>2</count>
+      </li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">
+        <room>SL_LairRoom_Temple</room>
+      </li>
+      <li MayRequire="Ludeon.RimWorld.Anomaly">
+        <room>SL_LairRoom_RitualChamber</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Library</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Prison</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Larder</room>
+      </li>
+      <li MayRequire="vanillaracesexpanded.sanguophage">
+        <room>SL_LairRoom_DraincasketRoom</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_DiningHall</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_ThrallQuarters</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Laboratory</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Vault</room>
+      </li>
+      <li>
+        <room>SL_LairRoom_Gallery</room>
+        <chance>0.6</chance>
+      </li>
+      <li>
+        <room>SL_LairRoom_Crypt</room>
+        <count>2~4</count>
+      </li>
+      <li>
+        <room>SL_LairRoom_Storeroom</room>
+        <count>1~2</count>
+      </li>
+    </rooms>
+    <wallPaint>Structure_Slate</wallPaint>
+    <doorPaint>Structure_Scarlet</doorPaint>
+    <furniturePaints>
+      <li>Structure_Scarlet</li>
+      <li>Structure_Red</li>
+      <li>Structure_Burgundy</li>
+      <li>Structure_Slate</li>
+    </furniturePaints>
+    <carpets>
+      <li>CarpetScarlet</li>
+      <li>CarpetRed</li>
+      <li>CarpetBurgundy</li>
+    </carpets>
+  </SanguophageLair.LairLayoutDef>
+
+</Defs>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_DiningHall. Placement and shape only so far; its worker and rationale are still to come.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_DiningHall</defName>
+    <corridorChance>0.3</corridorChance>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>9~11</across>
+        <deep>11~15</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>
