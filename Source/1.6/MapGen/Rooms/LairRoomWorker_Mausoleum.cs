@@ -35,7 +35,7 @@ public class LairRoomWorker_Mausoleum : LairRoomWorker
         room.FloorRing(style.Carpet(0), 3, 4);
         room.FloorRing(style.Carpet(1), 5, int.MaxValue);
 
-        LairRoomWorker_Tomb.TrySpawnBerth(room, ThingDefOf.Sarcophagus, room.At(0, 1), room.Turn(Rot4.North), paint: style.Paint(0), quality: QualityCategory.Masterwork);
+        room.TrySpawnOver(ThingDefOf.Sarcophagus, 0, 0, 0, 1, Rot4.North, paint: style.Paint(0), quality: QualityCategory.Masterwork);
         room.TrySpawnPair(SL_LairDefOf.SculptureSmall, 2, 0, Rot4.North, paint: style.Paint(1));
 
         BuildRing(room);
@@ -79,7 +79,7 @@ public class LairRoomWorker_Mausoleum : LairRoomWorker
                 continue;
             }
             bool column = index % 2 == 1;
-            ThingDef def = column ? ThingDefOf.Column : SL_FuneraryDefOf.SculptureLarge;
+            ThingDef def = column ? ThingDefOf.Column : SL_LairDefOf.SculptureLarge;
             ColorDef paint = column ? room.Style.WallPaint : room.Style.Paint(0);
             Thing placed = room.TrySpawn(def, slot.x, slot.z, Rot4.North, paint: paint);
             if (slot.x != 0)

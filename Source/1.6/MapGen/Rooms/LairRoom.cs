@@ -248,20 +248,191 @@ public sealed class LairRoom
     // Null (and nothing spawned) when the def cannot cover that rectangle in that rotation.
     public Thing TrySpawnOver(ThingDef def, int right1, int forward1, int right2, int forward2, Rot4 localRot, ThingDef stuff = null, ColorDef paint = null, QualityCategory? quality = null)
     {
+        return TrySpawnOver(def, CellRect.FromLimits(At(right1, forward1), At(right2, forward2)), Turn(localRot), stuff, paint, quality);
+    }
+
+    // TrySpawnOver for a footprint and facing already in map terms, for a worker that finds its
+    // cells on the map (a wall run, a head cell and the direction of its wall) rather than in
+    // the local frame. A def that does not rotate is placed unrotated whatever the facing.
+    public Thing TrySpawnOver(ThingDef def, CellRect footprint, Rot4 rot, ThingDef stuff = null, ColorDef paint = null, QualityCategory? quality = null)
+    {
+        if (def == null)
+        {
+            return null;
+        }
+        if (!def.rotatable)
+        {
+            rot = Rot4.North;
+        }
+        IntVec3 anchor = FootprintAnchor(footprint, rot, def.size);
+        return anchor.IsValid ? TrySpawn(def, anchor, rot, stuff, paint, quality) : null;
+    }
+
+    // TrySpawnOver on both sides of the room's centre line, the second the mirror image of the
+    // first (the footprint reflected, the facing mirrored). The piece at the given coordinates
+    // is returned and its mirror comes out in mirrored; either is null when it did not fit.
+    // A footprint with no cell off the centre line is spawned once, and mirrored is null.
+    public Thing TrySpawnOverPair(ThingDef def, int right1, int forward1, int right2, int forward2, Rot4 localRot, out Thing mirrored, ThingDef stuff = null, ColorDef paint = null, QualityCategory? quality = null)
+    {
+        Thing thing = TrySpawnOver(def, right1, forward1, right2, forward2, localRot, stuff, paint, quality);
+        mirrored = null;
+        if (right1 != 0 || right2 != 0)
+        {
+            Rot4 other = localRot.IsHorizontal ? localRot.Opposite : localRot;
+            mirrored = TrySpawnOver(def, -right1, forward1, -right2, forward2, other, stuff, paint, quality);
+        }
+        return thing;
+    }
+
+    // TrySpawnOver for a machine or bench with a user cell: localSide is the side of the
+    // footprint the piece is used from, and the rotation is the one that puts the def's
+    // interaction cell just beyond that side. Null when the interaction cell would fall
+    // outside the room. A def without an interaction cell, or one that does not rotate, has
+    // nothing to face by: it is placed as TrySpawnOver does, localSide being its rotation.
+    public Thing TrySpawnUsedFrom(ThingDef def, int right1, int forward1, int right2, int forward2, Rot4 localSide, ThingDef stuff = null, ColorDef paint = null, QualityCategory? quality = null)
+    {
         if (def == null)
         {
             return null;
         }
         CellRect footprint = CellRect.FromLimits(At(right1, forward1), At(right2, forward2));
-        Rot4 rot = def.rotatable ? Turn(localRot) : Rot4.North;
-        foreach (IntVec3 c in footprint)
+        Rot4 side = Turn(localSide);
+        if (!def.hasInteractionCell || !def.rotatable)
         {
-            if (GenAdj.OccupiedRect(c, rot, def.size) == footprint)
+            return TrySpawnOver(def, footprint, side, stuff, paint, quality);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            var rot = new Rot4(i);
+            IntVec3 anchor = FootprintAnchor(footprint, rot, def.size);
+            if (!anchor.IsValid)
             {
-                return TrySpawn(def, c, rot, stuff, paint, quality);
+                continue;
+            }
+            IntVec3 use = ThingUtility.InteractionCellWhenAt(def, anchor, rot, Map);
+            if (UseCellOnSide(footprint, use, side) && Contains(use))
+            {
+                return TrySpawn(def, anchor, rot, stuff, paint, quality);
             }
         }
         return null;
+    }
+
+    // Spawns a piece with its footprint touching one of the room's walls, at the free spot
+    // nearest the given cell, unrotated. Null when no wall of the room has space for it.
+    public Thing TrySpawnAgainstWall(ThingDef def, IntVec3 near)
+    {
+        if (def == null)
+        {
+            return null;
+        }
+        var wallSide = new List<IntVec3>();
+        foreach (KeyValuePair<IntVec3, Rot4> side in WallSideCells())
+        {
+            wallSide.Add(side.Key);
+        }
+        foreach (IntVec3 anchor in WallFlushAnchors(wallSide, def.size, near))
+        {
+            Thing thing = TrySpawn(def, anchor, Rot4.North);
+            if (thing != null)
+            {
+                return thing;
+            }
+        }
+        return null;
+    }
+
+    // The material for a piece of furniture the lair wants in stone or metal: the lair's
+    // stone where the def accepts stone, else steel where it accepts metal, else null (the
+    // def's own default). Pass the result as stuff to keep a chair or bed out of wood where it
+    // can be: the null default of TrySpawn goes straight from the lair's stone to the def's
+    // own stuff, which for most furniture is wood.
+    public ThingDef StoneOrSteel(ThingDef def)
+    {
+        if (def == null || !def.MadeFromStuff)
+        {
+            return null;
+        }
+        if (Style.Blocks.stuffProps.CanMake(def))
+        {
+            return Style.Blocks;
+        }
+        return ThingDefOf.Steel.stuffProps.CanMake(def) ? ThingDefOf.Steel : null;
+    }
+
+    // The anchor cell whose footprint, at the given rotation, is exactly the rectangle; an
+    // invalid cell when the size does not match. Where a thing's anchor falls depends on its
+    // size and rotation (GenAdj.OccupiedRect), its footprint does not, so the anchor is
+    // searched for rather than computed.
+    internal static IntVec3 FootprintAnchor(CellRect footprint, Rot4 rot, IntVec2 size)
+    {
+        foreach (IntVec3 c in footprint)
+        {
+            if (GenAdj.OccupiedRect(c, rot, size) == footprint)
+            {
+                return c;
+            }
+        }
+        return IntVec3.Invalid;
+    }
+
+    // Whether a user cell lies directly beyond one side of a footprint, level with it.
+    internal static bool UseCellOnSide(CellRect footprint, IntVec3 use, Rot4 side)
+    {
+        switch (side.AsInt)
+        {
+            case 0:
+                return use.z == footprint.maxZ + 1 && use.x >= footprint.minX && use.x <= footprint.maxX;
+            case 2:
+                return use.z == footprint.minZ - 1 && use.x >= footprint.minX && use.x <= footprint.maxX;
+            case 1:
+                return use.x == footprint.maxX + 1 && use.z >= footprint.minZ && use.z <= footprint.maxZ;
+            default:
+                return use.x == footprint.minX - 1 && use.z >= footprint.minZ && use.z <= footprint.maxZ;
+        }
+    }
+
+    // Every anchor cell, for an unrotated piece of the given size, whose footprint covers one
+    // of the wall-side cells, nearest footprint centre to the given cell first and ties by
+    // cell, so the order is reproducible.
+    internal static List<IntVec3> WallFlushAnchors(IEnumerable<IntVec3> wallSideCells, IntVec2 size, IntVec3 near)
+    {
+        var anchors = new List<IntVec3>();
+        var seen = new HashSet<IntVec3>();
+        foreach (IntVec3 cell in wallSideCells)
+        {
+            for (int dz = -size.z; dz <= size.z; dz++)
+            {
+                for (int dx = -size.x; dx <= size.x; dx++)
+                {
+                    IntVec3 c = cell + new IntVec3(dx, 0, dz);
+                    if (GenAdj.OccupiedRect(c, Rot4.North, size).Contains(cell) && seen.Add(c))
+                    {
+                        anchors.Add(c);
+                    }
+                }
+            }
+        }
+        anchors.Sort((a, b) =>
+        {
+            int da = DoubledDistanceSquared(GenAdj.OccupiedRect(a, Rot4.North, size), near);
+            int db = DoubledDistanceSquared(GenAdj.OccupiedRect(b, Rot4.North, size), near);
+            if (da != db)
+            {
+                return da.CompareTo(db);
+            }
+            return a.x != b.x ? a.x.CompareTo(b.x) : a.z.CompareTo(b.z);
+        });
+        return anchors;
+    }
+
+    // Squared distance from a footprint's centre to a cell, in half cells so even-sized
+    // footprints stay in integers.
+    private static int DoubledDistanceSquared(CellRect rect, IntVec3 c)
+    {
+        int dx = rect.minX + rect.maxX - (2 * c.x);
+        int dz = rect.minZ + rect.maxZ - (2 * c.z);
+        return (dx * dx) + (dz * dz);
     }
 
     // The same piece on both sides of the room's centre line, each facing as the mirror image

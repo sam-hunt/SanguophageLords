@@ -3,12 +3,13 @@
 
   <!--
     SL_LairRoom_Gallery: a hall of sculpture, the vanity of immortals. Worker:
-    Source/1.6/MapGen/Rooms/LairRoomWorker_Gallery.cs. Its sculptures run from good to
-    masterwork quality, so the art is the room's loot.
+    Source/1.6/MapGen/Rooms/LairRoomWorker_Gallery.cs. Its sculptures are the room's loot, a
+    modest hoard: the worker's header works out that the largest hall, in the lair's stone,
+    is worth about 3000 to 4500 silver, so the depth range below also sets the value.
 
     - Rect, seven across and eleven to fifteen deep: a three-cell carpet runner with a bay of
-      sculpture on each side, long enough for the sequence of small, large and grand pairs and
-      too narrow to need roof columns.
+      sculpture on each side, small and large by turns, and one grand sculpture at the far
+      end. Long enough for four to six bays, too narrow to need roof columns.
     - corridorChance 0.2: mostly wall to wall with its host, so the hall reads as a room of the
       complex rather than a place apart.
   -->

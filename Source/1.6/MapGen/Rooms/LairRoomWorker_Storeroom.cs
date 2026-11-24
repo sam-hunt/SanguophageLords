@@ -23,7 +23,7 @@ public class LairRoomWorker_Storeroom : LairRoomWorker
         int far = room.HalfDeep;
 
         var shelves = new List<Thing>();
-        Thing farShelf = HouseholdLayout.PlacePair(room, ThingDefOf.Shelf, 1, far, 2, far, Rot4.South, out Thing mirrored);
+        Thing farShelf = room.TrySpawnOverPair(ThingDefOf.Shelf, 1, far, 2, far, Rot4.South, out Thing mirrored);
         AddIfPlaced(shelves, farShelf);
         AddIfPlaced(shelves, mirrored);
         var rightSide = new List<Thing>();

@@ -16,7 +16,7 @@ namespace SanguophageLair;
 //             accepts a spade (Diggable), else the arrangement falls back to niches
 //   ossuary   one sarcophagus and a crowd of urns heaped in a corner
 // Light is one blood torch, sometimes two. Sarcophagi and graves sometimes hold a desiccated
-// corpse (LairRoomWorker_Tomb.TryInter). Skulls and bones: neither Core nor Biotech has a
+// corpse (LairBurial.TryInter). Skulls and bones: neither Core nor Biotech has a
 // decoration item for them (the skull item and skullspike are Ideology), so there are none.
 public class LairRoomWorker_Crypt : LairRoomWorker
 {
@@ -68,7 +68,7 @@ public class LairRoomWorker_Crypt : LairRoomWorker
             {
                 continue;
             }
-            Thing sarcophagus = LairRoomWorker_Tomb.TrySpawnBerth(room, ThingDefOf.Sarcophagus, spot.Key, spot.Value, paint: room.Style.Paint(2));
+            Thing sarcophagus = Berth(room, ThingDefOf.Sarcophagus, spot, room.Style.Paint(2));
             if (sarcophagus == null)
             {
                 continue;
@@ -95,7 +95,7 @@ public class LairRoomWorker_Crypt : LairRoomWorker
             {
                 continue;
             }
-            Thing grave = LairRoomWorker_Tomb.TrySpawnBerth(room, ThingDefOf.Grave, spot.Key, spot.Value);
+            Thing grave = Berth(room, ThingDefOf.Grave, spot, null);
             if (grave != null)
             {
                 placed++;
@@ -105,9 +105,16 @@ public class LairRoomWorker_Crypt : LairRoomWorker
         return placed > 0;
     }
 
+    // A 1x2 piece lying with its head on the wall-side cell and its foot one cell back from
+    // it, the head toward the wall.
+    private static Thing Berth(LairRoom room, ThingDef def, KeyValuePair<IntVec3, Rot4> spot, ColorDef paint)
+    {
+        return room.TrySpawnOver(def, CellRect.FromLimits(spot.Key, spot.Key - spot.Value.FacingCell), spot.Value, paint: paint);
+    }
+
     private static bool Diggable(LairRoom room, IntVec3 c)
     {
-        return c.GetTerrain(room.Map).affordances.Contains(SL_FuneraryDefOf.Diggable);
+        return c.GetTerrain(room.Map).affordances.Contains(SL_LairDefOf.Diggable);
     }
 
     // The free wall-side cells of the wall direction with the most cells whose foot cell is
@@ -228,7 +235,7 @@ public class LairRoomWorker_Crypt : LairRoomWorker
 
     private static void MaybeInter(Thing vessel, int[] bodies)
     {
-        if (bodies[0] < MaxBodies && Rand.Chance(BodyChance) && LairRoomWorker_Tomb.TryInter(vessel))
+        if (bodies[0] < MaxBodies && Rand.Chance(BodyChance) && LairBurial.TryInter(vessel))
         {
             bodies[0]++;
         }

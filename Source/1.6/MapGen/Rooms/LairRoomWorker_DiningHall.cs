@@ -38,13 +38,13 @@ public class LairRoomWorker_DiningHall : LairRoomWorker
             int rows = remaining >= 3 && remaining - 3 != 1 ? 3 : 2;
             if (rows == 3)
             {
-                HouseholdLayout.Place(room, SL_HouseholdDefOf.Table3x3c, -1, forward, 1, forward + 2, Rot4.North, paint: style.Paint(2));
+                room.TrySpawnOver(SL_LairDefOf.Table3x3c, -1, forward, 1, forward + 2, Rot4.North, paint: style.Paint(2));
             }
             else
             {
                 for (int right = -1; right <= 1; right++)
                 {
-                    HouseholdLayout.Place(room, ThingDefOf.Table1x2c, right, forward, right, forward + 1, Rot4.North, paint: style.Paint(2));
+                    room.TrySpawnOver(ThingDefOf.Table1x2c, right, forward, right, forward + 1, Rot4.North, paint: style.Paint(2));
                 }
             }
             forward += rows;
@@ -69,13 +69,13 @@ public class LairRoomWorker_DiningHall : LairRoomWorker
         {
             room.TryTorch(room.At(wall, forward));
             room.TryTorch(room.At(-wall, forward));
-            Thing shelf = HouseholdLayout.PlacePair(room, ThingDefOf.Shelf, wall, forward + 1, wall, forward + 2, Rot4.West, out Thing mirrored, paint: style.Paint(0));
+            Thing shelf = room.TrySpawnOverPair(ThingDefOf.Shelf, wall, forward + 1, wall, forward + 2, Rot4.West, out Thing mirrored, paint: style.Paint(0));
             HouseholdLayout.StockShelf(room, shelf, ThingDefOf.HemogenPack, 5);
             HouseholdLayout.StockShelf(room, mirrored, ThingDefOf.HemogenPack, 5);
             room.TrySpawnPair(SL_LairDefOf.SculptureSmall, wall, forward + 3, Rot4.South, paint: style.Paint(1));
         }
 
-        room.TrySpawnPair(SL_HouseholdDefOf.SculptureLarge, 1, far, Rot4.South, paint: style.Paint(0));
+        room.TrySpawnPair(SL_LairDefOf.SculptureLarge, 1, far, Rot4.South, paint: style.Paint(0));
         room.TryTorch(room.At(2, far));
         room.TryTorch(room.At(-2, far));
     }

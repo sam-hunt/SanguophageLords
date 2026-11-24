@@ -14,8 +14,8 @@ namespace SanguophageLair;
 //   centre        a hospital bed for the subject, head toward the far wall
 //   rest          blood torches along whatever wall is left
 // Every machine is placed over the cells it should cover and its facing is found from the
-// def's own interaction cell (StudyRoomKit), so each is used from the room side. The bench's
-// user cell and the bed stay clear of each other at every size. The banks run from the far
+// def's own interaction cell (LairRoom.TrySpawnUsedFrom), so each is used from the room side.
+// The bench's user cell and the bed stay clear of each other at every size. The banks run from the far
 // corner toward the entrance as far as the right wall goes, up to four, and the three
 // left-wall machines need only seven cells of wall, so both walls fit at 9 deep.
 //
@@ -35,24 +35,24 @@ public class LairRoomWorker_Laboratory : LairRoomWorker
         int halfDeep = room.HalfDeep;
         ColorDef paint = room.Style.Paint(1);
 
-        StudyRoomKit.Place(room, SL_StudyDefOf.HiTechResearchBench, -2, halfDeep - 1, 2, halfDeep, Rot4.South, StudyRoomKit.Stuff(room, SL_StudyDefOf.HiTechResearchBench));
+        room.TrySpawnUsedFrom(SL_LairDefOf.HiTechResearchBench, -2, halfDeep - 1, 2, halfDeep, Rot4.South, room.StoneOrSteel(SL_LairDefOf.HiTechResearchBench));
 
         var banks = new List<Thing>();
         for (int i = 0; i < MaxBanks; i++)
         {
             int top = halfDeep - (2 * i);
-            Thing bank = StudyRoomKit.Place(room, ThingDefOf.GeneBank, halfAcross, top - 1, halfAcross, top, Rot4.West);
+            Thing bank = room.TrySpawnOver(ThingDefOf.GeneBank, halfAcross, top - 1, halfAcross, top, Rot4.West);
             if (bank != null)
             {
                 banks.Add(bank);
             }
         }
 
-        StudyRoomKit.Place(room, ThingDefOf.GeneAssembler, -halfAcross, -1, -halfAcross + 1, 1, Rot4.East);
-        StudyRoomKit.Place(room, SL_StudyDefOf.GeneExtractor, -halfAcross, 2, -halfAcross + 1, 3, Rot4.East);
-        StudyRoomKit.Place(room, SL_StudyDefOf.GeneProcessor, -halfAcross, -3, -halfAcross + 1, -2, Rot4.East);
+        room.TrySpawnUsedFrom(ThingDefOf.GeneAssembler, -halfAcross, -1, -halfAcross + 1, 1, Rot4.East);
+        room.TrySpawnUsedFrom(ThingDefOf.GeneExtractor, -halfAcross, 2, -halfAcross + 1, 3, Rot4.East);
+        room.TrySpawnUsedFrom(SL_LairDefOf.GeneProcessor, -halfAcross, -3, -halfAcross + 1, -2, Rot4.East);
 
-        StudyRoomKit.Place(room, SL_StudyDefOf.HospitalBed, 0, 0, 0, 1, Rot4.South, StudyRoomKit.Stuff(room, SL_StudyDefOf.HospitalBed), paint);
+        room.TrySpawnOver(SL_LairDefOf.HospitalBed, 0, 0, 0, 1, Rot4.South, room.StoneOrSteel(SL_LairDefOf.HospitalBed), paint);
 
         room.TorchesAlongWalls(4);
 

@@ -44,7 +44,7 @@ public class LairRoomWorker_Library : LairRoomWorker
         room.Floor(style.Carpet(1), (right, forward) => (right * right) + (forward * forward) <= ((rim - 1) * (rim - 1)) + 2);
         room.Floor(style.Carpet(0), (right, forward) => (right * right) + (forward * forward) <= 6);
 
-        StudyRoomKit.Place(room, SL_StudyDefOf.SculptureLarge, 0, halfDeep, 0, halfDeep, Rot4.South, StudyRoomKit.Stuff(room, SL_StudyDefOf.SculptureLarge), style.Paint(0));
+        room.TrySpawnOver(SL_LairDefOf.SculptureLarge, 0, halfDeep, 0, halfDeep, Rot4.South, room.StoneOrSteel(SL_LairDefOf.SculptureLarge), style.Paint(0));
         foreach (int side in new[] { -1, 1 })
         {
             room.TryTorch(room.At(side, halfDeep));
@@ -60,16 +60,16 @@ public class LairRoomWorker_Library : LairRoomWorker
 
         List<Building_Bookcase> cases = PlaceCases(room);
 
-        StudyRoomKit.Place(room, SL_StudyDefOf.Table3x3c, -1, -1, 1, 1, Rot4.North, StudyRoomKit.Stuff(room, SL_StudyDefOf.Table3x3c), style.Paint(2));
+        room.TrySpawnOver(SL_LairDefOf.Table3x3c, -1, -1, 1, 1, Rot4.North, room.StoneOrSteel(SL_LairDefOf.Table3x3c), style.Paint(2));
         ThingDef chair = ThingDefOf.DiningChair;
-        ThingDef chairStuff = StudyRoomKit.Stuff(room, chair);
+        ThingDef chairStuff = room.StoneOrSteel(chair);
         foreach (int side in new[] { -1, 1 })
         {
-            StudyRoomKit.Place(room, chair, side, -2, side, -2, Rot4.North, chairStuff, style.Paint(0));
-            StudyRoomKit.Place(room, chair, side, 2, side, 2, Rot4.South, chairStuff, style.Paint(0));
+            room.TrySpawnOver(chair, side, -2, side, -2, Rot4.North, chairStuff, style.Paint(0));
+            room.TrySpawnOver(chair, side, 2, side, 2, Rot4.South, chairStuff, style.Paint(0));
         }
-        StudyRoomKit.Place(room, chair, 2, 0, 2, 0, Rot4.West, chairStuff, style.Paint(0));
-        StudyRoomKit.Place(room, chair, -2, 0, -2, 0, Rot4.East, chairStuff, style.Paint(0));
+        room.TrySpawnOver(chair, 2, 0, 2, 0, Rot4.West, chairStuff, style.Paint(0));
+        room.TrySpawnOver(chair, -2, 0, -2, 0, Rot4.East, chairStuff, style.Paint(0));
 
         Stock(cases);
     }
@@ -145,7 +145,7 @@ public class LairRoomWorker_Library : LairRoomWorker
             Thing placed;
             if (i + 1 < chunk.Count)
             {
-                placed = StudyRoomKit.Place(room, SL_StudyDefOf.Bookcase, CellRect.FromLimits(chunk[i], chunk[i + 1]), face, StudyRoomKit.Stuff(room, SL_StudyDefOf.Bookcase), paint);
+                placed = room.TrySpawnOver(SL_LairDefOf.Bookcase, CellRect.FromLimits(chunk[i], chunk[i + 1]), face, room.StoneOrSteel(SL_LairDefOf.Bookcase), paint);
                 if (placed != null)
                 {
                     i++;
@@ -157,7 +157,7 @@ public class LairRoomWorker_Library : LairRoomWorker
             }
             if (placed == null)
             {
-                placed = StudyRoomKit.Place(room, SL_StudyDefOf.BookcaseSmall, CellRect.SingleCell(chunk[i]), face, StudyRoomKit.Stuff(room, SL_StudyDefOf.BookcaseSmall), paint);
+                placed = room.TrySpawnOver(SL_LairDefOf.BookcaseSmall, CellRect.SingleCell(chunk[i]), face, room.StoneOrSteel(SL_LairDefOf.BookcaseSmall), paint);
             }
             if (placed is Building_Bookcase bookcase)
             {

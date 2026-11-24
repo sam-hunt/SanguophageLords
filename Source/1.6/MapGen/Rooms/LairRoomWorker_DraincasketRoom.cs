@@ -36,24 +36,25 @@ public class LairRoomWorker_DraincasketRoom : LairRoomWorker
         int across = room.HalfAcross;
         int deep = room.HalfDeep;
 
-        Thing vat = LairFootprint.TrySpawnCovering(room, SL_HemogenNetDefOf.VRE_HemogenVat, -1, deep - 1, 0, deep, Rot4.North);
+        Thing vat = room.TrySpawnOver(SL_HemogenNetDefOf.VRE_HemogenVat, -1, deep - 1, 0, deep, Rot4.North);
         if (vat != null)
         {
             room.TrySpawn(SL_HemogenNetDefOf.VRE_HemogenTap, 1, deep, Rot4.North);
         }
         else
         {
-            vat = LairFootprint.TrySpawnAgainstWall(room, SL_HemogenNetDefOf.VRE_HemogenVat, room.At(0, deep));
+            vat = room.TrySpawnAgainstWall(SL_HemogenNetDefOf.VRE_HemogenVat, room.At(0, deep));
             if (vat != null)
             {
-                LairFootprint.TrySpawnAgainstWall(room, SL_HemogenNetDefOf.VRE_HemogenTap, vat.Position);
+                room.TrySpawnAgainstWall(SL_HemogenNetDefOf.VRE_HemogenTap, vat.Position);
             }
         }
 
         for (int top = deep - 2; top - 1 >= -deep; top -= CasketStep)
         {
-            Casket(room, across - 1, top - 1, across, top, Rot4.West);
-            Casket(room, -across, top - 1, -across + 1, top, Rot4.East);
+            // Used from the side each faces, and kept only if that opens onto the room's floor.
+            room.TrySpawnUsedFrom(SL_HemogenNetDefOf.VRE_Draincasket, across - 1, top - 1, across, top, Rot4.West);
+            room.TrySpawnUsedFrom(SL_HemogenNetDefOf.VRE_Draincasket, -across, top - 1, -across + 1, top, Rot4.East);
             int gap = top - CasketStep + 1;
             if (gap > -deep && room.IsFree(across, gap) && room.IsFree(-across, gap))
             {
@@ -63,15 +64,5 @@ public class LairRoomWorker_DraincasketRoom : LairRoomWorker
         }
 
         room.TrySpawnPrisoner(null, room.At(0, 0));
-    }
-
-    // A casket covering the local rectangle, kept only if it opens onto the room's floor.
-    private static void Casket(LairRoom room, int right0, int forward0, int right1, int forward1, Rot4 localRot)
-    {
-        Thing casket = LairFootprint.TrySpawnCovering(room, SL_HemogenNetDefOf.VRE_Draincasket, right0, forward0, right1, forward1, localRot);
-        if (casket != null && !room.Contains(casket.InteractionCell))
-        {
-            casket.Destroy();
-        }
     }
 }

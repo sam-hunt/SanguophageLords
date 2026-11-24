@@ -22,8 +22,8 @@ public class LairRoomWorker_ThrallQuarters : LairRoomWorker
         int row = 0;
         for (int forward = -far + 1; forward < far; forward += 2, row++)
         {
-            Thing right = HouseholdLayout.PlacePair(room, ThingDefOf.Bed, wall - 1, forward, wall, forward, Rot4.West, out Thing left);
-            room.TrySpawnPair(SL_HouseholdDefOf.EndTable, wall, forward + 1, Rot4.West);
+            Thing right = room.TrySpawnOverPair(ThingDefOf.Bed, wall - 1, forward, wall, forward, Rot4.West, out Thing left);
+            room.TrySpawnPair(SL_LairDefOf.EndTable, wall, forward + 1, Rot4.West);
             Thing sleeping = row % 2 == 0 ? right : left;
             if (sleeping != null)
             {

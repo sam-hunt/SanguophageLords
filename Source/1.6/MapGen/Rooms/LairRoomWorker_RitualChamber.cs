@@ -40,14 +40,14 @@ public class LairRoomWorker_RitualChamber : LairRoomWorker
 
     public override void Fill(LairRoom room)
     {
-        if (!ModsConfig.AnomalyActive || SL_OptionalRoomDefOf.PsychicRitualSpot == null)
+        if (!ModsConfig.AnomalyActive || ThingDefOf.PsychicRitualSpot == null)
         {
             return;
         }
 
         room.Floor(room.Style.Carpet(2), (right, forward) => (right * right) + (forward * forward) <= CarpetRingSquared);
         room.Floor(SL_OptionalRoomDefOf.BioferritePlate, (right, forward) => Math.Abs(right) <= PlateHalfWidth && Math.Abs(forward) <= PlateHalfWidth);
-        room.TrySpawn(SL_OptionalRoomDefOf.PsychicRitualSpot, 0, 0, Rot4.North);
+        room.TrySpawn(ThingDefOf.PsychicRitualSpot, 0, 0, Rot4.North);
 
         room.TrySpawnPair(SL_OptionalRoomDefOf.ShardBeacon, 3, 3, Rot4.North);
         room.TrySpawnPair(SL_OptionalRoomDefOf.ShardBeacon, 3, -3, Rot4.North);
@@ -62,7 +62,7 @@ public class LairRoomWorker_RitualChamber : LairRoomWorker
             Thing shelf = SpawnOnWall(room, ThingDefOf.ShelfSmall, 90, room.Style.Paint(1));
             if (shelf != null)
             {
-                room.TrySpawnItem(SL_OptionalRoomDefOf.Tome, shelf.Position, 1, onShelf: true);
+                room.TrySpawnItem(ThingDefOf.Tome, shelf.Position, 1, onShelf: true);
             }
         }
         SpawnOnWall(room, ThingDefOf.SanguphageMeetingTorch, 150, null);

@@ -51,10 +51,10 @@ public class LairRoomWorker_Prison : LairRoomWorker
             BuildCell(room, side, 0, depth - 1, beds, spots);
         }
 
-        StudyRoomKit.Place(room, SL_StudyDefOf.HospitalBed, 0, halfDeep - 1, 0, halfDeep, Rot4.South, StudyRoomKit.Stuff(room, SL_StudyDefOf.HospitalBed), paint);
+        room.TrySpawnOver(SL_LairDefOf.HospitalBed, 0, halfDeep - 1, 0, halfDeep, Rot4.South, room.StoneOrSteel(SL_LairDefOf.HospitalBed), paint);
         foreach (int side in new[] { -1, 1 })
         {
-            Thing shelf = StudyRoomKit.Place(room, ThingDefOf.ShelfSmall, side, halfDeep, side, halfDeep, Rot4.South, StudyRoomKit.Stuff(room, ThingDefOf.ShelfSmall), paint);
+            Thing shelf = room.TrySpawnOver(ThingDefOf.ShelfSmall, side, halfDeep, side, halfDeep, Rot4.South, room.StoneOrSteel(ThingDefOf.ShelfSmall), paint);
             if (shelf != null)
             {
                 room.TrySpawnItem(ThingDefOf.HemogenPack, shelf.Position, PacksPerShelf, onShelf: true);
@@ -131,7 +131,7 @@ public class LairRoomWorker_Prison : LairRoomWorker
         }
         room.TrySpawn(ThingDefOf.Door, door, Rot4.North, paint: room.Style.DoorPaint);
 
-        Thing bed = StudyRoomKit.Place(room, ThingDefOf.Bed, side * halfAcross, lastRow - 1, side * halfAcross, lastRow, Rot4.South, StudyRoomKit.Stuff(room, ThingDefOf.Bed));
+        Thing bed = room.TrySpawnOver(ThingDefOf.Bed, side * halfAcross, lastRow - 1, side * halfAcross, lastRow, Rot4.South, room.StoneOrSteel(ThingDefOf.Bed));
         if (bed is Building_Bed prisonerBed)
         {
             prisonerBed.ForPrisoners = true;

@@ -57,14 +57,14 @@ public static class LairHemogenNet
         {
             if (room.Def == SL_HemogenNetDefOf.SL_LairRoom_Larder)
             {
-                LairFootprint.TrySpawnAgainstWall(room, SL_HemogenNetDefOf.VRE_HemogenVat, room.At(0, room.HalfDeep));
+                room.TrySpawnAgainstWall(SL_HemogenNetDefOf.VRE_HemogenVat, room.At(0, room.HalfDeep));
             }
             else if (room.Plan.Role == PlanRole.Sanctum || room.Def == SL_HemogenNetDefOf.SL_LairRoom_DeathrestChamber)
             {
                 // Beside the casket area: the free wall-side cell nearest a casket, else the
                 // far wall.
                 Thing casket = room.Spawned.FirstOrDefault(t => t.def == ThingDefOf.DeathrestCasket && t.Spawned);
-                LairFootprint.TrySpawnAgainstWall(room, SL_HemogenNetDefOf.VRE_HemogenTap, casket != null ? casket.Position : room.At(0, room.HalfDeep));
+                room.TrySpawnAgainstWall(SL_HemogenNetDefOf.VRE_HemogenTap, casket != null ? casket.Position : room.At(0, room.HalfDeep));
             }
         }
 

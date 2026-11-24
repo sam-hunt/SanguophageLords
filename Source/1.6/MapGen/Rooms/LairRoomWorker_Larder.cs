@@ -39,7 +39,7 @@ public class LairRoomWorker_Larder : LairRoomWorker
         // The far wall stops short of the side shelves' last column.
         bool full = wall - 1 >= 2;
         ThingDef def = full ? ThingDefOf.Shelf : ThingDefOf.ShelfSmall;
-        Thing farShelf = HouseholdLayout.PlacePair(room, def, 1, far, full ? 2 : 1, far, Rot4.South, out Thing mirrored, paint: paint);
+        Thing farShelf = room.TrySpawnOverPair(def, 1, far, full ? 2 : 1, far, Rot4.South, out Thing mirrored, paint: paint);
         HouseholdLayout.StockShelf(room, farShelf, ThingDefOf.HemogenPack, HemogenPerCell);
         HouseholdLayout.StockShelf(room, mirrored, ThingDefOf.HemogenPack, HemogenPerCell);
 

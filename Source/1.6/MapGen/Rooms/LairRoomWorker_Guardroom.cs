@@ -25,9 +25,9 @@ public class LairRoomWorker_Guardroom : LairRoomWorker
         ColorDef paint = room.Style.Paint(1);
 
         // Weapon racks: each cell holds one weapon.
-        Thing rack = HouseholdLayout.PlacePair(room, ThingDefOf.Shelf, 1, far, 2, far, Rot4.South, out Thing mirroredRack, paint: paint);
-        Stock(room, rack, SL_HouseholdDefOf.MeleeWeapon_Spear, SL_HouseholdDefOf.MeleeWeapon_Mace);
-        Stock(room, mirroredRack, SL_HouseholdDefOf.MeleeWeapon_LongSword, SL_HouseholdDefOf.MeleeWeapon_Spear);
+        Thing rack = room.TrySpawnOverPair(ThingDefOf.Shelf, 1, far, 2, far, Rot4.South, out Thing mirroredRack, paint: paint);
+        Stock(room, rack, SL_LairDefOf.MeleeWeapon_Spear, SL_LairDefOf.MeleeWeapon_Mace);
+        Stock(room, mirroredRack, SL_LairDefOf.MeleeWeapon_LongSword, SL_LairDefOf.MeleeWeapon_Spear);
         room.TryTorch(room.At(0, far));
         room.TryTorch(room.At(wall, far));
         room.TryTorch(room.At(-wall, far));
@@ -35,14 +35,14 @@ public class LairRoomWorker_Guardroom : LairRoomWorker
         room.TryTorch(room.At(-wall, -far));
 
         // The table and its stools.
-        HouseholdLayout.Place(room, ThingDefOf.Table1x2c, 0, far - 2, 0, far - 1, Rot4.North, paint: paint);
+        room.TrySpawnOver(ThingDefOf.Table1x2c, 0, far - 2, 0, far - 1, Rot4.North, paint: paint);
         room.TrySpawnPair(ThingDefOf.Stool, 1, far - 2, Rot4.West);
         room.TrySpawn(ThingDefOf.Stool, 0, far - 3, Rot4.North);
 
         // Beds, heads to the far wall.
         for (int forward = far - 2; forward >= -1; forward -= 2)
         {
-            HouseholdLayout.PlacePair(room, ThingDefOf.Bed, wall, forward, wall, forward + 1, Rot4.South, out _);
+            room.TrySpawnOverPair(ThingDefOf.Bed, wall, forward, wall, forward + 1, Rot4.South, out _);
         }
 
         // Guards either side of the door, looking across the room at whoever comes in.

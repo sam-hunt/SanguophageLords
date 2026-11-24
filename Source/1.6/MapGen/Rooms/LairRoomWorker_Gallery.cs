@@ -5,29 +5,35 @@ using Verse;
 namespace SanguophageLair;
 
 // The gallery: the vanity of immortals, a long narrow hall of sculpture. Art is the room's
-// loot, so the pieces run from good to masterwork quality.
+// loot, but a modest hoard: a few thousand silver for the whole hall.
 //
 // Layout in the room's local frame (right -3..3, forward -deep..deep):
 //   right 0, +-1   scarlet carpet runner the length of the hall, the viewing aisle
 //   right +-3      the sculpture bays against the walls, in mirrored pairs, one cell between
-//                  bays: small, large, grand, large, small from the door inward, as many as
-//                  fit before the far wall (a grand sculpture is 2x2 and takes right 2..3)
-//   gap cells      a blood torch after every other bay
-//   far wall       the best piece, a masterwork sculpture painted in the layout's strongest
-//                  accent, at the end of the runner with a torch either side of it
-// A short hall simply ends the sequence earlier. Value: about 800 silver of material and work
-// per large sculpture and 3200 per grand one at normal quality, before the quality factor.
+//                  bays, small and large by turns from the door inward, as many as fit before
+//                  the far wall
+//   gap cells      a blood torch after every small bay
+//   far wall       one grand sculpture (2x2, right -1..0, so it sits off the centre line by
+//                  half a cell: an even footprint cannot straddle an odd room's middle),
+//                  painted in the layout's strongest accent, at the end of the runner with a
+//                  torch either side of it
+// A short hall simply ends the sequence earlier.
+//
+// Value. Market value of a stone building here is (cost units x block value + work x 0.0036)
+// x quality factor, the stone's own value factor not applying (StatWorker_MarketValue). Blocks
+// are worth 0.9 each, and the work is the def's WorkToMake times the blocks' WorkToMake factor
+// (1.3 for granite, limestone and slate; 1.1 sandstone; 1.15 marble). At the factor 1.3:
+//   small sculpture    50 blocks, 18000 work     45 + 84.24 = 129.24
+//   large sculpture   100 blocks, 30000 work     90 + 140.4 = 230.40
+//   grand sculpture   400 blocks, 105000 work   360 + 491.4 = 851.40
+// The largest hall (15 deep) holds six bays, three pairs of each size, and the grand piece:
+//   bays   6 x 129.24 + 6 x 230.40 = 2157.84 at normal quality, 2697.3 at good (x1.25)
+//   grand  851.40 x 1.5 (excellent) = 1277.1
+//   total  3435 to 3974 in granite; sandstone's lighter work gives 3114 to 3602.
+// Bays are normal or good and the grand piece excellent, so quality never moves the total out
+// of that band. Shorter halls hold fewer bays and are worth less.
 public class LairRoomWorker_Gallery : LairRoomWorker
 {
-    private enum Bay
-    {
-        Small,
-        Large,
-        Grand,
-    }
-
-    private static readonly Bay[] Sequence = { Bay.Small, Bay.Large, Bay.Grand, Bay.Large, Bay.Small };
-
     public override void Fill(LairRoom room)
     {
         LairStyle style = room.Style;
@@ -37,54 +43,23 @@ public class LairRoomWorker_Gallery : LairRoomWorker
 
         int forward = -deep + 2;
         int limit = deep - 2;
-        for (int i = 0; i < Sequence.Length; i++)
+        for (int i = 0; forward <= limit; i++, forward += 2)
         {
-            int length = Sequence[i] == Bay.Grand ? 2 : 1;
-            if (forward + length - 1 > limit)
-            {
-                break;
-            }
-            PlaceBay(room, Sequence[i], wall, forward);
+            QualityCategory quality = Rand.Chance(0.5f) ? QualityCategory.Normal : QualityCategory.Good;
             if (i % 2 == 0)
             {
-                room.TryTorch(room.At(wall, forward + length));
-                room.TryTorch(room.At(-wall, forward + length));
+                room.TrySpawnPair(SL_LairDefOf.SculptureSmall, wall, forward, Rot4.North, paint: style.Paint(2), quality: quality);
+                room.TryTorch(room.At(wall, forward + 1));
+                room.TryTorch(room.At(-wall, forward + 1));
             }
-            forward += length + 1;
+            else
+            {
+                room.TrySpawnPair(SL_LairDefOf.SculptureLarge, wall, forward, Rot4.North, paint: style.Paint(1), quality: quality);
+            }
         }
 
-        room.TrySpawn(SL_FuneraryDefOf.SculptureLarge, 0, deep, Rot4.North, paint: style.Paint(0), quality: QualityCategory.Masterwork);
+        room.TrySpawnOver(SL_LairDefOf.SculptureGrand, -1, deep - 1, 0, deep, Rot4.North, paint: style.Paint(0), quality: QualityCategory.Excellent);
         room.TryTorch(room.At(2, deep));
         room.TryTorch(room.At(-2, deep));
-    }
-
-    private static void PlaceBay(LairRoom room, Bay bay, int wall, int forward)
-    {
-        QualityCategory quality = RandomQuality();
-        switch (bay)
-        {
-            case Bay.Small:
-                room.TrySpawnPair(SL_LairDefOf.SculptureSmall, wall, forward, Rot4.North, paint: room.Style.Paint(2), quality: quality);
-                break;
-            case Bay.Large:
-                room.TrySpawnPair(SL_FuneraryDefOf.SculptureLarge, wall, forward, Rot4.North, paint: room.Style.Paint(1), quality: quality);
-                break;
-            default:
-                ThingDef grand = SL_FuneraryDefOf.SculptureGrand;
-                LairRoomWorker_Tomb.TrySpawnCovering(room, grand, room.At(wall - 1, forward), room.At(wall, forward + 1), Rot4.North, paint: room.Style.Paint(1), quality: quality);
-                LairRoomWorker_Tomb.TrySpawnCovering(room, grand, room.At(-wall, forward), room.At(-(wall - 1), forward + 1), Rot4.North, paint: room.Style.Paint(1), quality: quality);
-                break;
-        }
-    }
-
-    // Good, excellent or masterwork, the middle one most often.
-    private static QualityCategory RandomQuality()
-    {
-        float roll = Rand.Value;
-        if (roll < 0.25f)
-        {
-            return QualityCategory.Good;
-        }
-        return roll < 0.8f ? QualityCategory.Excellent : QualityCategory.Masterwork;
     }
 }

@@ -49,8 +49,8 @@ public class LairRoomWorker_PowerChamber : LairRoomWorker
         for (int i = 0; i < BatteriesPerSide; i++)
         {
             int forward = front + (2 * i);
-            Charge(LairFootprint.TrySpawnCovering(room, ThingDefOf.Battery, wall, forward, wall, forward + 1, Rot4.North));
-            Charge(LairFootprint.TrySpawnCovering(room, ThingDefOf.Battery, -wall, forward, -wall, forward + 1, Rot4.North));
+            Charge(room.TrySpawnOver(ThingDefOf.Battery, wall, forward, wall, forward + 1, Rot4.North));
+            Charge(room.TrySpawnOver(ThingDefOf.Battery, -wall, forward, -wall, forward + 1, Rot4.North));
         }
 
         for (int forward = -room.HalfDeep; forward < front; forward++)
@@ -69,8 +69,8 @@ public class LairRoomWorker_PowerChamber : LairRoomWorker
         for (int back = room.HalfDeep - 1; back - GeneratorSize + 1 >= -room.HalfDeep; back--)
         {
             int frontRow = back - GeneratorSize + 1;
-            Thing generator = LairFootprint.TrySpawnCovering(room, ThingDefOf.GeothermalGenerator, -2, frontRow, 3, back, Rot4.North)
-                ?? LairFootprint.TrySpawnCovering(room, ThingDefOf.GeothermalGenerator, -3, frontRow, 2, back, Rot4.North);
+            Thing generator = room.TrySpawnOver(ThingDefOf.GeothermalGenerator, -2, frontRow, 3, back, Rot4.North)
+                ?? room.TrySpawnOver(ThingDefOf.GeothermalGenerator, -3, frontRow, 2, back, Rot4.North);
             if (generator != null)
             {
                 return generator;

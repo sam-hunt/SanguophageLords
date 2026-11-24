@@ -53,8 +53,8 @@ public class LairRoomWorker_Temple : LairRoomWorker
 
         ApplyStyle(room, room.TrySpawn(SL_OptionalRoomDefOf.Altar_Grand, 0, far - 1, Rot4.North), SL_OptionalRoomDefOf.Morbid_AltarGrand);
         ApplyStyle(room, room.TrySpawn(SL_OptionalRoomDefOf.Ideogram, 0, far - 5, Rot4.North), SL_OptionalRoomDefOf.Morbid_IdeogramA);
-        room.TrySpawnPair(SL_OptionalRoomDefOf.Lectern, 2, far - 2, Rot4.North);
-        room.TrySpawnPair(SL_OptionalRoomDefOf.Skullspike, 3, far - 1, Rot4.North, stuff: ThingDefOf.Steel);
+        room.TrySpawnPair(ThingDefOf.Lectern, 2, far - 2, Rot4.North);
+        room.TrySpawnPair(ThingDefOf.Skullspike, 3, far - 1, Rot4.North, stuff: ThingDefOf.Steel);
 
         // Columns first, so the pews and torches fit around them.
         int columnRight = Math.Max(5, wall - 1);

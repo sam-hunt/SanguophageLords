@@ -53,10 +53,10 @@ public class LairRoomWorker_Vault : LairRoomWorker
         var leftSide = new List<Thing>();
         HouseholdLayout.SideShelves(room, wall, -far + 1, far, paint, rightSide, leftSide);
 
-        room.TrySpawnPair(SL_HouseholdDefOf.SculptureLarge, wall - 1, far, Rot4.South, paint: paint);
+        room.TrySpawnPair(SL_LairDefOf.SculptureLarge, wall - 1, far, Rot4.South, paint: paint);
         if (wall - 1 > 1)
         {
-            Thing smallRight = HouseholdLayout.PlacePair(room, ThingDefOf.ShelfSmall, 1, far, 1, far, Rot4.South, out Thing smallLeft, paint: paint);
+            Thing smallRight = room.TrySpawnOverPair(ThingDefOf.ShelfSmall, 1, far, 1, far, Rot4.South, out Thing smallLeft, paint: paint);
             AddCells(rightSide, smallRight);
             AddCells(leftSide, smallLeft);
         }
@@ -66,16 +66,16 @@ public class LairRoomWorker_Vault : LairRoomWorker
 
         // The display: capsules and serum on the table's two cells.
         var overflow = new List<Loot>();
-        Thing table = HouseholdLayout.Place(room, ThingDefOf.Table1x2c, 0, 0, 0, 1, Rot4.North, paint: paint);
+        Thing table = room.TrySpawnOver(ThingDefOf.Table1x2c, 0, 0, 0, 1, Rot4.North, paint: paint);
         IntVec3 first = room.At(0, 0);
         IntVec3 second = room.At(0, 1);
         if (table == null || room.TrySpawnItem(ThingDefOf.ArchiteCapsule, first, 2, onShelf: true) == null)
         {
             overflow.Add(new Loot { Def = ThingDefOf.ArchiteCapsule, Count = 2 });
         }
-        if (table == null || room.TrySpawnItem(SL_HouseholdDefOf.DeathrestCapacitySerum, second, 1, onShelf: true) == null)
+        if (table == null || room.TrySpawnItem(SL_LairDefOf.DeathrestCapacitySerum, second, 1, onShelf: true) == null)
         {
-            overflow.Add(new Loot { Def = SL_HouseholdDefOf.DeathrestCapacitySerum, Count = 1 });
+            overflow.Add(new Loot { Def = SL_LairDefOf.DeathrestCapacitySerum, Count = 1 });
         }
 
         // The shelves, alternating sides so a missing shelf costs both walls equally.
@@ -93,8 +93,8 @@ public class LairRoomWorker_Vault : LairRoomWorker
         {
             goods.Add(new Loot { Def = ThingDefOf.Genepack, Count = 1 });
         }
-        goods.Add(new Loot { Def = SL_HouseholdDefOf.MeleeWeapon_LongSword, Count = 1, Stuff = ThingDefOf.Plasteel });
-        goods.Add(new Loot { Def = SL_HouseholdDefOf.MeleeWeapon_Mace, Count = 1, Stuff = ThingDefOf.Plasteel });
+        goods.Add(new Loot { Def = SL_LairDefOf.MeleeWeapon_LongSword, Count = 1, Stuff = ThingDefOf.Plasteel });
+        goods.Add(new Loot { Def = SL_LairDefOf.MeleeWeapon_Mace, Count = 1, Stuff = ThingDefOf.Plasteel });
 
         // Interleave so each cell gets a mixed handful, not one commodity.
         for (int i = 0; i < goods.Count; i++)

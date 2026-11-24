@@ -28,7 +28,7 @@ namespace SanguophageLair;
 // of it. The harpsichord's offset (0,0,2) points along its rotation, so it takes the local
 // direction toward the room's centre; the harp's (0,0,-1) points opposite, so it takes the
 // direction of its wall. A drape takes the direction of the wall it hangs on, as vanilla's
-// throne room resolver gives it. Footprints of even size are placed by SpawnFootprint, which
+// throne room resolver gives it. Footprints of even size are placed by LairRoom.TrySpawnOver, which
 // finds the centre cell giving the wanted rectangle, so mirrored pieces mirror exactly
 // whichever way the room is turned.
 public class LairRoomWorker_ThroneRoom : LairRoomWorker
@@ -50,7 +50,7 @@ public class LairRoomWorker_ThroneRoom : LairRoomWorker
         room.Floor(style.Carpet(0), (right, forward) => Math.Abs(right) <= 1 && forward < far - 3);
         room.Floor(daisFloor, (right, forward) => Math.Abs(right) <= 3 && forward >= far - 3);
 
-        SpawnFootprint(room, SL_OptionalRoomDefOf.GrandThrone, Rot4.South, -1, far - 1, 1, far, style.Paint(0));
+        room.TrySpawnOver(SL_OptionalRoomDefOf.GrandThrone, -1, far - 1, 1, far, Rot4.South, paint: style.Paint(0));
         room.TrySpawnGuard(LairPawnTier.Sanguophage, room.At(3, far - 2));
         room.TrySpawnGuard(LairPawnTier.Sanguophage, room.At(-3, far - 2));
 
@@ -69,14 +69,14 @@ public class LairRoomWorker_ThroneRoom : LairRoomWorker
             room.TryTorch(room.At(-wall, forward));
             if (!instrumentPlaced)
             {
-                instrumentPlaced = SpawnFootprint(room, SL_OptionalRoomDefOf.Harpsichord, room.Turn(Rot4.West), wall - 2, forward + 1, wall, forward + 2) != null;
+                instrumentPlaced = room.TrySpawnOver(ThingDefOf.Harpsichord, wall - 2, forward + 1, wall, forward + 2, Rot4.West) != null;
             }
             Drape(room, wall, forward + 1, Rot4.East);
             Drape(room, -wall, forward + 1, Rot4.West);
         }
         if (!instrumentPlaced)
         {
-            room.TrySpawn(SL_OptionalRoomDefOf.Harp, wall, far - 6, Rot4.East);
+            room.TrySpawn(ThingDefOf.Harp, wall, far - 6, Rot4.East);
         }
 
         // Beside the dais, where the hall's last column is too far back to frame it.
@@ -87,27 +87,6 @@ public class LairRoomWorker_ThroneRoom : LairRoomWorker
     // A drape hung on a side wall over two cells from the given forward position on.
     private static void Drape(LairRoom room, int rightward, int forward, Rot4 wallSide)
     {
-        SpawnFootprint(room, SL_OptionalRoomDefOf.Drape, room.Turn(wallSide), rightward, forward, rightward, forward + 1);
-    }
-
-    // Spawns a thing so that it covers exactly the rectangle between two local cells, trying
-    // each cell of the rectangle as the thing's centre until one gives that footprint. Null
-    // when none does (the thing's size does not match) or the footprint is not free.
-    private static Thing SpawnFootprint(LairRoom room, ThingDef def, Rot4 rot, int rightA, int forwardA, int rightB, int forwardB, ColorDef paint = null)
-    {
-        if (def == null)
-        {
-            return null;
-        }
-        CellRect wanted = CellRect.FromLimits(room.At(rightA, forwardA), room.At(rightB, forwardB));
-        foreach (IntVec3 c in wanted)
-        {
-            CellRect rect = GenAdj.OccupiedRect(c, rot, def.size);
-            if (rect.minX == wanted.minX && rect.maxX == wanted.maxX && rect.minZ == wanted.minZ && rect.maxZ == wanted.maxZ)
-            {
-                return room.TrySpawn(def, c, rot, paint: paint);
-            }
-        }
-        return null;
+        room.TrySpawnOver(ThingDefOf.Drape, rightward, forward, rightward, forward + 1, wallSide);
     }
 }
