@@ -2,11 +2,21 @@
 <Defs>
 
   <!--
-    SL_LairRoom_ThroneRoom. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_ThroneRoom: the master's audience hall, closing the lair's axis beyond the
+    sanctum. Layout and facings: Source/1.6/MapGen/Rooms/LairRoomWorker_ThroneRoom.cs.
+    Requested only when Royalty is active (the MayRequire on its line in SL_Lair.xml); the
+    def holds no DLC reference, the worker reaches the DLC defs through SL_OptionalRoomDefOf.
+
+    anchor AxisNorth puts it on the axis, the end of the walk from the entrance. Only
+    rectangles are offered: the hall's columns, drapes and the runner assume straight side
+    walls. 11 to 13 across is the widest a thick rock roof can span with the worker's column
+    pairs; 13 to 17 deep leaves a runner to walk and the dais at the far end. The corridor in
+    front is optional and short so the sanctum and the hall read as one procession.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_ThroneRoom</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_ThroneRoom</workerClass>
     <anchor>AxisNorth</anchor>
     <corridorChance>0.5</corridorChance>
     <corridorLength>3~5</corridorLength>

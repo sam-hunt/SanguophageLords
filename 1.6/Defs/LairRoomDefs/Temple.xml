@@ -2,11 +2,22 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Temple. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Temple: a temple to whatever the lair's masters worship, in Ideology's Morbid
+    style (altar, ideogram and columns carry it). Layout and facings:
+    Source/1.6/MapGen/Rooms/LairRoomWorker_Temple.cs. Requested only when Ideology is active
+    (the MayRequire on its line in SL_Lair.xml); the def holds no DLC reference, the worker
+    reaches the DLC defs through SL_OptionalRoomDefOf.
+
+    The shapes give a long nave: 11 to 13 across by 15 to 19 deep as a rectangle, or an
+    octagon 13 to 15 across by 15 to 17 deep whose stepped corners suit the lair. Even the
+    widest (15) is held up by the worker's column rows, and the dais at the far end needs the
+    depth. A temple is a destination, not a thoroughfare: at most one room hangs off it, and
+    half the time it sits behind a corridor.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Temple</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Temple</workerClass>
     <corridorChance>0.5</corridorChance>
     <maxChildren>1</maxChildren>
     <shapes>

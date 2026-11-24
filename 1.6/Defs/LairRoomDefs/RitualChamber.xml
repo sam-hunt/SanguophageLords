@@ -2,11 +2,21 @@
 <Defs>
 
   <!--
-    SL_LairRoom_RitualChamber. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_RitualChamber: something the lair's masters should not have been doing, kept
+    behind a corridor with no other way in. Layout, light and spawn-safety notes:
+    Source/1.6/MapGen/Rooms/LairRoomWorker_RitualChamber.cs. Requested only when Anomaly is
+    active (the MayRequire on its line in SL_Lair.xml); the def holds no DLC reference, the
+    worker reaches the DLC defs through SL_OptionalRoomDefOf.
+
+    Round, 11 to 13 across: wide enough that the ritual spot's 3.9-cell clear radius leaves a
+    ring for the beacons and sculptures, narrow enough (6.5 cells at most) to need no columns.
+    The long corridor, the extra depth bias, no children and no loops make it a dead end
+    deep in the lair.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_RitualChamber</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_RitualChamber</workerClass>
     <corridorChance>0.7</corridorChance>
     <corridorLength>4~7</corridorLength>
     <minDepth>3</minDepth>
