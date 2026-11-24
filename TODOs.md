@@ -21,6 +21,7 @@
     entrance shipped first so the mapgen can be iterated without them)
   - MapGeneratorDef subtree: GenSteps for lair layout, sanguophage
     inhabitants, hemogen-themed loot
+  - Optional lair owner: Sanguophage Faction (Docs/Research/Sanguophage-Faction-Lair-Owner.md)
 - Odyssey landmark entrance follow-ups:
   - Settings slider for the landmark chance (write MutatorChance.chance on the
     patched LandmarkDefs at startup, like the quest-weight dial)
