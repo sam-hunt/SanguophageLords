@@ -2,11 +2,19 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Laboratory. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Laboratory. The gene laboratory: hi-tech bench, gene banks holding genepacks,
+    assembler, extractor and processor, and a hospital bed for the subject, on the lair's
+    stone tile. Worker: Source/1.6/MapGen/Rooms/LairRoomWorker_Laboratory.cs.
+
+    A 9 to 11 square: the worker's walls need seven cells of the left wall (three machines)
+    and the five-cell bench on the far wall, so nothing smaller works, and nothing larger
+    needs columns. At least two doors in (minDepth 2) puts it off the spine, deep in the lair
+    where the masters' work would be kept; maxChildren 1 lets one more room hang off it.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Laboratory</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Laboratory</workerClass>
     <corridorChance>0.4</corridorChance>
     <minDepth>2</minDepth>
     <maxChildren>1</maxChildren>

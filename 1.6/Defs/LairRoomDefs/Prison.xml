@@ -2,11 +2,20 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Prison. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Prison. The lair's prey: a central aisle between four walled cells, each with a
+    prisoner bed, a bloodletting couch and a shelf of hemogen packs at the aisle's end, and
+    thrall guards. Worker: Source/1.6/MapGen/Rooms/LairRoomWorker_Prison.cs.
+
+    Hewn from the rock with a flagstone floor, so it reads as a dungeon cut out of the stone
+    rather than one of the lair's formal rooms; the worker builds the cells' walls and doors
+    itself. 11 to 13 across leaves a three-cell aisle and cells three or four wide; 9 to 11
+    deep gives two cells a side of three or four rows with one row left for the alcoves
+    either side of the couch. Few children: the prison is a dead end.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Prison</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Prison</workerClass>
     <walls>Hewn</walls>
     <floor>Flagstone</floor>
     <corridorChance>0.5</corridorChance>

@@ -2,11 +2,21 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Library. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Library. The lair's reading room: a table and chairs on rounds of carpet in the
+    centre, a great sculpture on the far wall, bookcases stocked with a dozen real books
+    along every other stretch of wall. Worker: Source/1.6/MapGen/Rooms/LairRoomWorker_Library.cs.
+
+    Both shapes the worker handles by following the walls rather than coordinates, so the
+    octagon (11 to 13 across and deep, stepped corners) and the rectangle (9 to 11 across, 11
+    to 13 deep) both read as a library. Every size keeps the 5x5 table-and-chairs footprint
+    plus a one-cell lane and a case against each wall (the smallest rectangle is 9 across).
+    13 by 13 is the one size whose centre is out of reach of the walls' roof support, which
+    the worker answers with four columns.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Library</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Library</workerClass>
     <corridorChance>0.4</corridorChance>
     <shapes>
       <li>
