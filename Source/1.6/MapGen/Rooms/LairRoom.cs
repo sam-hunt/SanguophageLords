@@ -304,6 +304,14 @@ public sealed class LairRoom
         {
             building.ChangePaint(paint);
         }
+        // Beds and caskets are the lair's own, so its people may use them and the player
+        // must claim them. Nothing else is owned: a deathrest building of the lair's faction
+        // would bind itself at spawn to any deathrester with capacity to spare, ahead of the
+        // deliberate binding the deathrest rooms do.
+        if (thing is Building_Bed)
+        {
+            thing.SetFaction(Site.Faction);
+        }
         return thing;
     }
 

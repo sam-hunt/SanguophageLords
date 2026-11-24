@@ -41,6 +41,7 @@
       <li>SL_PlaceStairwellExit</li>
       <li>SL_LairContents</li>
       <li>SL_LairUtilities</li>
+      <li>SL_LairDefenders</li>
       <li>Fog</li>
       <li>MutatorFinal</li>
     </genSteps>

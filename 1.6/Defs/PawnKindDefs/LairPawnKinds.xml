@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    The lair's inhabitants, one kind per LairPawnTier (LairPawns.KindFor,
+    Source/1.6/MapGen/LairPawns.cs). Every lair defender is generated from one of these, so they
+    are the XML hook for other mods: the defNames are stable, and Hemophage Warcasket targets
+    them (together with the C# event LairPawns.PawnGenerated).
+
+    Each is a standalone copy of a Biotech kind (PawnKindDefs_Humanlikes/PawnKinds_Special.xml),
+    not a child of it: other mods patch vanilla's abstract SanguophageBase, and the lair's
+    difficulty should not move with them. Core and Biotech content only; tags naming Royalty
+    apparel (Cape, BestowerHood) simply match nothing without it, as in vanilla.
+
+    combatPower is the price LairPawnBudget charges for each, in raid threat points; vanilla
+    rates both of its kinds at 100, which undervalues a sanguophage's regeneration and
+    deathless gene. With LairPawnBudget.DefaultPoints (2000) these prices buy one master, three
+    sanguophages and eight thralls.
+
+    Xenotypes are also forced per tier in the generation request (Baseliner for thralls,
+    Sanguophage otherwise), so a mod adding xenotypes to factions cannot turn a thrall into a
+    sanguophage.
+
+    label is player-facing: it shows where the game names a pawn's kind.
+  -->
+
+  <!-- Thrall: vanilla SanguophageThrall, a baseliner servant with industrial guns and armour. -->
+  <PawnKindDef>
+    <defName>SL_LairThrall</defName>
+    <label>thrall</label>
+    <race>Human</race>
+    <defaultFactionDef>SL_LairSanguophages</defaultFactionDef>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <combatPower>100</combatPower>
+    <isFighter>true</isFighter>
+    <initialResistanceRange>0~1</initialResistanceRange>
+    <initialWillRange>2~4</initialWillRange>
+    <chemicalAddictionChance>0.05</chemicalAddictionChance>
+    <combatEnhancingDrugsChance>0.1</combatEnhancingDrugsChance>
+    <combatEnhancingDrugsCount>1~2</combatEnhancingDrugsCount>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>0~1800</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+    <maxGenerationAge>55</maxGenerationAge>
+    <backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
+    <invNutrition>1</invNutrition>
+    <itemQuality>Normal</itemQuality>
+    <weaponMoney>600~1000</weaponMoney>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <apparelAllowHeadgearChance>0.5</apparelAllowHeadgearChance>
+    <apparelMoney>1250~2500</apparelMoney>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li>
+      <li>IndustrialMilitaryBasic</li>
+      <li>IndustrialMilitaryAdvanced</li>
+    </apparelTags>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <humanPregnancyChance>0</humanPregnancyChance>
+  </PawnKindDef>
+
+  <!-- Sanguophage: vanilla Sanguophage with its SanguophageBase fields folded in. -->
+  <PawnKindDef>
+    <defName>SL_LairSanguophage</defName>
+    <label>sanguophage</label>
+    <race>Human</race>
+    <defaultFactionDef>SL_LairSanguophages</defaultFactionDef>
+    <xenotypeSet>
+      <xenotypeChances>
+        <Sanguophage>999</Sanguophage>
+      </xenotypeChances>
+    </xenotypeSet>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <combatPower>250</combatPower>
+    <isFighter>true</isFighter>
+    <backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
+    <chemicalAddictionChance>0.08</chemicalAddictionChance>
+    <chronologicalAgeRange>300~2000</chronologicalAgeRange>
+    <initialResistanceRange>10~80</initialResistanceRange>
+    <initialWillRange>5~15</initialWillRange>
+    <requiredWorkTags>
+      <li>Social</li>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <disallowedTraits>
+      <li>Immunity</li>
+    </disallowedTraits>
+    <invNutrition>0.5</invNutrition>
+    <invFoodDef>HemogenPack</invFoodDef>
+    <combatEnhancingDrugsChance>0.1</combatEnhancingDrugsChance>
+    <combatEnhancingDrugsCount>1~2</combatEnhancingDrugsCount>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>0~1800</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+    <weaponMoney>600~800</weaponMoney>
+    <weaponTags>
+      <li>Gun</li>
+      <li>MedievalMeleeDecent</li>
+    </weaponTags>
+    <apparelMoney>500~700</apparelMoney>
+    <apparelAllowHeadgearChance>0.1</apparelAllowHeadgearChance>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+    </apparelTags>
+    <apparelRequired>
+      <li>Apparel_Pants</li>
+    </apparelRequired>
+    <apparelDisallowTags>
+      <li>Western</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <alternateTagChoices>
+          <li>
+            <tag>Cape</tag>
+            <chance>0.1</chance>
+          </li>
+          <li>
+            <tag>BestowerHood</tag>
+            <chance>0.1</chance>
+          </li>
+        </alternateTagChoices>
+      </li>
+      <li>
+        <colorGenerator Class="ColorGenerator_Options">
+          <options>
+            <li>
+              <only>(58, 58, 58)</only>
+            </li>
+            <li>
+              <only>(74, 1, 9)</only>
+            </li>
+          </options>
+        </colorGenerator>
+      </li>
+    </specificApparelRequirements>
+  </PawnKindDef>
+
+  <!--
+    Master: the sanguophage the lair belongs to. The sanguophage kind with older ages, a
+    trained hand (Shooting and Melee clamped into the ranges below, PawnGenerator), good-quality
+    gear on about twice the weapon and three times the apparel money, advanced weapons, and a
+    better chance of implants and a cape. Always in the lair's deep red.
+  -->
+  <PawnKindDef>
+    <defName>SL_LairMaster</defName>
+    <label>elder sanguophage</label>
+    <race>Human</race>
+    <defaultFactionDef>SL_LairSanguophages</defaultFactionDef>
+    <xenotypeSet>
+      <xenotypeChances>
+        <Sanguophage>999</Sanguophage>
+      </xenotypeChances>
+    </xenotypeSet>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <combatPower>400</combatPower>
+    <isFighter>true</isFighter>
+    <backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
+    <chemicalAddictionChance>0.05</chemicalAddictionChance>
+    <chronologicalAgeRange>1000~3000</chronologicalAgeRange>
+    <initialResistanceRange>40~90</initialResistanceRange>
+    <initialWillRange>10~20</initialWillRange>
+    <requiredWorkTags>
+      <li>Social</li>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <disallowedTraits>
+      <li>Immunity</li>
+    </disallowedTraits>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>8~14</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>10~16</range>
+      </li>
+    </skills>
+    <invNutrition>0.5</invNutrition>
+    <invFoodDef>HemogenPack</invFoodDef>
+    <combatEnhancingDrugsChance>0.2</combatEnhancingDrugsChance>
+    <combatEnhancingDrugsCount>1~2</combatEnhancingDrugsCount>
+    <techHediffsChance>0.35</techHediffsChance>
+    <techHediffsMoney>800~2500</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+    <itemQuality>Good</itemQuality>
+    <weaponMoney>1200~1800</weaponMoney>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>MedievalMeleeAdvanced</li>
+    </weaponTags>
+    <apparelMoney>1500~2500</apparelMoney>
+    <apparelAllowHeadgearChance>0.3</apparelAllowHeadgearChance>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li>
+      <li>IndustrialMilitaryBasic</li>
+    </apparelTags>
+    <apparelRequired>
+      <li>Apparel_Pants</li>
+      <li>Apparel_CollarShirt</li>
+    </apparelRequired>
+    <apparelDisallowTags>
+      <li>Western</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <alternateTagChoices>
+          <li>
+            <tag>Cape</tag>
+            <chance>0.5</chance>
+          </li>
+          <li>
+            <tag>BestowerHood</tag>
+            <chance>0.2</chance>
+          </li>
+        </alternateTagChoices>
+      </li>
+      <li>
+        <colorGenerator Class="ColorGenerator_Options">
+          <options>
+            <li>
+              <only>(74, 1, 9)</only>
+            </li>
+          </options>
+        </colorGenerator>
+      </li>
+    </specificApparelRequirements>
+  </PawnKindDef>
+
+</Defs>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairAlarm: the invisible thing behind a lair's general alarm (LairAlarm,
+    Source/1.6/MapGen/Pawns/LairAlarm.cs), one per lair map, spawned by GenStep_LairDefenders.
+
+    Shaped like Core's SignalAction_* things (ThingDefs_Misc/Ethereal_SignalActions.xml):
+    ethereal, so it is never drawn, selected or damaged; receivesSignals, so it hears the alarm
+    when something else raises it first. tickerType Rare: it polls the defenders every 250
+    ticks. No label, like those things, since the player never sees it.
+  -->
+  <ThingDef ParentName="EtherealThingBase">
+    <defName>SL_LairAlarm</defName>
+    <thingClass>SanguophageLair.LairAlarm</thingClass>
+    <tickerType>Rare</tickerType>
+    <receivesSignals>true</receivesSignals>
+  </ThingDef>
+
+</Defs>

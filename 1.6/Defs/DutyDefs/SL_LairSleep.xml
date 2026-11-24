@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairSleep: the duty of a sleeping lair pawn, assigned by LordToil_LairSleep
+    (Source/1.6/MapGen/Pawns/). Core's SleepForever (DutyDefs/Duties_Misc.xml) with its last
+    node swapped: JobGiver_LairSleep keeps the pawn asleep in its own bed where vanilla's
+    JobGiver_ForceSleepNow lays it down on the spot. The starving-only food node is kept from
+    vanilla, so a lair left asleep for weeks does not starve in its beds.
+  -->
+  <DutyDef>
+    <defName>SL_LairSleep</defName>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_PrioritySorter">
+          <subNodes>
+            <li Class="JobGiver_GetFood">
+              <minCategory>Starving</minCategory>
+            </li>
+          </subNodes>
+        </li>
+        <li Class="SanguophageLair.JobGiver_LairSleep" />
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+</Defs>

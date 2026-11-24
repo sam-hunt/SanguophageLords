@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairSanguophages: the faction every sanguophage lair's inhabitants belong to, one
+    instance per world, created the first time a lair is generated (LairFaction.FindOrCreate,
+    Source/1.6/MapGen/Pawns/LairFaction.cs, which also says why it is not vanilla's
+    Sanguophages).
+
+    Modelled field for field on Biotech's Sanguophages faction (Biotech
+    FactionDefs/Factions_Misc.xml): same culture, memes, backstories and name makers, so a lair
+    reads like the vanilla sanguophage quests' hosts. The differences:
+      - permanentEnemy: hostile to every faction from creation (-100 goodwill in
+        Faction.TryMakeInitialRelationsWith) and never befriendable;
+      - autoFlee false: the lair has nowhere to flee to, and defends to the last;
+      - basicMemberKind is our sanguophage kind, and it has no leader (a hidden faction needs
+        none, Faction.ShouldHaveLeader).
+    requiredCountAtGameStart 0 with no maxConfigurableAtWorldCreation keeps it out of world
+    generation and the faction picker; hidden keeps it out of the factions tab.
+
+    Player-facing: label and description show on the faction's info card (reachable from an
+    inhabitant's inspect pane); pawnsPlural fills vanilla's "{0} have woken up." message
+    (LordJob_LairDefend, LairAlarm).
+  -->
+  <FactionDef ParentName="FactionBase">
+    <defName>SL_LairSanguophages</defName>
+    <label>lair sanguophages</label>
+    <description>Ancient sanguophages who sleep away the centuries in sealed lairs below the ground, served by the thralls they keep.</description>
+    <pawnSingular>sanguophage</pawnSingular>
+    <pawnsPlural>sanguophages</pawnsPlural>
+    <hidden>true</hidden>
+    <permanentEnemy>true</permanentEnemy>
+    <autoFlee>false</autoFlee>
+    <canSiege>false</canSiege>
+    <canStageAttacks>false</canStageAttacks>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <mustStartOneEnemy>false</mustStartOneEnemy>
+    <factionIconPath>World/WorldObjects/Expanding/SettlementTemporary</factionIconPath>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <colorSpectrum>
+      <li>(0.55, 0.06, 0.08)</li>
+      <li>(0.42, 0.04, 0.10)</li>
+    </colorSpectrum>
+    <techLevel>Spacer</techLevel>
+    <basicMemberKind>SL_LairSanguophage</basicMemberKind>
+    <allowedCultures>
+      <li>Astropolitan</li>
+    </allowedCultures>
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+      <li>Bloodfeeding</li>
+    </requiredMemes>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+    </disallowedMemes>
+    <disallowedPrecepts>
+      <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Strong_Subordinate</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Soft_Subordinate</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+    </disallowedPrecepts>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <allowedArrivalTemperatureRange>-5~45</allowedArrivalTemperatureRange>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Offworld</li>
+          <li>Outlander</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+  </FactionDef>
+
+</Defs>
