@@ -79,6 +79,8 @@ jobs:
         run: dotnet build SanguophageLair.sln -c Release
 
       - name: Stage mod files
+        # The folder name is the project name, matching the local deploy folder
+        # ($(MSBuildProjectName)) and the README's install instructions.
         # Reuse the .csproj's StageMod target — the single source of truth for what
         # files constitute the mod — so the release zip can never drift from the
         # local deploy (e.g. forget Patches). StageMod wipes + recopies $(StageDir).

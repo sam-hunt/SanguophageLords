@@ -65,12 +65,16 @@ build redeploys automatically and atomically — there is no separate clean step
 
 - **Single source of truth:** what ships is the `_ModFiles` ItemGroup in the `StageMod` target
   (`Source/1.6/SanguophageLair.csproj`) — the only place to edit the manifest. It whitelists by
-  file type per content folder (`About`, `Assemblies`, `Defs`, `Patches`, `Languages`, plus
-  `Textures`/`Sounds` if ever added), matched at the root, under any version folder, and (for
-  `Defs`/`Patches`/`Languages`) under gated compat load roots (`<version>/Mods/<Mod Name>/`, see
-  LoadFolders.xml), so a new content folder of an existing type deploys automatically and only a
-  brand-new file type needs a new line. Only game-loaded types are listed (e.g. `.xml`), so stray
-  dev notes (`README.md`, `RESEARCH.md`) never ship.
+  file type per content folder (`About`, `Assemblies`, `Defs`, `Patches`, `Languages`,
+  `Textures`, plus `Sounds`/`AssetBundles` if ever added), matched at the root and under any
+  version folder, so a new content folder of an existing type deploys automatically and only a
+  brand-new file type needs a new line. Gated compat load roots (see LoadFolders.xml) sit two
+  levels deep and need an explicit pattern per content type: `Defs`/`Patches`/`Languages`/
+  `AssetBundles` are matched under the version-specific `<version>/Mods/<Mod Name>/`, and
+  `Textures` under the version-independent root `Mods/<Mod Name>/` (only the first flavour
+  exists here today). A type a compat root does not yet cover deploys nothing, with no build
+  error. Only game-loaded types are listed (e.g. `.xml`), so stray dev notes (`README.md`,
+  `RESEARCH.md`) never ship.
 - **Comments never ship:** after the copy, `StageMod` rewrites every staged `.xml` without its
   comments (the inline `StripXmlComments` task beside it), so def headers cost players nothing
   and can be as long as they need to be. The repo files are untouched: the translation checker

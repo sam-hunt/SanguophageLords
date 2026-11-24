@@ -85,7 +85,7 @@
        a -p:StageDir pointing at its staging dir). Add/remove shipped files here only. -->
   <PropertyGroup>
     <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/../..'))</RepoRoot>
-    <ModDeployPath>$(RimWorldPath)/Mods/SanguophageLair</ModDeployPath>
+    <ModDeployPath>$(RimWorldPath)/Mods/$(MSBuildProjectName)</ModDeployPath>
     <!-- StageMod writes here. Defaults to the local Mods folder; CI overrides with -p:StageDir=... -->
     <StageDir Condition="'$(StageDir)' == ''">$(ModDeployPath)</StageDir>
   </PropertyGroup>
@@ -101,8 +101,8 @@
            only the file types the game loads at runtime (+ Workshop release metadata in
            About/). Each content folder is matched at the mod root AND under any one
            top-level subfolder ("$(RepoRoot)/*/<Folder>") — i.e. version folders (1.6/,
-           a future 1.7/) and Common/ — so content deploys wherever it lives and new
-           version folders need no change here. Source layout is mirrored verbatim into
+           a future 1.7/) — so content deploys wherever it lives and new version
+           folders need no change here. Source layout is mirrored verbatim into
            $(StageDir), so e.g. root About/ stays at root and 1.6/Defs/ stays under 1.6/.
 
            To support a new content type, add ONE <_ModFiles Include="..."/> line below.
@@ -117,17 +117,30 @@
       <_ModFiles Include="$(RepoRoot)/LoadFolders.xml" />
       <_ModFiles Include="$(RepoRoot)/About/**/*.xml;$(RepoRoot)/About/**/*.png;$(RepoRoot)/About/**/*.txt" />
 
-      <!-- Code + content (matched at root and under any version / Common folder) -->
+      <!-- Code + content (matched at root and under any version folder) -->
       <_ModFiles Include="$(RepoRoot)/Assemblies/**/*.dll;$(RepoRoot)/*/Assemblies/**/*.dll" />
       <_ModFiles Include="$(RepoRoot)/Defs/**/*.xml;$(RepoRoot)/*/Defs/**/*.xml;$(RepoRoot)/*/Mods/*/Defs/**/*.xml" />
       <_ModFiles Include="$(RepoRoot)/Patches/**/*.xml;$(RepoRoot)/*/Patches/**/*.xml;$(RepoRoot)/*/Mods/*/Patches/**/*.xml" />
-      <_ModFiles Include="$(RepoRoot)/Textures/**/*.png;$(RepoRoot)/Textures/**/*.jpg;$(RepoRoot)/Textures/**/*.jpeg;$(RepoRoot)/*/Textures/**/*.png;$(RepoRoot)/*/Textures/**/*.jpg;$(RepoRoot)/*/Textures/**/*.jpeg" />
+      <_ModFiles Include="$(RepoRoot)/Textures/**/*.png;$(RepoRoot)/Textures/**/*.jpg;$(RepoRoot)/Textures/**/*.jpeg;$(RepoRoot)/*/Textures/**/*.png;$(RepoRoot)/*/Textures/**/*.jpg;$(RepoRoot)/*/Textures/**/*.jpeg;$(RepoRoot)/Mods/*/Textures/**/*.png;$(RepoRoot)/Mods/*/Textures/**/*.jpg;$(RepoRoot)/Mods/*/Textures/**/*.jpeg" />
       <_ModFiles Include="$(RepoRoot)/Sounds/**/*.wav;$(RepoRoot)/Sounds/**/*.mp3;$(RepoRoot)/Sounds/**/*.ogg;$(RepoRoot)/*/Sounds/**/*.wav;$(RepoRoot)/*/Sounds/**/*.mp3;$(RepoRoot)/*/Sounds/**/*.ogg" />
-      <!-- Defs and Languages also match under gated compat load roots, which nest
-           inside the version folder as <version>/Mods/<Mod Name>/ (see LoadFolders.xml).
-           If a compat root ever ships another content type (Patches, ...), extend that
-           type's line the same way. -->
       <_ModFiles Include="$(RepoRoot)/Languages/**/*.xml;$(RepoRoot)/Languages/**/*.txt;$(RepoRoot)/*/Languages/**/*.xml;$(RepoRoot)/*/Languages/**/*.txt;$(RepoRoot)/*/Mods/*/Languages/**/*.xml;$(RepoRoot)/*/Mods/*/Languages/**/*.txt" />
+      <!-- Asset bundles are EXTENSIONLESS files (ModAssetBundlesHandler loads every extensionless
+           file directly under AssetBundles/, and only the _win/_mac/_linux one matching the OS), so
+           this is the one glob that can't whitelist by extension: it takes the folder's direct
+           children and excludes Unity's .manifest sidecars, which must never be copied in anyway.
+           Bundles are committed binaries built outside this build (CI has no Unity); see
+           UniqueMeleeWeapons' Source/UnityShaders/ for the family's Unity project and build script. -->
+      <_ModFiles Include="$(RepoRoot)/AssetBundles/*;$(RepoRoot)/*/AssetBundles/*;$(RepoRoot)/*/Mods/*/AssetBundles/*" Exclude="$(RepoRoot)/AssetBundles/*.manifest;$(RepoRoot)/*/AssetBundles/*.manifest;$(RepoRoot)/*/Mods/*/AssetBundles/*.manifest" />
+      <!-- The lines above also match under the gated compat load roots (see
+           LoadFolders.xml), which come in two flavours: version-specific ones nest
+           inside the version folder as <version>/Mods/<Mod Name>/ (Defs, Patches,
+           Languages), and version-independent ones sit at the mod root as
+           Mods/<Mod Name>/ (art, which is not version-scoped). Neither is reached by
+           the "$(RepoRoot)/*/<Folder>" wildcard, since both put <Folder> two levels
+           deep, so each needs its own explicit pattern. If a compat root ever ships
+           another content type (Sounds, ...), extend that type's line the same way —
+           a miss deploys nothing and fails silently in-game (missing textures render
+           as pink boxes), not at build. -->
     </ItemGroup>
     <!-- Mirror each file's path relative to the repo root into $(StageDir). Computed as
          per-item metadata (MakeRelative inside a transform string evaluates only once,
