@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    SL_LairRoom_PowerChamber: the lair's power, drawn from the heat of the deep rock. A
+    geothermal generator over a steam geyser and a small battery bank, in a hot, bare chamber
+    hewn from the rock. Layout and engine facts in
+    Source/1.6/MapGen/Rooms/LairRoomWorker_PowerChamber.cs; the conduits from here to every
+    powered building in Source/1.6/MapGen/Utilities/LairPowerNet.cs.
+
+    Geothermal because it needs no fuel and no daylight underground, and is no open flame:
+    sanguophages fear fire, and a lair that has to feed a wood or chemfuel burner is a lair
+    with servants hauling fuel past the caskets. One generator gives 3600 W; the batteries
+    (2400 Wd, full at generation) carry the deathrest rooms through peaks.
+
+    Shapes: 11~13 across and 9~11 deep holds the 6x6 generator with a walking lane all round
+    it and the batteries against the side walls; keeping one side under 13 keeps every cell
+    within roof-holding reach of a wall, so the generator needs no columns round it. Hewn
+    walls and the rock's own floor: it is a service cave, not a room of state.
+
+    Placement: off the beaten path. Never on the axis or a fixed site (anchor Any), pulled
+    toward hosts deep in the complex and at least two doors in, often at the end of a
+    corridor, and a dead end (no children, no loop doors), so no visitor walks through it.
+  -->
+
+  <SanguophageLair.LairRoomDef>
+    <defName>SL_LairRoom_PowerChamber</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_PowerChamber</workerClass>
+    <walls>Hewn</walls>
+    <floor>Natural</floor>
+    <minDepth>2</minDepth>
+    <depthBias>1</depthBias>
+    <corridorChance>0.6</corridorChance>
+    <corridorLength>3~6</corridorLength>
+    <maxChildren>0</maxChildren>
+    <allowLoops>false</allowLoops>
+    <shapes>
+      <li>
+        <kind>Rect</kind>
+        <across>11~13</across>
+        <deep>9~11</deep>
+      </li>
+    </shapes>
+  </SanguophageLair.LairRoomDef>
+
+</Defs>
