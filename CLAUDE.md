@@ -309,8 +309,14 @@ pinned list means the packageId isn't registered there.
 
 ## Debugging
 
-For reading `Player.log` or disassembling the RimWorld API, use the `rimworld-logs` skill.
-Logging convention: `Log.Message("[Sanguophage Lair] ...")`.
+For reading `Player.log` or disassembling the RimWorld API, use the `rimworld-logs` skill, which
+carries both versions' log and assembly paths. Logging convention:
+`Log.Message("[Sanguophage Lair] ...")`.
+
+The local install is whichever Steam branch is selected, so its assembly is the decompile target
+for that version only. A "decompile-verified" call path in a def or code header was verified on
+1.6 unless it says otherwise; when one is re-verified on 1.7 and differs, record both in the
+header.
 
 **Iterating on the lair mapgen (dev mode, Odyssey active):** on a colony map, Dev menu → Map →
 `AddMutatorToCurrentMapTile` → `SL_SanguophageLair`, then `RegenerateCurrentMap`, forces the
