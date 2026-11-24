@@ -71,6 +71,11 @@ build redeploys automatically and atomically — there is no separate clean step
   LoadFolders.xml), so a new content folder of an existing type deploys automatically and only a
   brand-new file type needs a new line. Only game-loaded types are listed (e.g. `.xml`), so stray
   dev notes (`README.md`, `RESEARCH.md`) never ship.
+- **Comments never ship:** after the copy, `StageMod` rewrites every staged `.xml` without its
+  comments (the inline `StripXmlComments` task beside it), so def headers cost players nothing
+  and can be as long as they need to be. The repo files are untouched: the translation checker
+  and the tests read the repo, while the game, and so the smoke test, loads the stripped copy.
+  The Steam upload is this same local deploy, so it ships stripped too.
 - **Self-cleaning:** `StageMod` wipes `$(StageDir)` and recopies from source, so renamed/deleted
   files never linger. The post-build `DeployToModFolder` target calls it with
   `StageDir = $RIMWORLD_PATH/Mods/SanguophageLair` (only when a local RimWorld install is
