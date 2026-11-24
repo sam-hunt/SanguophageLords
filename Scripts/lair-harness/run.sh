@@ -4,6 +4,7 @@
 # Env switches:
 #   SL_DLC=royalty,ideology,anomaly,odyssey   extra DLC to activate (Biotech is always on)
 #   SL_PR=1                                   also activate Harmony + Progress Renderer, mode (a)
+#   SL_MODS=id1,id2                           extra mod packageIds, loaded in this order before the lair
 #   SL_PORTAL=0                               do not spawn SL_AncientStairwell on the colony map
 #   SL_MAXPX=2000                             long side of outputs      SL_TIMEOUT=300  seconds
 #   SL_DEF=SL_Lair                            MapGeneratorDef to generate
@@ -50,6 +51,7 @@ cp "$CFG" "$STATE/ModsConfig.xml.orig"
 touch "$STATE/pending"
 trap restore EXIT INT TERM HUP
 PR_IDS=""; [ "${SL_PR:-0}" = "1" ] && PR_IDS="brrainz.harmony,neptimus7.progressrenderer"
+[ -n "${SL_MODS:-}" ] && PR_IDS="${PR_IDS:+$PR_IDS,}$SL_MODS"
 python3 -I - "$STATE/ModsConfig.xml.orig" "$CFG" "${SL_DLC:-}" "$PR_IDS" <<'PY'
 import re, sys
 src, dst, dlc, pr = sys.argv[1:5]

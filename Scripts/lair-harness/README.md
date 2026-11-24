@@ -35,6 +35,13 @@ generates without a stairwell, `SL_TIMEOUT`, `SL_MAXPX`, `SL_ROOFS`, `SL_BRIGHT`
 How it works: `run.sh` builds `SLHarness.csproj` against the installed game's assemblies,
 copies the mod into the game's `Mods/SLHarness`, swaps `ModsConfig.xml` for a pinned list
 (the original is restored on exit, and by the next run if this one was killed), launches the
-game with `-quicktest`, waits for the harness's `DONE` line, then crops the screenshot. To
-test a mod that is not on the pinned list (Vanilla Races Expanded - Sanguophage, say), add its
-packageId where `run.sh` builds the list.
+game with `-quicktest`, waits for the harness's `DONE` line, then crops the screenshot.
+
+`SL_MODS` adds other installed mods to the pinned list by packageId, in load order, ahead of
+the lair. The hemogen pipe network, for example, needs Vanilla Races Expanded - Sanguophage
+and what it depends on:
+
+```bash
+SL_MODS=brrainz.harmony,oskarpotocki.vanillafactionsexpanded.core,vanillaracesexpanded.sanguophage \
+  Scripts/lair-harness/try.sh 77 150
+```
