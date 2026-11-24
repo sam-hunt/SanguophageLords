@@ -112,10 +112,13 @@ skill runs the suite and a Release build as its first gate.
 
 Run tests natively from WSL — never build from the Windows toolchain: it corrupts the WSL-side
 incremental state (shared `obj/` seen under different path roots). The test csproj copies the
-live install's runtime DLLs beside the test DLL so tests may load Verse types (see the
+game's real 1.6 runtime DLLs beside the test DLL so tests may load Verse types (see the
 Assembly-CSharp-firstpass comment there — mono resolves field types eagerly where the Windows CLR
-is lazy); `OutputPath` is Release-gated so Debug `dotnet test` builds can't overwrite the shipped
-DLL in `1.6/Assemblies`.
+is lazy). It finds them in `RIMWORLD_MANAGED_1_6`, a 1.6 install's `Managed/` folder, or the
+frozen copy at `~/.local/share/RimWorld-1.6/Managed` (the csproj documents the lookup); a 1.7
+install has none, and without any source the build stays green on reference-only stubs while
+tests that load game types fail. `OutputPath` is Release-gated so Debug `dotnet test` builds
+can't overwrite the shipped DLL in `1.6/Assemblies`.
 
 If a native test failure looks runtime-flavored, suspect assembly resolution first: a DLL missing
 from the test bin copy target throws `BadImageFormatException`/`TypeLoadException` under mono
