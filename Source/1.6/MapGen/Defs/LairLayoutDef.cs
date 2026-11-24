@@ -47,6 +47,8 @@ public class LairLayoutDef : Def
     public List<ColorDef> furniturePaints = new List<ColorDef>();
     // Carpet terrains by defName, brightest first. Names rather than references because the
     // carpet defs are generated at load from colour defs and cannot be cross-referenced.
+    // NoTranslate keeps the game's translation walker from offering the names to translators.
+    [NoTranslate]
     public List<string> carpets = new List<string>();
 
     // Lays every utility line (power conduits, and hemogen pipes when Vanilla Races Expanded -

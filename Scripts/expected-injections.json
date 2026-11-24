@@ -17,9 +17,61 @@
     ]
   },
   "defInjections": {
+    "FactionDef": {
+      "SL_LairSanguophages.description": {
+        "english": "Ancient sanguophages who sleep away the centuries in sealed lairs below the ground, served by the thralls they keep.",
+        "required": true
+      },
+      "SL_LairSanguophages.label": {
+        "english": "lair sanguophages",
+        "required": true
+      },
+      "SL_LairSanguophages.leaderTitle": {
+        "english": "leader",
+        "required": true
+      },
+      "SL_LairSanguophages.messageDefendersAttacking": {
+        "english": "{0} from {1} are attacking your {2}.",
+        "required": true
+      },
+      "SL_LairSanguophages.pawnSingular": {
+        "english": "sanguophage",
+        "required": true
+      },
+      "SL_LairSanguophages.pawnsPlural": {
+        "english": "sanguophages",
+        "required": true
+      }
+    },
     "MapGeneratorDef": {
       "SL_Lair.label": {
         "english": "sanguophage lair",
+        "required": true
+      }
+    },
+    "PawnKindDef": {
+      "SL_LairMaster.label": {
+        "english": "elder sanguophage",
+        "required": true
+      },
+      "SL_LairMaster.specificApparelRequirements.0.alternateTagChoices.0.tag": {
+        "english": "Cape"
+      },
+      "SL_LairMaster.specificApparelRequirements.0.alternateTagChoices.1.tag": {
+        "english": "BestowerHood"
+      },
+      "SL_LairSanguophage.label": {
+        "english": "sanguophage",
+        "required": true
+      },
+      "SL_LairSanguophage.specificApparelRequirements.0.alternateTagChoices.0.tag": {
+        "english": "Cape"
+      },
+      "SL_LairSanguophage.specificApparelRequirements.0.alternateTagChoices.1.tag": {
+        "english": "BestowerHood"
+      },
+      "SL_LairThrall.label": {
+        "english": "thrall",
         "required": true
       }
     },
