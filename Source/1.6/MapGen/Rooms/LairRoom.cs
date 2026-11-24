@@ -242,6 +242,28 @@ public sealed class LairRoom
         return TrySpawn(def, At(rightward, forwardward), Turn(localRot), stuff, paint, quality);
     }
 
+    // Spawns a piece so that its footprint is exactly the rectangle between two local cells,
+    // facing localRot. This is the way to place anything more than one cell across: where a
+    // thing's centre cell falls depends on its size and rotation, its footprint does not.
+    // Null (and nothing spawned) when the def cannot cover that rectangle in that rotation.
+    public Thing TrySpawnOver(ThingDef def, int right1, int forward1, int right2, int forward2, Rot4 localRot, ThingDef stuff = null, ColorDef paint = null, QualityCategory? quality = null)
+    {
+        if (def == null)
+        {
+            return null;
+        }
+        CellRect footprint = CellRect.FromLimits(At(right1, forward1), At(right2, forward2));
+        Rot4 rot = def.rotatable ? Turn(localRot) : Rot4.North;
+        foreach (IntVec3 c in footprint)
+        {
+            if (GenAdj.OccupiedRect(c, rot, def.size) == footprint)
+            {
+                return TrySpawn(def, c, rot, stuff, paint, quality);
+            }
+        }
+        return null;
+    }
+
     // The same piece on both sides of the room's centre line, each facing as the mirror image
     // of the other. A piece on the centre line itself is spawned once.
     public void TrySpawnPair(ThingDef def, int rightward, int forwardward, Rot4 localRot, ThingDef stuff = null, ColorDef paint = null, QualityCategory? quality = null)
@@ -371,6 +393,39 @@ public sealed class LairRoom
                 Map.terrainGrid.SetTerrain(c, terrain);
             }
         }
+    }
+
+    // How far a local cell is from the centre, measured in the room's own shape: straight-line
+    // distance in a round room, the larger coordinate in a rectangular one, and in an octagon
+    // the measure whose level lines are octagons parallel to the walls. Cells of equal Reach
+    // therefore trace the room's outline at any distance from the centre.
+    public float Reach(int rightward, int forwardward)
+    {
+        int r = Math.Abs(rightward);
+        int f = Math.Abs(forwardward);
+        switch (Plan.Shape)
+        {
+            case RoomShapeKind.Round:
+                return (float)Math.Sqrt((r * r) + (f * f));
+            case RoomShapeKind.Octagon:
+                // The planner cuts octagon corners by about 0.28 of the width, which puts the
+                // diagonal walls at this multiple of the distance to the straight ones.
+                return Math.Max(Math.Max(r, f), (r + f) / 1.42f);
+            default:
+                return Math.Max(r, f);
+        }
+    }
+
+    // Changes the floor of the band of cells whose Reach lies in [from, to): a ring concentric
+    // with the room and parallel to its walls, at a fixed distance from the centre. Use this
+    // for a ring around a centrepiece and FloorRing for a border measured from the walls.
+    public void FloorBand(TerrainDef terrain, float from, float to)
+    {
+        Floor(terrain, (rightward, forwardward) =>
+        {
+            float reach = Reach(rightward, forwardward);
+            return reach >= from && reach < to;
+        });
     }
 
     // ----- Light -----
@@ -506,35 +561,47 @@ public sealed class LairRoom
     }
 
     // Thick rock roof falls where it is too far from anything that holds it up, the moment a
-    // nearby wall is lost. Rooms wide enough to have such cells get columns until they have
-    // none, placed in mirrored pairs nearest the centre. Returns how many columns were added;
-    // a well-designed worker leaves this nothing to do.
+    // nearby wall is lost. While any cell of the room is out of reach of a wall or column, a
+    // column goes on the free cell nearest the worst-placed one (and on its mirror image, to
+    // keep the room symmetric). Returns how many columns were added; a well-designed worker
+    // leaves this nothing to do.
     public int EnsureRoofSupport()
     {
         int added = 0;
         for (int guard = 0; guard < 16; guard++)
         {
-            IntVec3 best = IntVec3.Invalid;
-            int bestDist = int.MaxValue;
+            IntVec3 worst = IntVec3.Invalid;
+            int worstDist = int.MaxValue;
             foreach (IntVec3 c in Plan.Cells)
             {
-                if (!IsFree(c) || RoofCollapseUtility.WithinRangeOfRoofHolder(c, Map))
-                {
-                    continue;
-                }
                 int dist = (c - Center).LengthHorizontalSquared;
-                if (dist < bestDist)
+                if (dist < worstDist && !RoofCollapseUtility.WithinRangeOfRoofHolder(c, Map))
                 {
-                    best = c;
-                    bestDist = dist;
+                    worst = c;
+                    worstDist = dist;
                 }
             }
-            if (!best.IsValid)
+            if (!worst.IsValid)
             {
                 break;
             }
-            Local(best, out int rightward, out int forwardward);
-            if (TrySpawn(ThingDefOf.Column, best, Rot4.North, paint: Style.WallPaint) != null)
+            IntVec3 site = IntVec3.Invalid;
+            int siteDist = int.MaxValue;
+            foreach (IntVec3 c in Plan.Cells)
+            {
+                int dist = (c - worst).LengthHorizontalSquared;
+                if (dist < siteDist && IsFree(c))
+                {
+                    site = c;
+                    siteDist = dist;
+                }
+            }
+            if (!site.IsValid || siteDist > 36)
+            {
+                break;
+            }
+            Local(site, out int rightward, out int forwardward);
+            if (TrySpawn(ThingDefOf.Column, site, Rot4.North, paint: Style.WallPaint) != null)
             {
                 added++;
             }

@@ -21,6 +21,7 @@
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_EntranceHall</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_EntranceHall</workerClass>
     <role>EntranceHall</role>
     <shapes>
       <li>
@@ -33,12 +34,14 @@
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Forecourt</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Forecourt</workerClass>
     <role>Forecourt</role>
     <walls>Open</walls>
   </SanguophageLair.LairRoomDef>
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Vestibule</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Vestibule</workerClass>
     <role>Vestibule</role>
     <shapes>
       <li>
@@ -65,6 +68,7 @@
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Sanctum</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Sanctum</workerClass>
     <role>Sanctum</role>
     <maxChildren>3</maxChildren>
     <shapes>
@@ -78,6 +82,7 @@
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Corridor</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Corridor</workerClass>
     <role>Corridor</role>
   </SanguophageLair.LairRoomDef>
 

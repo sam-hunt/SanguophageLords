@@ -74,7 +74,7 @@ public sealed class LairPlanParams
     public float LoopChance = 0.35f;
     // Chance per exposed wall cell that a hewn room's outline bulges into the rock there.
     public float HewnBulgeChance = 0.3f;
-    public int ForecourtDepth = 4;
+    public int ForecourtDepth = 5;
     public int ForecourtWidth = 21;
 
     public RoomRequest EntranceHall;

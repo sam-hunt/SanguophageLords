@@ -37,7 +37,7 @@ public class LairLayoutDef : Def
     public float wideCorridorChance = 0.7f;
     public float loopChance = 0.35f;
     public float hewnBulgeChance = 0.3f;
-    public int forecourtDepth = 4;
+    public int forecourtDepth = 5;
     public int forecourtWidth = 21;
 
     // Paint over the lair's stone. Null leaves the stone its own colour.

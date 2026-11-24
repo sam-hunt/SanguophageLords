@@ -11,7 +11,23 @@ namespace SanguophageLair;
 public static class SL_LairDefOf
 {
     // LairRoomWorker_Processional: the sculpture in every other wall bay.
+    // LairRoomWorker_EntranceHall: the pair beside the arch.
     public static ThingDef SculptureSmall;
+
+    // LairRoomWorker_Sanctum: the pieces flanking each face. LairRoomWorker_Vestibule: the
+    // pair either side of the runner.
+    public static ThingDef SculptureLarge;
+
+    // LairRoomWorker_Forecourt: the pair flanking the gate.
+    public static ThingDef SculptureGrand;
+
+    // LairRoomWorker_Sanctum and LairRoomWorker_DeathrestChamber: the deathrest buildings
+    // bound to the sleeper in the casket (Biotech).
+    public static ThingDef DeathrestAccelerator;
+    public static ThingDef Hemopump;
+    public static ThingDef HemogenAmplifier;
+    public static ThingDef GlucosoidPump;
+    public static ThingDef PsychofluidPump;
 
     static SL_LairDefOf()
     {

@@ -2,11 +2,19 @@
 <Defs>
 
   <!--
-    SL_LairRoom_DeathrestChamber. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_DeathrestChamber: a lesser sanguophage's deathrest room. The layout def asks
+    for two, and as a mirrored pair off the sanctum's east and west faces they give the
+    master's chamber its flanking chapels; contents in LairRoomWorker_DeathrestChamber.cs.
+
+    Round, because the casket and its ring of carpet are; 9 to 11 across is the smallest that
+    takes a casket with a pump on three sides and still leaves a walk around them. Half the
+    time a short corridor stands between the chamber and the sanctum, so the pair is not
+    always wall to wall with it.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_DeathrestChamber</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_DeathrestChamber</workerClass>
     <anchor>SanctumSide</anchor>
     <paired>true</paired>
     <corridorChance>0.5</corridorChance>
