@@ -1,16 +1,17 @@
 {
   "meta": {
-    "gameBuild": "1.6.4871 rev591",
+    "gameBuild": "1.7.5014 rev1195",
     "activeDlcs": [
       "Core",
-      "Biotech"
+      "Biotech",
+      "Odyssey"
     ],
     "modPackageId": "shunter.sanguophagelair",
     "modName": "Sanguophage Lair",
     "activeMods": [
-      "brrainz.harmony",
       "ludeon.rimworld",
       "ludeon.rimworld.biotech",
+      "ludeon.rimworld.odyssey",
       "shunter.sanguophagelair",
       "shunter.l10nprobe"
     ]
@@ -37,6 +38,16 @@
       },
       "SL_AncientStairwellExit.label": {
         "english": "ancient stairwell exit",
+        "required": true
+      }
+    },
+    "TileMutatorDef": {
+      "SL_SanguophageLair.description": {
+        "english": "An ancient stone stairwell here descends into a sanguophage lair. Its occupants have kept the stairs worn smooth over the centuries, and they are unlikely to welcome daylight visitors.",
+        "required": true
+      },
+      "SL_SanguophageLair.label": {
+        "english": "sanguophage lair",
         "required": true
       }
     }
