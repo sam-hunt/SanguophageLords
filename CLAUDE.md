@@ -386,5 +386,7 @@ header.
 surface entrance onto the current map; `RegenerateMapWithLandmark` (any landmark patched in
 `Landmarks_Odyssey.xml`) instead rerolls the tile's mutators as world gen would. On the world
 map, `Set landmark` / `Clear Landmark` place landmarks by hand. `GeneratePocketMap` → `SL_Lair`
-generates the lair with no portal: the exit step then falls back to default stuff and vanilla
-`PocketMapExit` logs "could not find map portal", which is expected there.
+is no use for the lair itself: that action makes a 100-cell map, too small for the layout, so
+it logs a warning and generates a bare cave (and with no portal the exit falls back to slate
+and vanilla `PocketMapExit` logs "could not find map portal", both expected there). To see a
+real lair, enter a stairwell or use the harness under `Scripts/lair-harness/`.
