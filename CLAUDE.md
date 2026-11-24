@@ -43,10 +43,11 @@ RIMWORLD_PATH="/path/to/RimWorld" dotnet build SanguophageLair.sln -c Release
 # Or: dotnet build -p:RimWorldPath="/path/to/RimWorld"
 ```
 
-The build system auto-detects the RimWorld installation path on Windows/Linux/Mac (including WSL
-targeting a Windows install). For CI builds without RimWorld installed, it falls back to the
-`Krafs.Rimworld.Ref` NuGet package. For local development and api inspection (monodis, ilspycmd
-etc), the local installation should be preferred as the source of truth.
+The build compiles against the pinned `Krafs.Rimworld.Ref` 1.6 package everywhere, locally and in
+CI, never against the local install (a 1.7 install carries no 1.6 assemblies). The RimWorld
+installation path, auto-detected on Windows/Linux/Mac or set by `RIMWORLD_PATH` (in WSL the
+Windows path), only decides deployment and serves as the decompile target for API inspection
+(monodis, ilspycmd), where it is the source of truth for the version it is.
 
 ### Deployment
 
@@ -95,8 +96,8 @@ terminology decisions. Changing the thing without changing the skill leaves an i
 pointing at something that no longer exists, and nothing fails until the next release run.
 
 **WSL Setup:** Requires `RIMWORLD_PATH` env var in `~/.bashrc` pointing to the Windows RimWorld
-install (e.g., `/mnt/c/Program Files (x86)/Steam/steamapps/common/RimWorld`). The csproj
-auto-detects `RimWorldWin64_Data` when the Linux data folder isn't found.
+install (e.g., `/mnt/c/Program Files (x86)/Steam/steamapps/common/RimWorld`). Deployment keys
+on that folder's `Mods/` directory, which every game version and platform has.
 
 ### Tests
 
