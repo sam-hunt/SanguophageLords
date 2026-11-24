@@ -2,11 +2,22 @@
 <Defs>
 
   <!--
-    SL_LairRoom_DiningHall. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_DiningHall: the hall where the lair's sanguophages dine on hemogen. Furnished
+    by LairRoomWorker_DiningHall (layout in its header): a long three-wide table down the
+    axis on red carpet, chairs both sides, a gold master's chair at the head under two large
+    sculptures, hemogen on the table and on the wall shelves.
+
+    Formal room: built walls and the default tile floor under the carpet. Nine to eleven
+    across holds the table, a row of chairs either side and a lane each side of those; eleven
+    to fifteen deep gives a table of seven to eleven rows with two rows inside the door and
+    the head chair behind it. The room is at most 11 wide and 15 deep, so no cell is further
+    than 5.5 cells from a wall and no columns are needed. It may stand at the end of a short
+    corridor (corridorChance).
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_DiningHall</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_DiningHall</workerClass>
     <corridorChance>0.3</corridorChance>
     <shapes>
       <li>

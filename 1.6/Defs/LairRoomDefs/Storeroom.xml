@@ -2,11 +2,19 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Storeroom. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Storeroom: general stores, deliberately unglamorous. Furnished by
+    LairRoomWorker_Storeroom (layout in its header): unpainted shelves of cloth, steel,
+    components and wood, stacks of the lair's blocks and logs, and rock chunks in a corner.
+
+    A small hewn room with the rock's own floor (Natural), a dead end (maxChildren 0), the
+    plainest finish in the lair. The worker's shelf runs are written for a half-width and
+    half-depth of 2 or 3, which is this size range. The layout asks for one to two of these
+    per lair.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Storeroom</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Storeroom</workerClass>
     <walls>Hewn</walls>
     <floor>Natural</floor>
     <maxChildren>0</maxChildren>

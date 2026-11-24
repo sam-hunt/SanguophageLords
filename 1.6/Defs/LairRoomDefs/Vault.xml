@@ -2,11 +2,20 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Vault. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Vault: the lair's treasury and the player's main material reward. Furnished by
+    LairRoomWorker_Vault (layout and a per-item loot table in its header, about 7700 silver of
+    market value): painted shelves of precious goods around a central display of archite
+    capsules and a deathrest capacity serum.
+
+    A small built room on tile, deep inside (minDepth 4, depthBias 2: the guards and
+    sleepers lie between it and the gate), with one door and no further rooms (maxChildren 0,
+    allowLoops false). The worker's layout is written for a half-width and half-depth of 2 or
+    3, which is this size range.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Vault</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Vault</workerClass>
     <minDepth>4</minDepth>
     <depthBias>2</depthBias>
     <maxChildren>0</maxChildren>

@@ -2,11 +2,20 @@
 <Defs>
 
   <!--
-    SL_LairRoom_ThrallQuarters. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_ThrallQuarters: the servants' dormitory, plain and cramped next to their
+    masters' halls. Furnished by LairRoomWorker_ThrallQuarters (layout in its header): rows of
+    stone beds with end tables along both side walls, a thrall asleep in about half of them.
+
+    Walls are hewn from the rock and the floor is flagstone, the working-room finish; the
+    ragged hewn outline is why the worker places every piece through the fit-checking spawn
+    helpers and drops what does not fit. It can stand at the end of a corridor
+    (corridorChance), as a servants' wing tucked away from the formal halls. Sizes give an
+    aisle of five to seven cells between the two bed rows and three to five beds a side.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_ThrallQuarters</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_ThrallQuarters</workerClass>
     <walls>Hewn</walls>
     <floor>Flagstone</floor>
     <corridorChance>0.4</corridorChance>

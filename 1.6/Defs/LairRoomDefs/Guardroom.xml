@@ -2,11 +2,20 @@
 <Defs>
 
   <!--
-    SL_LairRoom_Guardroom. Placement and shape only so far; its worker and rationale are still to come.
+    SL_LairRoom_Guardroom: where the lair's thralls keep watch on the main hall. Furnished by
+    LairRoomWorker_Guardroom (layout in its header): two weapon racks, a table with stools,
+    plain beds along the side walls, and two awake thrall guards just inside the door.
+
+    A mirrored pair off the processional's long sides (anchor ProcessionalSide, paired), pulled
+    toward the gate (negative depthBias) so the guards stand near the entrance. Each leads on
+    to at most one further room. Sizes are the same odd interior sizes as every lair room, and
+    the worker's layout is written for a half-width of 3 or 4 and a half-depth of 2 or 3, which
+    is exactly this range. Floor is the default tile, matching the formal hall it opens on.
   -->
 
   <SanguophageLair.LairRoomDef>
     <defName>SL_LairRoom_Guardroom</defName>
+    <workerClass>SanguophageLair.LairRoomWorker_Guardroom</workerClass>
     <anchor>ProcessionalSide</anchor>
     <paired>true</paired>
     <maxChildren>1</maxChildren>
