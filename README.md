@@ -2,7 +2,7 @@
 
 > A RimWorld mod adding a rare sanguophage lair world quest site with a custom portal and pocket map
 
-[![RimWorld](https://img.shields.io/badge/RimWorld-1.6-blue.svg)](https://rimworldgame.com/)
+[![RimWorld](https://img.shields.io/badge/RimWorld-1.6%20%7C%201.7-blue.svg)](https://rimworldgame.com/)
 [![Biotech DLC](https://img.shields.io/badge/DLC-Biotech-red.svg)](https://store.steampowered.com/app/1826140/RimWorld__Biotech/)
 <!-- Steam badges, added on first Workshop publish with WORKSHOP_ID from About/PublishedFileId.txt:
 [![Subscribers](https://img.shields.io/steam/subscriptions/WORKSHOP_ID?logo=steam&label=subscribers)](https://steamcommunity.com/sharedfiles/filedetails/?id=WORKSHOP_ID)
@@ -31,7 +31,7 @@ Sanguophages haunt RimWorld's lore as ancient, scheming predators - but in vanil
 
 ## Requirements
 
-- **RimWorld 1.6** or later
+- **RimWorld 1.6** or **1.7**
 - **Biotech DLC** (required - the lair is built on Biotech's sanguophage xenotype, genes, and hemogen systems)
 
 ## Installation

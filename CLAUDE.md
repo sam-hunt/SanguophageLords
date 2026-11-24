@@ -4,10 +4,19 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 
 ## Project Overview
 
-**Sanguophage Lair** is a RimWorld 1.6 mod adding a rare world quest site: a sanguophage lair
+**Sanguophage Lair** is a RimWorld 1.6/1.7 mod adding a rare world quest site: a sanguophage lair
 entered through a custom portal onto a generated pocket map (a custom MapGeneratorDef subtree).
 Requires the Biotech DLC (hard dependency — the lair is built on Biotech's
 sanguophage xenotype, genes, and hemogen systems).
+
+**One tree serves both game versions.** `1.6/` and the `Source/1.6/` net472 assembly are loaded
+by 1.6 and by 1.7 (whose Waylith runtime maps every `UnityEngine` reference onto its
+`UnityStubs`), with `LoadFolders.xml` naming the same roots under each version. This is Phase A
+of the family guide `../RIMWORLD_1.7_MIGRATION.md`; do not add a `1.7/` folder or retarget the
+project outside that plan. The plan for this mod (decided 2026-11-24): stay dual-version while
+1.7 is on Steam's `unstable` branch only, and go 1.7-only (the guide's Phase C) if 1.7 reaches
+Steam's main branch before the 1.0.0 release. A change must therefore work on both versions, and
+a `<v1.7>` root must be added wherever a `<v1.6>` one is.
 
 **Key technologies:** C# (.NET Framework 4.7.2), RimWorld modding API, XML defs.
 
@@ -126,10 +135,10 @@ only — and one such failure can poison static state and surface as unrelated v
 downstream.
 
 **Startup smoke test (pre-release):** `python3 Scripts/integration-smoke-test.py` (game closed)
-boots the mod on its pinned minimal list, then classifies Player.log errors by origin and fails on
-anything attributed to this mod. Run before every release (wired into the release skill); thin
-shim over the shared engine in `l10n/smoke/` (born from the BetterTradersGuild v1.1.0 CWTL
-incident).
+boots the mod on its pinned minimal list, on whichever game version the selected Steam branch
+installs, then classifies Player.log errors by origin and fails on anything attributed to this
+mod. Run before every release (wired into the release skill); thin shim over the shared engine
+in `l10n/smoke/` (born from the BetterTradersGuild v1.1.0 CWTL incident).
 
 ## Architecture
 

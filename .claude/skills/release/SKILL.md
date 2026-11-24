@@ -185,6 +185,9 @@ python3 Scripts/integration-smoke-test.py
   until the errors are fixed or the user explicitly waives them. Third-party
   (`other`) errors are reported but not gating; mention them so the user can
   judge.
+- The smoke test boots whatever Steam branch is installed (1.6 on `main`,
+  1.7 on `unstable`). A Workshop release of a 1.6+1.7 mod is smoke-tested
+  on both branches when the change touched C# or patches.
 
 ### 7. Version, changelog, and the single release confirmation
 
@@ -263,4 +266,10 @@ No further questions unless something is unexpected:
   them, and the Workshop page has seen none of it. Remind the user to paste
   each listed title and description into the Workshop page's per-language edit
   UI (Steam's own language names differ: schinese, koreana, brazilian, latam,
-  ...).
+  ...). Remind them to upload from the 1.6 client, or from the 1.7 client with
+  its "Build asset pack" box unticked: the two send the same bytes (the mod
+  folder verbatim, tags from `About.xml`), which is what the CI zip and the
+  smoke test saw. Ticked, the 1.7 uploader bakes an `Assets.zip` of BC7
+  textures into the deployed copy and ships an item that differs from the
+  tested one. "Don't upload source textures" must stay unticked while 1.6 is
+  in `supportedVersions`: 1.6 ignores the pack and would ship with no art.
