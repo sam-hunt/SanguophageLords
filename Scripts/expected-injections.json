@@ -19,7 +19,7 @@
   "defInjections": {
     "FactionDef": {
       "SL_LairSanguophages.description": {
-        "english": "Ancient sanguophages who sleep away the centuries in sealed lairs below the ground, served by the thralls they keep.",
+        "english": "A group of ancient sanguophages living in a lair below the ground, served by their thralls.",
         "required": true
       },
       "SL_LairSanguophages.label": {
@@ -95,7 +95,7 @@
     },
     "TileMutatorDef": {
       "SL_SanguophageLair.description": {
-        "english": "An ancient stone stairwell here descends into a sanguophage lair. Its occupants have kept the stairs worn smooth over the centuries, and they are unlikely to welcome daylight visitors.",
+        "english": "This area contains an ancient stone stairwell leading down to a sanguophage lair. The sanguophages and their thralls will defend it.",
         "required": true
       },
       "SL_SanguophageLair.label": {

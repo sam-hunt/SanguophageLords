@@ -4,7 +4,11 @@
   <author>Sam Hunt</author>
   <packageId>shunter.sanguophagelords</packageId>
   <modVersion>0.1.0</modVersion>
-  <description>Adds a rare world quest site: the sanguophage lair. Descend ancient stairwells into a generated lair map where an ancient sanguophage and its thralls guard hemogen-soaked treasures. See the Steam Workshop page for full details.</description>
+  <description>Adds sanguophage lairs, generated underground complexes reached by an ancient stone stairwell. Each lair belongs to an elder sanguophage, with lesser sanguophages and thralls to defend it, and holds a vault, a gene laboratory and a prison among its many rooms.
+
+With Odyssey, a lair entrance can appear on rocky and ruined landmarks. A rare quest that leads to a lair without Odyssey is planned.
+
+Requires Biotech. Royalty, Ideology, Anomaly and Vanilla Races Expanded - Sanguophage each add a room of their own.</description>
   <supportedVersions>
     <li>1.6</li>
     <li>1.7</li>

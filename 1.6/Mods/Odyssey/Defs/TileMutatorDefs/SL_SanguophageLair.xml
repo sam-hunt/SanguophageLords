@@ -30,7 +30,7 @@
   <TileMutatorDef>
     <defName>SL_SanguophageLair</defName>
     <label>sanguophage lair</label>
-    <description>An ancient stone stairwell here descends into a sanguophage lair. Its occupants have kept the stairs worn smooth over the centuries, and they are unlikely to welcome daylight visitors.</description>
+    <description>This area contains an ancient stone stairwell leading down to a sanguophage lair. The sanguophages and their thralls will defend it.</description>
     <workerClass>SanguophageLords.TileMutatorWorker_SanguophageLair</workerClass>
     <!-- No rock to cut the stairwell from and no Heavy-affordance ground to set it on. -->
     <biomeBlacklist>

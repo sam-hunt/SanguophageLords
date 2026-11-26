@@ -1,22 +1,27 @@
 Sanguophage Lords
 
 [h1]About[/h1]
-Sanguophages haunt RimWorld's lore as ancient, scheming mysteries - but in vanilla Biotech you mostly meet them alone in shuttles or rare meetings at your own colony. This mod gives them a home worth raiding: a rare world quest site concealing a true sanguophage lair.
+Biotech's lore paints sanguophages as ancient and secretive, eternal lords who hide among ordinary people. In play you mostly meet them in small numbers: a master and a few thralls in a crashed shuttle, or a handful of them asking to hold a meeting at your colony. This mod gives them a home of their own, a sanguophage lair deep below the ground, reached by an ancient stone stairwell.
 
 [h2]The Lair[/h2]
 [list]
-[*]A rare opportunity-site quest reveals a sanguophage lair on the world map
-[*]The surface site houses a lone Ancient Stairwell; the real lair lies in a generated pocket map below
-[*]An ancient sanguophage and its thralls guard hemogen-soaked treasures
-[*]Quest commonality is configurable in mod settings (or disable it entirely)
+[*]A stone stairwell on the surface leads down into the lair, which is laid out fresh every time around the master's deathrest sanctum
+[*]An elder sanguophage, three lesser sanguophages and eight thralls live there, most of them asleep or in deathrest until you wake them
+[*]The vault holds archite capsules and a deathrest capacity serum, and the gene laboratory, library, gallery and larder all have something worth taking
+[*]Royalty adds a throne room, Ideology a temple and Anomaly a ritual chamber. With Vanilla Races Expanded - Sanguophage, a draincasket room feeds hemogen to the deathrest chambers
 [/list]
+
+[h2]Finding a lair[/h2]
+With Odyssey, a lair entrance can appear on rocky landmarks such as caverns, chasms and cliffs, and more rarely on ancient ruins and quarries. Lairs are placed when a world is generated.
+
+A rare quest that marks a lair on the world map without Odyssey is planned. Until it ships, Odyssey landmarks are the only way in.
 
 [hr][/hr]
 
 [h1]Compatibility[/h1]
 [list]
-[*]Requires RimWorld 1.6 or 1.7 and the Biotech DLC
-[*]Safe to add to existing saves; not safe to remove
+[*]Requires RimWorld 1.6 or 1.7 and the Biotech DLC. Odyssey is recommended.
+[*]Safe to add to existing saves, but an existing world will not gain any lairs. Not safe to remove.
 [*]Not tested with Combat Extended
 [/list]
 

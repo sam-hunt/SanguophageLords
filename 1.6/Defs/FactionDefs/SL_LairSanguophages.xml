@@ -25,7 +25,7 @@
   <FactionDef ParentName="FactionBase">
     <defName>SL_LairSanguophages</defName>
     <label>lair sanguophages</label>
-    <description>Ancient sanguophages who sleep away the centuries in sealed lairs below the ground, served by the thralls they keep.</description>
+    <description>A group of ancient sanguophages living in a lair below the ground, served by their thralls.</description>
     <pawnSingular>sanguophage</pawnSingular>
     <pawnsPlural>sanguophages</pawnsPlural>
     <hidden>true</hidden>

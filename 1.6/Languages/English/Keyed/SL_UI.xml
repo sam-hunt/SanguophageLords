@@ -20,6 +20,6 @@
        In SL_QuestWeight, {0} is the quest's name, {1} the value. -->
   <SL_LairQuest>sanguophage lair</SL_LairQuest>
   <SL_QuestWeight>{0} quest commonality: {1}</SL_QuestWeight>
-  <SL_LairQuestWeightDesc>Selection weight of the sanguophage lair quest against the other opportunity-site quests offered by traders, beggars and reading. Higher = offered more often. 0 disables the quest entirely.</SL_LairQuestWeightDesc>
+  <SL_LairQuestWeightDesc>How often the storyteller offers the sanguophage lair quest, weighed against every other quest it could pick. Set to 0 to stop the quest being offered at all.</SL_LairQuestWeightDesc>
 
 </LanguageData>
