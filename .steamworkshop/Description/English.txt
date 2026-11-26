@@ -24,3 +24,4 @@ Sanguophages haunt RimWorld's lore as ancient, scheming mysteries - but in vanil
 
 [h1]Links[/h1]
 Source code, manual downloads and issue tracker: [url=https://github.com/sam-hunt/SanguophageLair]GitHub[/url]
+Art by [url=https://steamcommunity.com/profiles/76561198094174176/myworkshopfiles/?appid=294100]IcingWithCheeseCake[/url]
