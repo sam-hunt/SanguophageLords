@@ -22,7 +22,7 @@ description: Find and read RimWorld's Player.log, or disassemble the RimWorld AP
    - **1.6 (Unity):** `Player.log` directly in that folder, Unity's unstructured format. A 1.7
      install leaves this file in place, stale; check the timestamp before reading it.
 
-Our own messages are prefixed `[Sanguophage Lair]`, so grep for that to isolate them from
+Our own messages are prefixed `[Sanguophage Lords]`, so grep for that to isolate them from
 vanilla and other mods' output.
 
 ## Inspecting the RimWorld API

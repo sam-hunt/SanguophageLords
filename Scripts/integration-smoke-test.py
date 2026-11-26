@@ -19,7 +19,7 @@ import startup_smoke as engine  # noqa: E402
 
 engine.REPO_ROOT = Path(__file__).resolve().parent.parent
 
-engine.PACKAGE_ID = "shunter.sanguophagelair"
+engine.PACKAGE_ID = "shunter.sanguophagelords"
 
 # RATIONALE: this is exactly SL's l10n CANONICAL_ACTIVE_MODS - Biotech is the
 # hard dep the lair's sanguophage xenotype/genes/hemogen systems are built
@@ -32,11 +32,11 @@ engine.SMOKE_ACTIVE_MODS = [
     "ludeon.rimworld",
     "ludeon.rimworld.biotech",
     "ludeon.rimworld.odyssey",
-    "shunter.sanguophagelair",
+    "shunter.sanguophagelords",
     "shunter.l10nprobe",
 ]
 
-engine.OWN_PATTERNS = ["SanguophageLair", "SL_"]
+engine.OWN_PATTERNS = ["SanguophageLords", "SL_"]
 
 # No integration mods yet - every gated error is therefore attributed to SL.
 engine.INTEGRATION_PATTERNS = {}

@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The guardroom: where the lair's thralls keep watch on the main hall. A mirrored pair stands
 // off the processional near the gate, each entered through its own door in the middle of the

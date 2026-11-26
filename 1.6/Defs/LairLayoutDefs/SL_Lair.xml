@@ -34,7 +34,7 @@
     with Vanilla Races Expanded - Sanguophage, run visibly along the halls as in the marketing
     art, and only go hidden under carpet.
   -->
-  <SanguophageLair.LairLayoutDef>
+  <SanguophageLords.LairLayoutDef>
     <defName>SL_Lair</defName>
     <entranceHall>SL_LairRoom_EntranceHall</entranceHall>
     <forecourt>SL_LairRoom_Forecourt</forecourt>
@@ -120,6 +120,6 @@
       <li>CarpetRed</li>
       <li>CarpetBurgundy</li>
     </carpets>
-  </SanguophageLair.LairLayoutDef>
+  </SanguophageLords.LairLayoutDef>
 
 </Defs>

@@ -1,6 +1,6 @@
 using RimWorld;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Surface end of the lair portal (thingClass of SL_AncientStairwell).
 //

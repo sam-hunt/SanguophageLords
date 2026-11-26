@@ -12,9 +12,9 @@
     where the masters' work would be kept; maxChildren 1 lets one more room hang off it.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Laboratory</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Laboratory</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Laboratory</workerClass>
     <corridorChance>0.4</corridorChance>
     <minDepth>2</minDepth>
     <maxChildren>1</maxChildren>
@@ -25,6 +25,6 @@
         <deep>9~11</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

@@ -2,11 +2,11 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("SanguophageLair")]
+[assembly: AssemblyTitle("SanguophageLords")]
 [assembly: AssemblyDescription("A rare sanguophage lair world quest site with a custom portal and pocket map")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SanguophageLair")]
+[assembly: AssemblyProduct("SanguophageLords")]
 [assembly: AssemblyCopyright("Copyright © 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,4 +20,4 @@ using System.Runtime.InteropServices;
 // (1.4.0-rc.1); the two numeric attributes above can't hold one and stay X.Y.Z.0.
 [assembly: AssemblyInformationalVersion("0.1.0")]
 
-[assembly: InternalsVisibleTo("SanguophageLair.Tests")]
+[assembly: InternalsVisibleTo("SanguophageLords.Tests")]

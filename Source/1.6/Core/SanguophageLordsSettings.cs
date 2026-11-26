@@ -1,7 +1,7 @@
 using UnityEngine;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Mod settings: the window frame, the ExposeData / ResetToDefaults fan-out, and the shared row helpers.
 // The class is split across Core/Settings/, one partial-class file per UI section, each owning its own
@@ -20,7 +20,7 @@ namespace SanguophageLair;
 //  4. add its label/description keys to SL_UI.xml,
 //  5. draw it in Draw*Section.
 // A whole new section is a new file there plus three one-line calls here (Expose / Reset / Draw).
-public partial class SanguophageLairSettings : ModSettings
+public partial class SanguophageLordsSettings : ModSettings
 {
     // Trailing space each section leaves below itself, so a section that early-returns leaves no gap
     // behind rather than a double gap between its neighbours.

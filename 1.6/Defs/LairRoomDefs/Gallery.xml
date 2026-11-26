@@ -14,9 +14,9 @@
       complex rather than a place apart.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Gallery</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Gallery</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Gallery</workerClass>
     <corridorChance>0.2</corridorChance>
     <shapes>
       <li>
@@ -25,6 +25,6 @@
         <deep>11~15</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

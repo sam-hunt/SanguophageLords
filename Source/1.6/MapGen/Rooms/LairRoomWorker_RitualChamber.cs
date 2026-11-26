@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The ritual chamber: a round room deep in the lair, behind a corridor, where its masters
 // did something they should not have. Only requested when Anomaly is active; a bare room is

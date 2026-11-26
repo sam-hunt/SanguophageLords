@@ -2,7 +2,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The sleeping lair pawn's job: lie in its own bed, asleep until something wakes it. Given by
 // the SL_LairSleep duty (1.6/Defs/DutyDefs/SL_LairSleep.xml) that LordToil_LairSleep assigns,

@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The temple: a long nave to whatever the lair's masters worship, in Ideology's Morbid style.
 // Only requested when Ideology is active; a bare room is left otherwise.

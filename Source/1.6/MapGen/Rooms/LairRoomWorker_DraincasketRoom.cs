@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The draincasket room (Vanilla Races Expanded - Sanguophage only): where the lair bleeds its
 // captives. Draincaskets stand along both side walls facing each other across the room, a

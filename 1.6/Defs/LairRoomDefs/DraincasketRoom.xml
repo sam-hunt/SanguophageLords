@@ -17,9 +17,9 @@
     wall's row of caskets.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_DraincasketRoom</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_DraincasketRoom</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_DraincasketRoom</workerClass>
     <floor>Flagstone</floor>
     <corridorChance>0.3</corridorChance>
     <maxChildren>0</maxChildren>
@@ -31,6 +31,6 @@
         <deep>7~9</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

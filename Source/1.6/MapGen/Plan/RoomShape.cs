@@ -1,7 +1,7 @@
 using System;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 public enum RoomShapeKind
 {

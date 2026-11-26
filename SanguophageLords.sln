@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{FBD66BAD-47AE-4071-9A5D-64A24FB3E1EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanguophageLair", "Source\1.6\SanguophageLair.csproj", "{BD2A42B2-018D-4133-AB61-DCAD8FBA4E04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanguophageLords", "Source\1.6\SanguophageLords.csproj", "{BD2A42B2-018D-4133-AB61-DCAD8FBA4E04}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AEAD0BD6-93BA-4808-82FE-BBA601A2F160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanguophageLair.Tests", "Tests\1.6\SanguophageLair.Tests.csproj", "{275127CF-C8CC-4443-8FE3-A44877EC6147}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanguophageLords.Tests", "Tests\1.6\SanguophageLords.Tests.csproj", "{275127CF-C8CC-4443-8FE3-A44877EC6147}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Vanilla defs the lair's shared code and room workers look up by identity and that
 // ThingDefOf does not already carry. Core and Biotech only (Biotech is a hard dependency);

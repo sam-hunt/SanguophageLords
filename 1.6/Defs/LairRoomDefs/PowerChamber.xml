@@ -23,9 +23,9 @@
     corridor, and a dead end (no children, no loop doors), so no visitor walks through it.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_PowerChamber</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_PowerChamber</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_PowerChamber</workerClass>
     <walls>Hewn</walls>
     <floor>Natural</floor>
     <minDepth>2</minDepth>
@@ -41,6 +41,6 @@
         <deep>9~11</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

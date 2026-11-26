@@ -15,9 +15,9 @@
       but its aisle is not meant to be a thoroughfare.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Tomb</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Tomb</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Tomb</workerClass>
     <anchor>ProcessionalSide</anchor>
     <paired>true</paired>
     <maxChildren>1</maxChildren>
@@ -28,6 +28,6 @@
         <deep>7~11</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

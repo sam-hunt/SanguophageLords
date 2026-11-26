@@ -3,7 +3,7 @@ using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Wakes every pawn of a lord as it leaves its sleeping state (LordJob_LairDefend): sleepers
 // the vanilla way, deathresters out of deathrest. Vanilla's TransitionAction_WakeAll only does

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The prison: where the lair keeps its prey. A room hewn from the rock, and the one room whose
 // worker builds structure: a central aisle between walled cells, a bloodletting couch at its

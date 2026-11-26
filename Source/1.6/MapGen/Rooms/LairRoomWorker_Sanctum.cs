@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The sanctum: the great octagonal chamber at the end of the processional, where the lair's
 // master deathrests. It is the room the Biotech reference art is built around, and is laid

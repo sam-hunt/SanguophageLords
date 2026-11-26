@@ -2,7 +2,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Our defs the lair's inhabitants are built from, looked up by identity. All ship in the main
 // tree (Biotech is a hard dependency). Each field names its C# consumer.

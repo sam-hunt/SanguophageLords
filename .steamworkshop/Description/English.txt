@@ -1,4 +1,4 @@
-Sanguophage Lair
+Sanguophage Lords
 
 [h1]About[/h1]
 Sanguophages haunt RimWorld's lore as ancient, scheming mysteries - but in vanilla Biotech you mostly meet them alone in shuttles or rare meetings at your own colony. This mod gives them a home worth raiding: a rare world quest site concealing a true sanguophage lair.
@@ -23,5 +23,5 @@ Sanguophages haunt RimWorld's lore as ancient, scheming mysteries - but in vanil
 [hr][/hr]
 
 [h1]Links[/h1]
-Source code, manual downloads and issue tracker: [url=https://github.com/sam-hunt/SanguophageLair]GitHub[/url]
+Source code, manual downloads and issue tracker: [url=https://github.com/sam-hunt/SanguophageLords]GitHub[/url]
 Art by [url=https://steamcommunity.com/profiles/76561198094174176/myworkshopfiles/?appid=294100]IcingWithCheeseCake[/url]

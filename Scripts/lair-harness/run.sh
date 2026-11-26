@@ -41,7 +41,7 @@ restore() {
 # A previous run that died hard (kill -9, WSL restart) leaves "pending": undo it first.
 if [ -f "$STATE/pending" ] && ! running; then echo "[run.sh] recovering a crashed previous run"; restore; fi
 if running; then echo "RimWorld is already running; close it first" >&2; exit 2; fi
-[ -d "$RW/Mods/SanguophageLair" ] || { echo "Sanguophage Lair is not deployed to $RW/Mods (build the mod first)" >&2; exit 1; }
+[ -d "$RW/Mods/SanguophageLords" ] || { echo "Sanguophage Lords is not deployed to $RW/Mods (build the mod first)" >&2; exit 1; }
 
 dotnet build "$HERE/SLHarness.csproj" -c Release -p:RimWorldPath="$RW" 2>&1 | grep -E "error|Build succeeded" || true
 [ -f "$HERE/bin/SLHarness.dll" ] || { echo "harness build failed" >&2; exit 1; }
@@ -66,7 +66,7 @@ order = ["ludeon.rimworld", "ludeon.rimworld.royalty", "ludeon.rimworld.ideology
          "ludeon.rimworld.anomaly", "ludeon.rimworld.odyssey"]
 ids = sorted(set(ids), key=order.index)
 ids += [i for i in pr.split(",") if i]
-ids += ["shunter.sanguophagelair", "shunter.slharness"]
+ids += ["shunter.sanguophagelords", "shunter.slharness"]
 body = "\n".join(f"    <li>{i}</li>" for i in ids)
 open(dst, "w", encoding="utf-8").write(
     f'<?xml version="1.0" encoding="utf-8"?>\n<ModsConfigData>\n  <version>{version}</version>\n'

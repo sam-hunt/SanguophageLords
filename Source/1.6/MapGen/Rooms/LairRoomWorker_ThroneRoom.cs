@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The throne room: the master's audience hall, the end of the lair's axis. Only requested
 // when Royalty is active; a bare room is left otherwise.

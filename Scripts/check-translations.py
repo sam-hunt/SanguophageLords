@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SanguophageLair's config shim over the shared translation checker
+# SanguophageLords's config shim over the shared translation checker
 # (l10n/checker/check_translations.py — the rimworld-l10n submodule). The
 # engine holds all logic; this file holds only this repo's config and the
 # rationale behind it. Usage is unchanged:

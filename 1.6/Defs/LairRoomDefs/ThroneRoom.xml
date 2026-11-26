@@ -14,9 +14,9 @@
     front is optional and short so the sanctum and the hall read as one procession.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_ThroneRoom</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_ThroneRoom</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_ThroneRoom</workerClass>
     <anchor>AxisNorth</anchor>
     <corridorChance>0.5</corridorChance>
     <corridorLength>3~5</corridorLength>
@@ -28,6 +28,6 @@
         <deep>13~17</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

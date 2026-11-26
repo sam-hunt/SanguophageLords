@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The vault: the lair's treasury and the player's main material reward. A small tiled room
 // behind one door, carpeted inside a ring of bare tile, with a painted shelf run down each

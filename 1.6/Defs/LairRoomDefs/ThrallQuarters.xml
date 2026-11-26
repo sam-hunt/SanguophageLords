@@ -13,9 +13,9 @@
     aisle of five to seven cells between the two bed rows and three to five beds a side.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_ThrallQuarters</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_ThrallQuarters</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_ThrallQuarters</workerClass>
     <walls>Hewn</walls>
     <floor>Flagstone</floor>
     <corridorChance>0.4</corridorChance>
@@ -26,6 +26,6 @@
         <deep>7~11</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

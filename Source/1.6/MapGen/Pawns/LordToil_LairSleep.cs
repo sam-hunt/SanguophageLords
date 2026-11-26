@@ -1,7 +1,7 @@
 using Verse.AI;
 using Verse.AI.Group;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The sleeping state of a room's lord (LordJob_LairDefend): every pawn gets the SL_LairSleep
 // duty, which keeps it asleep in its own bed (JobGiver_LairSleep). Vanilla's LordToil_Sleep

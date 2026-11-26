@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in improving Sanguophage Lair! Bug reports,
+Thanks for your interest in improving Sanguophage Lords! Bug reports,
 suggestions and pull requests are welcome. Build and development setup live
 in CLAUDE.md.
 
@@ -52,7 +52,7 @@ native speaker), **Planned** (not started — contributions welcome).
 - Placeholders (`{0}`, `{1}`, ...) must match the English exactly.
 - Vanilla def types use bare DefInjected folder names (`ThingDef`,
   `QuestScriptDef`); any of this mod's own def classes would use
-  namespace-qualified names (`SanguophageLair.<DefClass>`).
+  namespace-qualified names (`SanguophageLords.<DefClass>`).
 - Formatting: UTF-8 without BOM, LF line endings, 2-space indent.
 - Validate before opening a PR:
 

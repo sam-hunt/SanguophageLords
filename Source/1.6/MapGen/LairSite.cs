@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // One lair being generated: its plan in map coordinates, its layout def and its resolved
 // style. GenStep_LairStructure creates it and publishes it as a MapGenerator var; the steps

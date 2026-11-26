@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Verse;
 using Verse.Noise;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // GenStep of SL_LairRock: makes the whole pocket map one kind of rock, the one the surface
 // stairwell was cut from, so the lair below is the same hill the player walked into.

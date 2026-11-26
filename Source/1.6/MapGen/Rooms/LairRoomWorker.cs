@@ -1,4 +1,4 @@
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Furnishes one kind of lair room. A LairRoomDef names its worker class; the def's single
 // worker instance is asked to fill every room of that kind, so workers hold no per-room state.

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 public enum PlanCell : byte
 {

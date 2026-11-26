@@ -4,7 +4,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 
 ## Project Overview
 
-**Sanguophage Lair** is a RimWorld 1.6/1.7 mod adding a rare world quest site: a sanguophage lair
+**Sanguophage Lords** is a RimWorld 1.6/1.7 mod adding a rare world quest site: a sanguophage lair
 entered through a custom portal onto a generated pocket map (a custom MapGeneratorDef subtree).
 Requires the Biotech DLC (hard dependency — the lair is built on Biotech's
 sanguophage xenotype, genes, and hemogen systems).
@@ -39,23 +39,23 @@ no download cost.
 
 ```bash
 # Build the mod (outputs to 1.6/Assemblies/ AND atomically redeploys to the RimWorld Mods folder)
-dotnet build SanguophageLair.sln -c Release
+dotnet build SanguophageLords.sln -c Release
 
 # Build only the main project (also triggers the deploy)
-dotnet build Source/1.6/SanguophageLair.csproj
+dotnet build Source/1.6/SanguophageLords.csproj
 
 # Run tests
-dotnet test Tests/1.6/SanguophageLair.Tests.csproj
+dotnet test Tests/1.6/SanguophageLords.Tests.csproj
 
 # Clean build artifacts
-dotnet clean SanguophageLair.sln
+dotnet clean SanguophageLords.sln
 
 # Stage the mod into an arbitrary folder (used by CI; same manifest as the local deploy)
-dotnet build Source/1.6/SanguophageLair.csproj -c Release \
-  -t:StageMod -p:StageDir=/path/to/output/SanguophageLair
+dotnet build Source/1.6/SanguophageLords.csproj -c Release \
+  -t:StageMod -p:StageDir=/path/to/output/SanguophageLords
 
 # Override RimWorld install path
-RIMWORLD_PATH="/path/to/RimWorld" dotnet build SanguophageLair.sln -c Release
+RIMWORLD_PATH="/path/to/RimWorld" dotnet build SanguophageLords.sln -c Release
 # Or: dotnet build -p:RimWorldPath="/path/to/RimWorld"
 ```
 
@@ -67,11 +67,11 @@ Windows path), only decides deployment and serves as the decompile target for AP
 
 ### Deployment
 
-The repo lives in `~/dev/SanguophageLair`, separate from the RimWorld Mods folder. Every local
+The repo lives in `~/dev/SanguophageLords`, separate from the RimWorld Mods folder. Every local
 build redeploys automatically and atomically — there is no separate clean step to remember.
 
 - **Single source of truth:** what ships is the `_ModFiles` ItemGroup in the `StageMod` target
-  (`Source/1.6/SanguophageLair.csproj`) — the only place to edit the manifest. It whitelists by
+  (`Source/1.6/SanguophageLords.csproj`) — the only place to edit the manifest. It whitelists by
   file type per content folder (`About`, `Assemblies`, `Defs`, `Patches`, `Languages`,
   `Textures`, plus `Sounds`/`AssetBundles` if ever added), matched at the root and under any
   version folder, so a new content folder of an existing type deploys automatically and only a
@@ -89,7 +89,7 @@ build redeploys automatically and atomically — there is no separate clean step
   The Steam upload is this same local deploy, so it ships stripped too.
 - **Self-cleaning:** `StageMod` wipes `$(StageDir)` and recopies from source, so renamed/deleted
   files never linger. The post-build `DeployToModFolder` target calls it with
-  `StageDir = $RIMWORLD_PATH/Mods/SanguophageLair` (only when a local RimWorld install is
+  `StageDir = $RIMWORLD_PATH/Mods/SanguophageLords` (only when a local RimWorld install is
   detected).
 - **CI reuses the same target:** `.github/workflows/release.yml` invokes `StageMod` with
   `-p:StageDir=<release dir>` instead of its own `cp` list, so the release zip can't drift from
@@ -100,7 +100,7 @@ build redeploys automatically and atomically — there is no separate clean step
   turn continues (a second failure in the same turn, `stop_hook_active`, only warns, so it cannot
   loop). Mechanism details are in the script's own header. Its `find` watch list must cover every content root `StageMod` ships (root,
   any version folder, and the compat roots `Mods/` and `*/Mods/`), or edits under a missed root
-  silently stop redeploying. Logs to `$TMPDIR/SanguophageLair-build.log`. Tracked and wired by
+  silently stop redeploying. Logs to `$TMPDIR/SanguophageLords-build.log`. Tracked and wired by
   the tracked `.claude/settings.json`; the script is byte-identical across the mod family and
   derives the solution, project folder and mod name itself, so change it in the template and
   copy it verbatim, never per repo. It bails when no RimWorld install is found, so CI and
@@ -129,7 +129,7 @@ on that folder's `Mods/` directory, which every game version and platform has.
 xUnit suite under `Tests/1.6/` (a separate project, never shipped). Run natively:
 
 ```bash
-dotnet test Tests/1.6/SanguophageLair.Tests.csproj
+dotnet test Tests/1.6/SanguophageLords.Tests.csproj
 ```
 
 vstest hosts the net472 suite via mono automatically. CI builds but doesn't run it. The release
@@ -160,9 +160,9 @@ in `l10n/smoke/` (born from the BetterTradersGuild v1.1.0 CWTL incident).
 
 ### Entry Point
 
-`Source/1.6/Core/SanguophageLairMod.cs` — `Mod` subclass whose constructor wires settings.
+`Source/1.6/Core/SanguophageLordsMod.cs` — `Mod` subclass whose constructor wires settings.
 `Source/1.6/Core/SL_Startup.cs` (`[StaticConstructorOnStartup]`) runs after defs load and applies
-settings that override def fields. **Settings access:** `SanguophageLairMod.Settings`.
+settings that override def fields. **Settings access:** `SanguophageLordsMod.Settings`.
 
 **Harmony-free by policy:** the mod ships no Harmony wiring at all — no package reference, no
 About.xml dependency, no `PatchAll`. The planned feature set is achievable through defs and
@@ -185,7 +185,7 @@ BetterTradersGuild's `Core/DeferredModPatches.cs`.
   def (or small tight group) per file. Patches at `1.6/Patches/<Target>_<OptionalModSuffix>.xml`.
 - English Keyed strings: `1.6/Languages/English/Keyed/SL_UI.xml`; split by surface
   (`SL_Combat.xml`, ...) only when a second surface appears.
-- Settings are partial classes: `Core/SanguophageLairSettings.cs` owns the window frame and row
+- Settings are partial classes: `Core/SanguophageLordsSettings.cs` owns the window frame and row
   helpers; `Core/Settings/Settings_<Area>.cs` each own their section's fields, scribe entries,
   defaults, Apply* def-writes and draw method.
 - DefOf handles: `Core/SL_DefOf.cs` for general defs; a feature-scoped `SL_<Feature>DefOf` beside
@@ -215,7 +215,7 @@ access) fixer to Unity-typed receivers; see the note in `.editorconfig`.
 analyzer warning fails the build, locally, in the Stop hook and in CI. `.editorconfig` severities
 at `warning` block the build; `suggestion` is IDE-only.
 
-**Logging:** Prefix mod-specific logs with the mod name — `Log.Message("[Sanguophage Lair] ...")`.
+**Logging:** Prefix mod-specific logs with the mod name — `Log.Message("[Sanguophage Lords] ...")`.
 
 **Serialized Fields:** Use camelCase for fields serialized via `Scribe_Values.Look` to match save
 file XML element names (per .editorconfig). PascalCase for all other public members.
@@ -357,7 +357,7 @@ pinned list means the packageId isn't registered there.
 - **Workshop title coupling:** each language's `SL_SettingsCategory` Keyed value is the localized
   Steam Workshop title and must equal the title line (line 1) of
   `.steamworkshop/Description/<Language>.txt` — always change the two together (English keeps
-  `Sanguophage Lair` in both).
+  `Sanguophage Lords` in both).
 - **Optional-DLC content:** MayRequire is honored on defs but IGNORED on DefInjected entries, so
   content whose strings depend on an optional DLC/mod must ship from a LoadFolders-gated compat
   root (`1.6/Mods/<Name>/` with its own `Defs`/`Patches`/`Languages` inside). One exists today:
@@ -374,7 +374,7 @@ pinned list means the packageId isn't registered there.
 
 For reading `Player.log` or disassembling the RimWorld API, use the `rimworld-logs` skill, which
 carries both versions' log and assembly paths. Logging convention:
-`Log.Message("[Sanguophage Lair] ...")`.
+`Log.Message("[Sanguophage Lords] ...")`.
 
 The local install is whichever Steam branch is selected, so its assembly is the decompile target
 for that version only. A "decompile-verified" call path in a def or code header was verified on

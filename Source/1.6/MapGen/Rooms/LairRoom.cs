@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // A room worker's handle on one stamped room: where it is, which way it faces, and the tools
 // to furnish it. Workers never touch the Map directly for placement; going through here is

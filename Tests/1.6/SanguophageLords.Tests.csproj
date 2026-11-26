@@ -56,7 +56,7 @@
 
   <!-- Reference the source project -->
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\1.6\SanguophageLair.csproj" />
+    <ProjectReference Include="..\..\Source\1.6\SanguophageLords.csproj" />
   </ItemGroup>
 
   <!-- xunit.runner.json turns off xunit's shadow copy, which the net472 runner applies to the

@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The dining hall: a long table down the room's axis on a field of red carpet, dining chairs
 // facing it from both sides, and a gold chair for the master at the head, against the far

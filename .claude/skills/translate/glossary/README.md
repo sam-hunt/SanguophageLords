@@ -1,7 +1,7 @@
 # Glossary — SL-specific terminology
 
 These per-language files hold everything about a language's translation
-that is specific to Sanguophage Lair: coined lair/portal/quest vocabulary,
+that is specific to Sanguophage Lords: coined lair/portal/quest vocabulary,
 def-label phrasing decisions, and mod-decided terms pending native review.
 None exist yet — a language's file is created when that language's first
 translation pass lands.

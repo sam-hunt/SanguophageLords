@@ -5,7 +5,7 @@ using RimWorld.Planet;
 using Verse;
 using Verse.AI;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Who a lair pawn is, from the room workers' point of view. Which PawnKindDef each tier is
 // belongs to LairPawns, so the lair's roster can change without touching a single room.
@@ -141,7 +141,7 @@ public static class LairPawns
         {
             // Only another mod changing the xenotype can get here. The pawn keeps watch
             // beside the casket instead.
-            Log.Warning("[Sanguophage Lair] " + pawn.LabelShort + " was generated without the deathrest gene; posting it as a guard.");
+            Log.Warning("[Sanguophage Lords] " + pawn.LabelShort + " was generated without the deathrest gene; posting it as a guard.");
             if (!TryFindStandCell(room, bed.Position, out IntVec3 cell))
             {
                 Find.WorldPawns.PassToWorld(pawn, PawnDiscardDecideMode.Discard);
@@ -265,7 +265,7 @@ public static class LairPawns
             }
             catch (Exception e)
             {
-                Log.Error("[Sanguophage Lair] A PawnGenerated handler (" + handler.Method.DeclaringType + "." + handler.Method.Name + ") failed for " + pawn.LabelShort + ": " + e);
+                Log.Error("[Sanguophage Lords] A PawnGenerated handler (" + handler.Method.DeclaringType + "." + handler.Method.Name + ") failed for " + pawn.LabelShort + ": " + e);
             }
         }
     }

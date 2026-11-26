@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The storeroom: general stores, deliberately unglamorous. Plain unpainted shelves hold
 // cloth, steel, components and wood for the torches; stacks of the lair's own stone blocks

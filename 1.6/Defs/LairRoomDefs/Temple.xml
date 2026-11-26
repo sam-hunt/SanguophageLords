@@ -15,9 +15,9 @@
     half the time it sits behind a corridor.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Temple</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Temple</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Temple</workerClass>
     <corridorChance>0.5</corridorChance>
     <maxChildren>1</maxChildren>
     <shapes>
@@ -32,6 +32,6 @@
         <deep>15~17</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

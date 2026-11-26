@@ -3,7 +3,7 @@ using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The lair's general alarm: an invisible thing (ThingDef SL_LairAlarm,
 // 1.6/Defs/ThingDefs/LairAlarm.xml) that watches every defender and, when the lair should

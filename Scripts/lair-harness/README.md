@@ -22,7 +22,7 @@ with `SL_HARNESS_WORK`):
 | `sl-lair.schematic.png` | One coloured block per cell by terrain and thing category. Works even if rendering does not. |
 | `sl-lair.ascii.txt` | The same as text. |
 | `harness.log` | The harness's own lines: map stats, whether the exit linked, cells reachable from the exit. |
-| `Player-full.log` | The game's whole log. Grep it for `[Sanguophage Lair]`, `ERROR` and `Exception`. |
+| `Player-full.log` | The game's whole log. Grep it for `[Sanguophage Lords]`, `ERROR` and `Exception`. |
 
 In dev mode the mod itself logs, per generated lair, any room that needed its doorways
 unblocked or roof columns added, and the power net's supply against demand.

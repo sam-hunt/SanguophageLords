@@ -3,7 +3,7 @@ using System.Linq;
 using Verse;
 using Xunit;
 
-namespace SanguophageLair.Tests;
+namespace SanguophageLords.Tests;
 
 /// <summary>
 /// The pure geometry behind LairRoom's footprint placement: finding the anchor cell that gives

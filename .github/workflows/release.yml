@@ -73,7 +73,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build
-        run: dotnet build SanguophageLair.sln -c Release
+        run: dotnet build SanguophageLords.sln -c Release
 
       - name: Stage mod files
         # Reuse the .csproj's StageMod target — the single source of truth for what
@@ -82,18 +82,18 @@ jobs:
         # The folder name is the project name, matching the local deploy folder
         # ($(MSBuildProjectName)) and the README's install instructions.
         run: >
-          dotnet build Source/1.6/SanguophageLair.csproj -c Release
-          -t:StageMod -p:StageDir=${{ github.workspace }}/release/SanguophageLair
+          dotnet build Source/1.6/SanguophageLords.csproj -c Release
+          -t:StageMod -p:StageDir=${{ github.workspace }}/release/SanguophageLords
 
       - name: Package mod
         run: |
           set -e
-          cd release && zip -r ../SanguophageLair-${GITHUB_REF_NAME}.zip SanguophageLair
+          cd release && zip -r ../SanguophageLords-${GITHUB_REF_NAME}.zip SanguophageLords
 
       - name: Create Release
         uses: softprops/action-gh-release@v3
         with:
-          files: SanguophageLair-${{ github.ref_name }}.zip
+          files: SanguophageLords-${{ github.ref_name }}.zip
           # body_path is pre-pended to the auto-generated notes by the GitHub API,
           # so the curated CHANGELOG prose leads and the compare link (plus any
           # contributor PRs) follows it - not the other way round. GitHub picks

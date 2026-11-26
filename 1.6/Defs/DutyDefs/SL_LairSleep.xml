@@ -19,7 +19,7 @@
             </li>
           </subNodes>
         </li>
-        <li Class="SanguophageLair.JobGiver_LairSleep" />
+        <li Class="SanguophageLords.JobGiver_LairSleep" />
       </subNodes>
     </thinkNode>
   </DutyDef>

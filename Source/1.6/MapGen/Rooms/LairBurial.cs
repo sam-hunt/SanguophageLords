@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Burial contents shared by the funerary rooms (tomb, crypt, mausoleum): what goes inside a
 // sarcophagus or grave. Kept apart from any one worker because each of them rolls its own

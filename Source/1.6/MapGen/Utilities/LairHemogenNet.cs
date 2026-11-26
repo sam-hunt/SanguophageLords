@@ -3,7 +3,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The lair's hemogen pipe network, laid only when Vanilla Races Expanded - Sanguophage (VRE)
 // is active: the draincasket room's vat feeds a network that runs through the lair's
@@ -109,7 +109,7 @@ public static class LairHemogenNet
         }
         if (Prefs.DevMode)
         {
-            Log.Message("[Sanguophage Lair] Hemogen network: " + route.Reached.Count(r => r) + " of " + targets.Count + " caskets, vats and taps reached from the draincasket room's vat; "
+            Log.Message("[Sanguophage Lords] Hemogen network: " + route.Reached.Count(r => r) + " of " + targets.Count + " caskets, vats and taps reached from the draincasket room's vat; "
                 + route.Laid.Count + " pipe cells laid.");
         }
     }

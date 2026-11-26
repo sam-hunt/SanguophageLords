@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The power chamber: where the lair draws on the heat of the deep rock. A geothermal
 // generator over a steam geyser, a bank of batteries against the side walls as a buffer,

@@ -1,10 +1,10 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // "Quests" settings section: how often the sanguophage lair site is offered.
-public partial class SanguophageLairSettings
+public partial class SanguophageLordsSettings
 {
     // The lair quest's QuestScriptDef defName. Looked up by name until the def ships;
     // once it exists, move the handle into SL_DefOf and reference it by identity.
@@ -31,7 +31,7 @@ public partial class SanguophageLairSettings
     // Writes the configured weight onto the live quest def. rootSelectionWeight is
     // read fresh from the def on every opportunity-site roll, so a def-field write
     // is all an override takes. Called after defs load (SL_Startup) and whenever
-    // the settings window closes (SanguophageLairMod.WriteSettings).
+    // the settings window closes (SanguophageLordsMod.WriteSettings).
     // GetNamedSilentFail because the def does not ship yet; this section is the
     // wired-up skeleton the real quest content lands into.
     public void ApplyLairQuestWeight()

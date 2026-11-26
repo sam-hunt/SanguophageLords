@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace SanguophageLair.Tests;
+namespace SanguophageLords.Tests;
 
 /// <summary>
 /// The pure numbers behind the lair's inhabitants: the pawn budget (LairPawnBudget) and the

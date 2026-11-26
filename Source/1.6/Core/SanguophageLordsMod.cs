@@ -1,7 +1,7 @@
 using UnityEngine;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Mod entry point. Wires up settings. Deliberately Harmony-free: nothing here
 // patches anything, and the planned feature set (quest site, portal, pocket-map
@@ -9,18 +9,18 @@ namespace SanguophageLair;
 // patch ever becomes unavoidable, re-add Lib.Harmony to the csproj and
 // brrainz.harmony to About.xml (modDependencies + loadAfter), and read CLAUDE.md's
 // patch-timing hazard before wiring PatchAll into this constructor.
-public class SanguophageLairMod : Mod
+public class SanguophageLordsMod : Mod
 {
-    public static SanguophageLairSettings Settings { get; private set; }
+    public static SanguophageLordsSettings Settings { get; private set; }
 
     // This mod's own content pack, so code can ask whether a def is ours without a
     // defName convention.
     public static ModContentPack ContentPack { get; private set; }
 
-    public SanguophageLairMod(ModContentPack content) : base(content)
+    public SanguophageLordsMod(ModContentPack content) : base(content)
     {
         ContentPack = content;
-        Settings = GetSettings<SanguophageLairSettings>();
+        Settings = GetSettings<SanguophageLordsSettings>();
     }
 
     public override void DoSettingsWindowContents(Rect inRect)

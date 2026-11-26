@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Where in the complex a room asks to stand.
 public enum PlanAnchor

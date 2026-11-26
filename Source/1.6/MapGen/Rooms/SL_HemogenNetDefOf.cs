@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Defs of the lair's hemogen pipe network: the Vanilla Races Expanded - Sanguophage buildings
 // it is made of, reached by defName so this assembly never references that mod's DLL, and the

@@ -2,7 +2,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Which stone the lair's stonework is cut from, and the defs derived from that stone that the
 // generators need (blocks stuff for made-from-stuff things, the smooth floor terrain).

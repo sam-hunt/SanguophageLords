@@ -1,4 +1,4 @@
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The cost grid the lair's utility lines are routed over (GridRouter), read from the plan
 // alone: lines may only follow the lair's own circulation, never cut through rock or wall.

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The gene laboratory, where the lair's masters study and edit what they are. A working lab
 // on the lair's stone tile (sterile floor would be wrong here), laid out like a bench room:

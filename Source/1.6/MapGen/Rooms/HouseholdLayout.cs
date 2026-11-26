@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Shelf and table helpers the household rooms (larder, storeroom, vault, dining hall) share: a
 // run of shelves along each side wall and stocking shelves with items. They stay out of

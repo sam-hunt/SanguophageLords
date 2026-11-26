@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Static handles for this mod's own defs that C# needs to reference by identity. Populated by
 // RimWorld at startup (fields match defName). Only add defs the code actually looks up, each with

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The mausoleum: the founder's tomb, the end of the lair's axis and its grandest funerary
 // room. Round or octagonal, eleven to thirteen cells across, entered from the south end of the

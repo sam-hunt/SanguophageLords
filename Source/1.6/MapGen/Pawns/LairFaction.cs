@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The one faction every lair's inhabitants belong to: SL_LairSanguophages
 // (1.6/Defs/FactionDefs/SL_LairSanguophages.xml), hidden and permanently hostile, created the

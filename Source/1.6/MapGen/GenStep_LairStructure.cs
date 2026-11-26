@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // GenStep of SL_LairStructure: plans a lair for this map and stamps its structure (rooms,
 // walls, doors, floors, the approach cavern and its river) into the rock. Furnishing is the
@@ -27,7 +27,7 @@ public class GenStep_LairStructure : GenStep
         {
             // The dev-menu pocket map is 100 cells square, too small for a lair; the exit
             // step then falls back to a bare cave, as before this step existed.
-            Log.Warning("[Sanguophage Lair] A " + map.Size.x + "x" + map.Size.z + " map is too small for the lair layout " + layout.defName + "; generating a bare cave instead.");
+            Log.Warning("[Sanguophage Lords] A " + map.Size.x + "x" + map.Size.z + " map is too small for the lair layout " + layout.defName + "; generating a bare cave instead.");
             return;
         }
         bool square = map.Size.x == map.Size.z;

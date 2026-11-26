@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // A lesser deathrest chamber: a small round room beside the sanctum where one of the lair's
 // other sanguophages deathrests. The sanctum in miniature: the casket at the centre with its

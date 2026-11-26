@@ -3,7 +3,7 @@ using System.Linq;
 using Verse;
 using Xunit;
 
-namespace SanguophageLair.Tests;
+namespace SanguophageLords.Tests;
 
 /// <summary>
 /// The pure utility-line router: hand-made grids for its rules, generated lair plans for its

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Sanguophage Lair</name>
+  <name>Sanguophage Lords</name>
   <author>Sam Hunt</author>
-  <packageId>shunter.sanguophagelair</packageId>
+  <packageId>shunter.sanguophagelords</packageId>
   <modVersion>0.1.0</modVersion>
   <description>Adds a rare world quest site: the sanguophage lair. Descend ancient stairwells into a generated lair map where an ancient sanguophage and its thralls guard hemogen-soaked treasures. See the Steam Workshop page for full details.</description>
   <supportedVersions>

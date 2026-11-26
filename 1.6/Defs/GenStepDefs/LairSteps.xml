@@ -24,13 +24,13 @@
   <GenStepDef>
     <defName>SL_LairRock</defName>
     <order>150</order>
-    <genStep Class="SanguophageLair.GenStep_LairRock" />
+    <genStep Class="SanguophageLords.GenStep_LairRock" />
   </GenStepDef>
 
   <GenStepDef>
     <defName>SL_LairStructure</defName>
     <order>1000</order>
-    <genStep Class="SanguophageLair.GenStep_LairStructure">
+    <genStep Class="SanguophageLords.GenStep_LairStructure">
       <layout>SL_Lair</layout>
     </genStep>
   </GenStepDef>
@@ -38,25 +38,25 @@
   <GenStepDef>
     <defName>SL_PlaceStairwellExit</defName>
     <order>1010</order>
-    <genStep Class="SanguophageLair.GenStep_PlaceStairwellExit" />
+    <genStep Class="SanguophageLords.GenStep_PlaceStairwellExit" />
   </GenStepDef>
 
   <GenStepDef>
     <defName>SL_LairContents</defName>
     <order>1020</order>
-    <genStep Class="SanguophageLair.GenStep_LairContents" />
+    <genStep Class="SanguophageLords.GenStep_LairContents" />
   </GenStepDef>
 
   <GenStepDef>
     <defName>SL_LairUtilities</defName>
     <order>1025</order>
-    <genStep Class="SanguophageLair.GenStep_LairUtilities" />
+    <genStep Class="SanguophageLords.GenStep_LairUtilities" />
   </GenStepDef>
 
   <GenStepDef>
     <defName>SL_LairDefenders</defName>
     <order>1030</order>
-    <genStep Class="SanguophageLair.GenStep_LairDefenders" />
+    <genStep Class="SanguophageLords.GenStep_LairDefenders" />
   </GenStepDef>
 
 </Defs>

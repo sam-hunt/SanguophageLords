@@ -1,12 +1,12 @@
 ---
 name: translate
-description: Generate, update, or audit mod localization (Keyed + DefInjected) for a target language, grounded in vanilla + Biotech RimWorld sanguophage terminology for Sanguophage Lair's quest-site / pocket-map domain. Use when asked to add a language, update translations, or check translation freshness.
+description: Generate, update, or audit mod localization (Keyed + DefInjected) for a target language, grounded in vanilla + Biotech RimWorld sanguophage terminology for Sanguophage Lords' quest-site / pocket-map domain. Use when asked to add a language, update translations, or check translation freshness.
 argument-hint: "[language, e.g. German | update | check]"
 ---
 
 # Translate
 
-Produce or refresh localization files for Sanguophage Lair. English is
+Produce or refresh localization files for Sanguophage Lords. English is
 the source of truth; every other language derives from it.
 
 **The family-wide process lives in the `l10n/` submodule — load these first,
@@ -53,7 +53,7 @@ notes for the shim or flow edit this repo owes before continuing.
 - No def types are shipped yet — no defs have landed, so the sidecar is
   currently empty and is regenerated as content lands. If this mod later
   defines its own Def subclasses, their DefInjected folders would need
-  namespace-qualified names (`SanguophageLair.<DefClass>`), unlike vanilla
+  namespace-qualified names (`SanguophageLords.<DefClass>`), unlike vanilla
   def types, which resolve bare.
 - **No gated compat load roots today** — Biotech is a hard dependency of this
   mod rather than an optional compat surface, so there is no MayRequire-gated

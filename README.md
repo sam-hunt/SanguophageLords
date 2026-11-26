@@ -1,4 +1,4 @@
-# Sanguophage Lair
+# Sanguophage Lords
 
 > A RimWorld mod adding a rare sanguophage lair world quest site with a custom portal and pocket map
 
@@ -42,8 +42,8 @@ Coming with the first release.
 
 ### Manual Installation
 
-1. Download the latest release from the [Releases](https://github.com/sam-hunt/SanguophageLair/releases) page
-2. Extract the `SanguophageLair` folder to your RimWorld `Mods` directory:
+1. Download the latest release from the [Releases](https://github.com/sam-hunt/SanguophageLords/releases) page
+2. Extract the `SanguophageLords` folder to your RimWorld `Mods` directory:
    - **Windows**: `C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\`
    - **Mac**: `~/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods/`
    - **Linux**: `~/.steam/steam/steamapps/common/RimWorld/Mods/`
@@ -58,7 +58,7 @@ Coming with the first release.
 
 ## Contributing
 
-Bug reports and feature requests welcome on [GitHub Issues](https://github.com/sam-hunt/SanguophageLair/issues).
+Bug reports and feature requests welcome on [GitHub Issues](https://github.com/sam-hunt/SanguophageLords/issues).
 Please attach any relevant logs/stack traces/mod lists etc
 
 Translations are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).

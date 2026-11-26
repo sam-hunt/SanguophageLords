@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // One thing a utility network must serve.
 public sealed class RouteTarget

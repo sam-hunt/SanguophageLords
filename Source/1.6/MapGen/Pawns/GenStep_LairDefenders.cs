@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // GenStep of SL_LairDefenders: turns the defenders the room workers spawned (LairSite.Defenders,
 // filled by LairPawns) into lords, triggers and the alarm. Runs after SL_LairContents, so every
@@ -75,7 +75,7 @@ public class GenStep_LairDefenders : GenStep
         if (Prefs.DevMode)
         {
             LairPawnBudget budget = site.PawnBudget;
-            Log.Message("[Sanguophage Lair] Defenders: " + defenders.Count(d => d.Role == LairPawnRole.Guard) + " guards, "
+            Log.Message("[Sanguophage Lords] Defenders: " + defenders.Count(d => d.Role == LairPawnRole.Guard) + " guards, "
                 + defenders.Count(d => d.Role == LairPawnRole.Sleeper) + " sleepers, "
                 + defenders.Count(d => d.Role == LairPawnRole.Deathrester) + " deathresters; budget used "
                 + budget.Taken(LairPawnTier.Master) + "/" + budget.Cap(LairPawnTier.Master) + " master, "

@@ -14,9 +14,9 @@
     the worker answers with four columns.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Library</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Library</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Library</workerClass>
     <corridorChance>0.4</corridorChance>
     <shapes>
       <li>
@@ -30,6 +30,6 @@
         <deep>11~13</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

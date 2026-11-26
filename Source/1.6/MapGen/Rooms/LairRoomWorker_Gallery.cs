@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The gallery: the vanity of immortals, a long narrow hall of sculpture. Art is the room's
 // loot, but a modest hoard: a few thousand silver for the whole hall.

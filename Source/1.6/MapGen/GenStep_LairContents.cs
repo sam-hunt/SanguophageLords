@@ -1,7 +1,7 @@
 using System;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // GenStep of SL_LairContents: runs each stamped room's worker, then the two safety nets every
 // room gets (doorways still connected, roof held up). Does nothing when the structure step
@@ -30,13 +30,13 @@ public class GenStep_LairContents : GenStep
             }
             catch (Exception e)
             {
-                Log.Error("[Sanguophage Lair] Furnishing the " + room.Def.defName + " room at " + room.Center + " failed: " + e);
+                Log.Error("[Sanguophage Lords] Furnishing the " + room.Def.defName + " room at " + room.Center + " failed: " + e);
             }
             int removed = room.EnsureWalkable();
             int columns = room.EnsureRoofSupport();
             if (Prefs.DevMode && (removed > 0 || columns > 0))
             {
-                Log.Message("[Sanguophage Lair] " + room.Def.defName + " at " + room.Center + ": removed " + removed + " blocking pieces, added " + columns + " roof columns.");
+                Log.Message("[Sanguophage Lords] " + room.Def.defName + " at " + room.Center + ": removed " + removed + " blocking pieces, added " + columns + " roof columns.");
             }
         }
     }

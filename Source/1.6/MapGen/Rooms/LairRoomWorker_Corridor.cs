@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // A corridor between two rooms: one or three cells wide and a few cells long, sized by the
 // planner. Kept nearly bare so the rooms at its ends are the events. A three-wide corridor

@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The thrall quarters: the servants' dormitory, hewn from the rock and left plain next to
 // their masters' halls. Stone beds stand in rows along both side walls, one every other row,

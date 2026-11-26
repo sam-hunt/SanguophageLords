@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The library: the centuries-old minds of the lair keep their reading here. A reading table
 // under a round of carpet, ringed by chairs, with a great sculpture on the far wall between

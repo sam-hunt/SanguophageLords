@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Vanilla defs of the three optional-DLC rooms (temple, throne room, ritual chamber) that
 // ThingDefOf does not carry; the ones it does (lectern, skullspike, drape, harp, harpsichord,

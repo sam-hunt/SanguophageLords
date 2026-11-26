@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Lays out a lair as a LairPlan: pure geometry over an abstract grid, drawing only on Verse.Rand
 // (seeded by the calling genstep), IntVec3, CellRect and Rot4, so it runs without a Map.

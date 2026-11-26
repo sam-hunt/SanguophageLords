@@ -2,7 +2,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Pocket-map end of the lair portal (thingClass of SL_AncientStairwellExit).
 //

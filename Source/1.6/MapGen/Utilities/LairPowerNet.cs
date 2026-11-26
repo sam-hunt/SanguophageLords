@@ -3,7 +3,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The lair's power net: conduits from its generators (the power chamber's geothermal plant)
 // to every powered building and battery standing in its rooms, grown as one shared tree by
@@ -52,7 +52,7 @@ public static class LairPowerNet
         {
             if (Prefs.DevMode && consumers.Count > 0)
             {
-                Log.Message("[Sanguophage Lair] Power: no power chamber in this lair; " + consumers.Count + " powered buildings stay unpowered.");
+                Log.Message("[Sanguophage Lords] Power: no power chamber in this lair; " + consumers.Count + " powered buildings stay unpowered.");
             }
             return;
         }
@@ -119,7 +119,7 @@ public static class LairPowerNet
         float stored = batteries.Sum(b => b.StoredEnergy);
         int offNet = consumers.Count(c => c.PowerNet == null);
         int nets = generators.Select(g => g.PowerNet).Concat(consumers.Select(c => c.PowerNet)).Where(n => n != null).Distinct().Count();
-        string message = "[Sanguophage Lair] Power: " + generators.Count + " generator(s) supplying " + supply.ToString("F0") + " W; "
+        string message = "[Sanguophage Lords] Power: " + generators.Count + " generator(s) supplying " + supply.ToString("F0") + " W; "
             + consumers.Count + " powered buildings drawing " + drawing.ToString("F0") + " W now, " + fullLoad.ToString("F0") + " W at full load; "
             + batteries.Count + " batteries holding " + stored.ToString("F0") + " Wd; " + laid + " conduit cells in " + nets + " net(s); "
             + offNet + " powered buildings off the net.";

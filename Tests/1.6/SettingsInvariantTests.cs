@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace SanguophageLair.Tests;
+namespace SanguophageLords.Tests;
 
 // Pure-constant checks (consts are compile-time inlined, so these run without
 // loading any Verse type). Real suites arrive with the first pure-logic helpers.
@@ -10,8 +10,8 @@ public class SettingsInvariantTests
     public void LairQuestWeightDefault_IsWithinSliderBounds()
     {
         Assert.InRange(
-            SanguophageLairSettings.LairQuestWeightDefault,
-            SanguophageLairSettings.LairQuestWeightMin,
-            SanguophageLairSettings.LairQuestWeightMax);
+            SanguophageLordsSettings.LairQuestWeightDefault,
+            SanguophageLordsSettings.LairQuestWeightMin,
+            SanguophageLordsSettings.LairQuestWeightMax);
     }
 }

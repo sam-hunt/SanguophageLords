@@ -4,7 +4,7 @@
   <!-- Settings: window category (mod-list entry). Doubles as the localized Steam Workshop
        title — each language's value must equal the title line of
        .steamworkshop/Description/<Language>.txt (checker-enforced); change both together. -->
-  <SL_SettingsCategory>Sanguophage Lair</SL_SettingsCategory>
+  <SL_SettingsCategory>Sanguophage Lords</SL_SettingsCategory>
 
   <!-- Settings: reusable label suffixes. Each includes a leading space, and every applicable one is
        appended (no precedence between them), so they must read cleanly back to back. -->

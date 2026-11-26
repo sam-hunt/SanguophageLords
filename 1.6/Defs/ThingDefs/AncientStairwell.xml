@@ -44,7 +44,7 @@
     <defName>SL_AncientStairwell</defName>
     <label>ancient stairwell</label>
     <description>A broad stone stairwell spiraling down into darkness. The stonework is ancient, but the steps are worn smooth by long use. Something below must be maintaining it.</description>
-    <thingClass>SanguophageLair.AncientStairwell</thingClass>
+    <thingClass>SanguophageLords.AncientStairwell</thingClass>
     <size>(7,7)</size>
     <useHitPoints>false</useHitPoints>
     <destroyable>false</destroyable>
@@ -97,7 +97,7 @@
     <defName>SL_AncientStairwellExit</defName>
     <label>ancient stairwell exit</label>
     <description>The foot of a stone stairwell spiraling up toward the surface.</description>
-    <thingClass>SanguophageLair.AncientStairwellExit</thingClass>
+    <thingClass>SanguophageLords.AncientStairwellExit</thingClass>
     <size>(7,7)</size>
     <drawerType>MapMeshAndRealTime</drawerType>
     <stuffCategories>

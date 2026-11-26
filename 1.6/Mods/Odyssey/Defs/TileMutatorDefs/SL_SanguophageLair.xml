@@ -31,7 +31,7 @@
     <defName>SL_SanguophageLair</defName>
     <label>sanguophage lair</label>
     <description>An ancient stone stairwell here descends into a sanguophage lair. Its occupants have kept the stairs worn smooth over the centuries, and they are unlikely to welcome daylight visitors.</description>
-    <workerClass>SanguophageLair.TileMutatorWorker_SanguophageLair</workerClass>
+    <workerClass>SanguophageLords.TileMutatorWorker_SanguophageLair</workerClass>
     <!-- No rock to cut the stairwell from and no Heavy-affordance ground to set it on. -->
     <biomeBlacklist>
       <li>SeaIce</li>

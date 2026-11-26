@@ -12,9 +12,9 @@
     always wall to wall with it.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_DeathrestChamber</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_DeathrestChamber</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_DeathrestChamber</workerClass>
     <anchor>SanctumSide</anchor>
     <paired>true</paired>
     <corridorChance>0.5</corridorChance>
@@ -26,6 +26,6 @@
         <across>9~11</across>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

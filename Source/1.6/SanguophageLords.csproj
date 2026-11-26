@@ -92,8 +92,8 @@
 
   <!-- Wipe $(StageDir) then recopy the full mod from source: atomic and self-cleaning,
        so renamed/deleted Defs/Patches/Languages never linger. Invoke directly for CI:
-         dotnet build Source/1.6/SanguophageLair.csproj -c Release \
-           -t:StageMod -p:StageDir=/path/to/release/SanguophageLair -->
+         dotnet build Source/1.6/SanguophageLords.csproj -c Release \
+           -t:StageMod -p:StageDir=/path/to/release/SanguophageLords -->
   <Target Name="StageMod">
     <Error Condition="'$(StageDir)' == ''" Text="StageMod requires a non-empty -p:StageDir." />
     <ItemGroup>

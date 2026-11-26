@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The processional: the long hall between the vestibule and the sanctum, and the lair's first
 // statement of what it is. A scarlet runner down the middle between two rows of dark columns,

@@ -13,9 +13,9 @@
     3, which is this size range.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Vault</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Vault</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Vault</workerClass>
     <minDepth>4</minDepth>
     <depthBias>2</depthBias>
     <maxChildren>0</maxChildren>
@@ -27,6 +27,6 @@
         <deep>5~7</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

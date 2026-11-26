@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The tomb: a formal burial chamber for the lair's honoured dead. Two of them open off the
 // processional's long sides, so one faces the other across the main hall.

@@ -3,7 +3,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Turns a LairPlan into the map: one pass over the plan's cells, each cell kind mapped to what
 // stands there. The plan must already be in map coordinates (same size as the map).

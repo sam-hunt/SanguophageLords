@@ -13,9 +13,9 @@
     is exactly this range. Floor is the default tile, matching the formal hall it opens on.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Guardroom</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Guardroom</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Guardroom</workerClass>
     <anchor>ProcessionalSide</anchor>
     <paired>true</paired>
     <maxChildren>1</maxChildren>
@@ -27,6 +27,6 @@
         <deep>5~7</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

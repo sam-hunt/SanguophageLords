@@ -2,7 +2,7 @@ using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The lord of one room's defenders. GenStep_LairDefenders makes up to two per room: one for
 // its guards, one for its sleepers and deathresters. Both end in the same assault on the

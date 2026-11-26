@@ -1,6 +1,6 @@
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Runs once on the main thread after all defs are loaded, translations injected and DefOf fields
 // injected — the earliest point where settings that override def fields can be
@@ -18,6 +18,6 @@ public static class SL_Startup
 {
     static SL_Startup()
     {
-        SanguophageLairMod.Settings.ApplyLairQuestWeight();
+        SanguophageLordsMod.Settings.ApplyLairQuestWeight();
     }
 }

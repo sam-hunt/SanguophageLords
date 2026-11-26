@@ -15,9 +15,9 @@
       founder's tomb.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Mausoleum</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Mausoleum</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Mausoleum</workerClass>
     <anchor>AxisNorth</anchor>
     <corridorChance>0.6</corridorChance>
     <corridorLength>3~6</corridorLength>
@@ -33,6 +33,6 @@
         <deep>11~13</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

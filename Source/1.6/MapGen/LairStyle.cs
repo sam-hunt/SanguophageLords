@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The materials one lair is built from, resolved once per generated map: its stone (and the
 // blocks, floors and chunks that stone gives) plus the paints and carpets its layout def asks

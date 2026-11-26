@@ -1,6 +1,6 @@
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // What a lair pawn is doing when the player arrives. Decides which lord it joins in
 // GenStep_LairDefenders.

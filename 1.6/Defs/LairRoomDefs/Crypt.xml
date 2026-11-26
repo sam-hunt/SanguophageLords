@@ -14,9 +14,9 @@
     - maxChildren 1: crypts may chain.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Crypt</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Crypt</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Crypt</workerClass>
     <walls>Hewn</walls>
     <floor>Natural</floor>
     <corridorChance>0.5</corridorChance>
@@ -32,6 +32,6 @@
         <across>7~9</across>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

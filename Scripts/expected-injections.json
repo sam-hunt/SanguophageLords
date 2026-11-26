@@ -6,13 +6,13 @@
       "Biotech",
       "Odyssey"
     ],
-    "modPackageId": "shunter.sanguophagelair",
-    "modName": "Sanguophage Lair",
+    "modPackageId": "shunter.sanguophagelords",
+    "modName": "Sanguophage Lords",
     "activeMods": [
       "ludeon.rimworld",
       "ludeon.rimworld.biotech",
       "ludeon.rimworld.odyssey",
-      "shunter.sanguophagelair",
+      "shunter.sanguophagelords",
       "shunter.l10nprobe"
     ]
   },

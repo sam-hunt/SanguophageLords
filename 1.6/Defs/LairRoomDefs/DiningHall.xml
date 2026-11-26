@@ -15,9 +15,9 @@
     corridor (corridorChance).
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_DiningHall</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_DiningHall</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_DiningHall</workerClass>
     <corridorChance>0.3</corridorChance>
     <shapes>
       <li>
@@ -26,6 +26,6 @@
         <deep>11~15</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

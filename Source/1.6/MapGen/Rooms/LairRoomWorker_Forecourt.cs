@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The forecourt: the strip of paving under the lair's facade, across the river from the
 // stairwell hall. With the gate arch in the facade behind it, this is the lair's face, the

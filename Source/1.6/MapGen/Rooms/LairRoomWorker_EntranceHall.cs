@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The entrance hall: the paved octagon at the foot of the ancient stairwell, where visitors
 // arrive. It is meant to be read in the first seconds underground: old, deliberate, and lit

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // What a room's floor is made of. Resolved against the lair's own stone by LairStyle, so one
 // def serves a granite lair and a marble one.

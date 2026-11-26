@@ -7,7 +7,7 @@ argument-hint: "[major|minor|patch] [rc] | [promote|rc]"
 
 # Release
 
-Prepare and publish a new release for Sanguophage Lair — either a stable
+Prepare and publish a new release for Sanguophage Lords — either a stable
 release or a release candidate.
 
 **Release candidates** (`X.Y.Z-rc.N`) are private test builds: a tagged GitHub
@@ -65,8 +65,8 @@ this is orientation, not a decision.
 
 Run, in order:
 ```bash
-dotnet test Tests/1.6/SanguophageLair.Tests.csproj
-dotnet build SanguophageLair.sln -c Release
+dotnet test Tests/1.6/SanguophageLords.Tests.csproj
+dotnet build SanguophageLords.sln -c Release
 ```
 
 - Both projects set `TreatWarningsAsErrors`, so the build is also the lint
@@ -153,8 +153,8 @@ blank line, then the BBCode description; one file per language folder in
 
 Run:
 ```bash
-dotnet clean SanguophageLair.sln
-dotnet build SanguophageLair.sln -c Release
+dotnet clean SanguophageLords.sln
+dotnet build SanguophageLords.sln -c Release
 ```
 
 The build's post-build `StageMod` step wipes and recopies the deployed mod
@@ -217,7 +217,7 @@ final. Do all of the following, then present it as **one** confirmation:
     directly below the Keep a Changelog intro paragraph, using today's date
     (Keep a Changelog style: `### Added`, `### Fixed`, ...) - this changelog
     carries no `[Unreleased]` heading; don't add one - plus a
-    `[X.Y.Z]: https://github.com/sam-hunt/SanguophageLair/releases/tag/vX.Y.Z`
+    `[X.Y.Z]: https://github.com/sam-hunt/SanguophageLords/releases/tag/vX.Y.Z`
     link reference at the bottom of the file, above any older ones.
 - Bump the version strings:
   - `About/About.xml` `<modVersion>`: the full version, suffix included
@@ -238,7 +238,7 @@ final. Do all of the following, then present it as **one** confirmation:
 
 No further questions unless something is unexpected:
 
-- Rebuild (`dotnet build SanguophageLair.sln -c Release`) so the deployed
+- Rebuild (`dotnet build SanguophageLords.sln -c Release`) so the deployed
   DLL carries the bumped `AssemblyVersion`. Stop on failure.
 - Stage only the release files: `About/About.xml`,
   `Source/1.6/Properties/AssemblyInfo.cs`, and (stable only) `CHANGELOG.md`.
@@ -252,7 +252,7 @@ No further questions unless something is unexpected:
   config puts each candidate *below* its stable; git's default ranks it above).
 - **RC:** that's it. The tag-triggered workflow marks any suffixed tag as a
   GitHub prerelease (never "Latest") with a stub body plus the auto-generated
-  commit list, and attaches `SanguophageLair-v<version>.zip`. Point the
+  commit list, and attaches `SanguophageLords-v<version>.zip`. Point the
   user at the release page for the zip, and remind them it's publicly
   downloadable but must not be uploaded to the Workshop.
 - **Stable:** also show the changelog notes for the user to copy into the

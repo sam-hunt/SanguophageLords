@@ -12,9 +12,9 @@
     per lair.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Storeroom</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Storeroom</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Storeroom</workerClass>
     <walls>Hewn</walls>
     <floor>Natural</floor>
     <maxChildren>0</maxChildren>
@@ -25,6 +25,6 @@
         <deep>5~7</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

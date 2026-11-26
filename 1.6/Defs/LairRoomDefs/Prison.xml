@@ -13,9 +13,9 @@
     either side of the couch. Few children: the prison is a dead end.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_Prison</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_Prison</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_Prison</workerClass>
     <walls>Hewn</walls>
     <floor>Flagstone</floor>
     <corridorChance>0.5</corridorChance>
@@ -27,6 +27,6 @@
         <deep>9~11</deep>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>

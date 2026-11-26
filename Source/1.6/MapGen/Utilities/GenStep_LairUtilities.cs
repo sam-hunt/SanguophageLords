@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // GenStep of SL_LairUtilities: lays the lair's utility lines once every room is furnished.
 // First the power net (LairPowerNet: conduits from the power chamber's generator to every
@@ -53,7 +53,7 @@ public class GenStep_LairUtilities : GenStep
         }
         catch (Exception e)
         {
-            Log.Error("[Sanguophage Lair] Laying the lair's power net failed: " + e);
+            Log.Error("[Sanguophage Lords] Laying the lair's power net failed: " + e);
         }
         try
         {
@@ -61,7 +61,7 @@ public class GenStep_LairUtilities : GenStep
         }
         catch (Exception e)
         {
-            Log.Error("[Sanguophage Lair] Laying the lair's hemogen pipes failed: " + e);
+            Log.Error("[Sanguophage Lords] Laying the lair's hemogen pipes failed: " + e);
         }
     }
 

@@ -2,13 +2,13 @@
 
 - Replace the placeholder About/Preview.png (640x360) and About/ModIcon.png
   (64x64) with real art before the Workshop release.
-- Add SanguophageLair to the consuming-mods family list in the canonical
+- Add SanguophageLords to the consuming-mods family list in the canonical
   rimworld-l10n checkout's CLAUDE.md (~/dev/rimworld-l10n), commit + push
   there (bump-consumers.sh discovers this repo automatically once pushed).
 - Generate Scripts/expected-injections.json once the first defs exist (run
   `python3 Scripts/refresh-translation-expectations.py`; game must be closed).
   Until then the checker/release gate has no sidecar to validate against.
-- Create the GitHub repo (sam-hunt/SanguophageLair) and push; publish to the
+- Create the GitHub repo (sam-hunt/SanguophageLords) and push; publish to the
   Steam Workshop at first release, then fill the Workshop URL into README.md.
 - First translation passes (all languages) once the English surface settles —
   explicit request only, one language at a time, per l10n/process.md.

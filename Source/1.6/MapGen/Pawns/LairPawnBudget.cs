@@ -1,6 +1,6 @@
 using System;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // How many inhabitants one lair may have, decided from a threat points budget. Room workers
 // ask for pawns as their layout suggests; LairPawns asks this budget before honouring each

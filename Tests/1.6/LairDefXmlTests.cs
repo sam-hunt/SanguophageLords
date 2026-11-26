@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using Verse;
 using Xunit;
 
-namespace SanguophageLair.Tests;
+namespace SanguophageLords.Tests;
 
 /// <summary>
 /// Reads the repo's lair def XML as plain text and checks what the game would only report at
@@ -42,7 +42,7 @@ public class LairDefXmlTests
     [Fact]
     public void RoomDefs_NameWorkersThatExist()
     {
-        List<XElement> rooms = Defs("LairRoomDefs", "SanguophageLair.LairRoomDef").ToList();
+        List<XElement> rooms = Defs("LairRoomDefs", "SanguophageLords.LairRoomDef").ToList();
         Assert.NotEmpty(rooms);
         foreach (XElement room in rooms)
         {
@@ -57,7 +57,7 @@ public class LairDefXmlTests
     [Fact]
     public void RoomDefs_UseKnownEnumValues()
     {
-        foreach (XElement room in Defs("LairRoomDefs", "SanguophageLair.LairRoomDef"))
+        foreach (XElement room in Defs("LairRoomDefs", "SanguophageLords.LairRoomDef"))
         {
             string defName = (string)room.Element("defName");
             AssertEnum<PlanRole>(room, "role", defName);
@@ -81,10 +81,10 @@ public class LairDefXmlTests
     [Fact]
     public void Layouts_AskOnlyForDefinedRooms()
     {
-        var defined = new HashSet<string>(Defs("LairRoomDefs", "SanguophageLair.LairRoomDef").Select(r => (string)r.Element("defName")));
-        Assert.Equal(defined.Count, Defs("LairRoomDefs", "SanguophageLair.LairRoomDef").Count());
+        var defined = new HashSet<string>(Defs("LairRoomDefs", "SanguophageLords.LairRoomDef").Select(r => (string)r.Element("defName")));
+        Assert.Equal(defined.Count, Defs("LairRoomDefs", "SanguophageLords.LairRoomDef").Count());
         var asked = new HashSet<string>();
-        foreach (XElement layout in Defs("LairLayoutDefs", "SanguophageLair.LairLayoutDef"))
+        foreach (XElement layout in Defs("LairLayoutDefs", "SanguophageLords.LairLayoutDef"))
         {
             foreach (string spine in new[] { "entranceHall", "forecourt", "vestibule", "processional", "sanctum", "corridor" })
             {

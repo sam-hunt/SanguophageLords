@@ -4,7 +4,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The crypt: a humble burial niche hewn from the rock on the lair's outskirts. Its outline is
 // ragged and its floor is the bare rock the room was cut from, so nothing here is symmetric:

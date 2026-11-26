@@ -12,7 +12,7 @@
   -->
   <ThingDef ParentName="EtherealThingBase">
     <defName>SL_LairAlarm</defName>
-    <thingClass>SanguophageLair.LairAlarm</thingClass>
+    <thingClass>SanguophageLords.LairAlarm</thingClass>
     <tickerType>Rare</tickerType>
     <receivesSignals>true</receivesSignals>
   </ThingDef>

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // One line of a lair's room program: a room kind, how many of it, and how likely it is to be
 // asked for at all. A MayRequire on the <li> drops the line when its DLC or mod is absent,

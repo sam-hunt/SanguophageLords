@@ -5,7 +5,7 @@ using System.Linq;
 using Verse;
 using Xunit;
 
-namespace SanguophageLair.Tests;
+namespace SanguophageLords.Tests;
 
 /// <summary>
 /// Structural invariants of the pure lair planner over many seeds. Set SL_PLAN_DUMP to a

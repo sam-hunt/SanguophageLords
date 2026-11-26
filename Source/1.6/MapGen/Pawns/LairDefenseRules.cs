@@ -1,6 +1,6 @@
 using System;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The numbers behind how the lair defends itself, kept free of game types so they are
 // unit-tested (Tests/1.6/LairPawnBudgetTests.cs). Consumers: LairAlarm (when the whole lair is

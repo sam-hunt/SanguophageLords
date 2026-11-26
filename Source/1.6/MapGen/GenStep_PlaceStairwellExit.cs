@@ -2,7 +2,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // GenStep of SL_PlaceStairwellExit (1.6/Defs/GenStepDefs/PlaceStairwellExit.xml), the SL_Lair
 // pocket map's exit-placement step. Spawns the portal's declared exit (def.portal.exitDef, i.e.

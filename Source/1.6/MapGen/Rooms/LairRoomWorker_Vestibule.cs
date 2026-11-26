@@ -2,7 +2,7 @@ using System;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The vestibule: the short chamber just inside the gate arch. The arch has no door, so this
 // room is in plain view from the forecourt and the far bank, and it is dressed as a threat:

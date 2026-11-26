@@ -4,7 +4,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // Worker of the SL_SanguophageLair tile mutator (Odyssey compat root,
 // 1.6/Mods/Odyssey/Defs/TileMutatorDefs/). When a world tile carries the mutator, every map
@@ -63,7 +63,7 @@ public class TileMutatorWorker_SanguophageLair : TileMutatorWorker
         {
             if (!CellFinder.TryFindRandomCell(map, c => Validator(CellRect.CenteredOn(c, prefab.size)), out IntVec3 cell))
             {
-                Log.Warning("[Sanguophage Lair] No room for the stairwell surface prefab on " + map + "; the lair entrance was not spawned.");
+                Log.Warning("[Sanguophage Lords] No room for the stairwell surface prefab on " + map + "; the lair entrance was not spawned.");
                 return;
             }
             rect = CellRect.CenteredOn(cell, prefab.size);

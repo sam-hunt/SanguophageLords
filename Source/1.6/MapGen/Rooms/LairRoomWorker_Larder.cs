@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace SanguophageLair;
+namespace SanguophageLords;
 
 // The larder: the hemogen store, a small hewn room lined with shelves painted the strongest
 // red, like the red shelves of the reference image. Hemogen packs fill the far wall and every

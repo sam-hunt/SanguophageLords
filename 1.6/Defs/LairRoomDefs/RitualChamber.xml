@@ -14,9 +14,9 @@
     deep in the lair.
   -->
 
-  <SanguophageLair.LairRoomDef>
+  <SanguophageLords.LairRoomDef>
     <defName>SL_LairRoom_RitualChamber</defName>
-    <workerClass>SanguophageLair.LairRoomWorker_RitualChamber</workerClass>
+    <workerClass>SanguophageLords.LairRoomWorker_RitualChamber</workerClass>
     <corridorChance>0.7</corridorChance>
     <corridorLength>4~7</corridorLength>
     <minDepth>3</minDepth>
@@ -29,6 +29,6 @@
         <across>11~13</across>
       </li>
     </shapes>
-  </SanguophageLair.LairRoomDef>
+  </SanguophageLords.LairRoomDef>
 
 </Defs>
