@@ -77,7 +77,8 @@ public partial class SanguophageLordsSettings : ModSettings
         listing.End();
         Widgets.EndScrollView();
 
-        if (Widgets.ButtonText(buttonRect, "SL_ResetToDefaults".Translate()))
+        // Vanilla's own "Restore defaults" key (Core Keyed/Menu_Options.xml), so the game translates it.
+        if (Widgets.ButtonText(buttonRect, "RestoreToDefaultSettings".Translate()))
         {
             ResetToDefaults();
         }

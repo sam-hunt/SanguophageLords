@@ -12,9 +12,6 @@
   <!-- {0} is another piece of content the current value matches, named from its own def label. -->
   <SL_SameAsSuffix> (same as {0})</SL_SameAsSuffix>
 
-  <!-- Settings: buttons -->
-  <SL_ResetToDefaults>Reset to defaults</SL_ResetToDefaults>
-
   <!-- Settings: Quests. SL_LairQuest is the fallback subject name for the lair quest slider,
        used only until the quest def ships (then the def's own label is injected instead).
        In SL_QuestWeight, {0} is the quest's name, {1} the value. -->
